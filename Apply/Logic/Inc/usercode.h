@@ -5,8 +5,10 @@
 
 #define Depthometer_RS485_Recive 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);//Drv_GPIO_Reset(&RS485_GPIO[0]); //深度计485接收模式
 #define Depthometer_RS485_Send 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);//Drv_GPIO_Set(&RS485_GPIO[0]); //深度计485发送模式
-#define Manipulator_RS485_Recive 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);//Drv_GPIO_Reset(&RS485_GPIO[1]); //机械手485接收模式
-#define Manipulator_RS485_Send 		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_SET);//Drv_GPIO_Set(&RS485_GPIO[1]); //机械手485发送模式 
+//#define Manipulator_RS485_Recive 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);//Drv_GPIO_Reset(&RS485_GPIO[1]); //机械手485接收模式
+//#define Manipulator_RS485_Send 		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_SET);//Drv_GPIO_Set(&RS485_GPIO[1]); //机械手485发送模式 
+#define Manipulator_RS485_Recive 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_RESET);//Drv_GPIO_Reset(&RS485_GPIO[1]); //机械手485接收模式
+#define Manipulator_RS485_Send 		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_SET);//Drv_GPIO_Set(&RS485_GPIO[1]); //机械手485发送模式 
 #define Lowvoltage_RS485_Recive 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_10, GPIO_PIN_RESET);//Drv_GPIO_Reset(&RS485_GPIO[2]); //低压监测485接收模式
 #define Lowvoltage_RS485_Send 		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_10, GPIO_PIN_SET);//Drv_GPIO_Set(&RS485_GPIO[2]); //低压监测485发送模式
 #define Highvoltage_RS485_Recive 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_RESET);//Drv_GPIO_Reset(&RS485_GPIO[3]); //高压监测485接收模式

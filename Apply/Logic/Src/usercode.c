@@ -37,13 +37,15 @@ uint8_t Tuikong_buf[50]; //推控舱串口接收缓冲区
 uint8_t Tuikong_flag = RESET; //推控舱串口数据接收完成标志
 uint8_t Shumei_buf[50]; //树莓派串口接收缓冲区
 uint8_t Shumei_flag = RESET; //树莓派串口数据接收完成标志
-uint8_t Manipulator_buf[15]; //机械手串口接收缓冲区
-uint8_t Manipulator_flag = RESET; //机械手串口数据接收完成标志
 uint8_t Depthometer_buf[15]; //深度计串口接收缓冲区
 uint8_t Depthometer_flag = RESET; //深度计串口数据接收完成标志
 uint8_t CH438Q_buf[50]; //CH438Q串口数据接收缓冲区
 uint8_t CH438Q_flag = RESET; //CH438Q串口数据接收完成标志
 uint8_t CH438Q_NUM = 10; //CH438Q串口号
+uint8_t Manipulator_flag = RESET; //机械手工作标志位
+uint8_t Manipulator_Recvflag = RESET; //机械手串口数据接收完成标志
+uint8_t Manipulator_buf[15]; //机械手串口接收缓冲区
+uint8_t Hatchdoor_flag = RESET; //舱门开关标志位
 
 char Timeflag_200MS = RESET; //0.2秒时间标志位
 char Timeflag_100MS = RESET; //0.1秒时间标志位
@@ -57,13 +59,31 @@ uint8_t Tuikong_SendData[30]; //推控舱下行数据发送 数据28字节
 uint8_t Shumei_RecvData[30] ; //树莓派下行数据接收 数据24字节
 uint8_t Shumei_SendData_Int[50] ; //树莓派上行数据发送 数据50字节
 uint8_t Shumei_SendData_Float[30] ; //树莓派上行数据发送 数据24字节
-uint8_t Shumei_SendCmd[5] ; //树莓派上行命令发送 数据3字节
-uint8_t Manipulator_SendCmd[8]={0x01, 0x03, 0x00, 0x04, 0x00, 0x01, 0xC5, 0xCB}; //机械手命令发送
-
+uint8_t Shumei_SendCmd[5]; //树莓派上行命令发送 数据3字节
+uint8_t Manipulator_SendCmd[8] = {'@', 'C', '0', '0', '0', '0', '$'}; //机械手命令发送
 uint8_t Depthometer_Instruction1[8] = {0x01, 0x03, 0x00, 0x04, 0x00, 0x01, 0xC5, 0xCB}; //深度计指令1 读取压力数据
 uint8_t Depthometer_Instruction2[8] = {0x01, 0x03, 0x00, 0x03, 0x00, 0x01, 0x74, 0x0A}; //深度计指令2 读取小数位数
 uint8_t Lowvoltage_Instruction[7] = {0xDD, 0xA5, 0x03, 0x00, 0xFF, 0xFD, 0x77}; //低压数据获取指令
 uint8_t Highvoltage_Instruction[8] = {0x01, 0x03, 0x00, 0x01, 0x00, 0x02, 0x95, 0xCB}; //高压数据获取指令
+
+enum{
+	Notask_State = 'A', //无任务
+	Progress_State, //任务进行中
+	Accomplish_State, //任务完成
+	Abnormal_State, //任务执行异常
+}; //机械手工作状态
+
+enum{
+	Notask = 'A', //无任务
+	Extend, //伸出
+	Release, //设备释放
+	Grab, //视觉自主抓取
+	Reset, //复位
+	Back, //收回
+}; //机械手任务类型
+
+uint8_t Manipulator_Task = Notask; //机械手当前任务类型
+uint8_t Manipulator_Uptask=100; //上行命令机械手任务类型
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -77,14 +97,13 @@ void ShumeiCmd_Send(void); //上行命令发送函数，即向树莓派数据应
 void MotorStatus_Analysis(void); //推进器状态分析函数
 void Depthometer_Analysis(void); //深度计数据分析函数
 void Depthometer_Send(void); //深度计指令发送函数
-void Manipulator_Analysis(void); //机械手数据分析函数
 void Altimeter_Analysis(void); //高度计数据分析函数
 void CH438Q_Analysis(void); //CH438Q串口数据分析函数
 void Highvoltage_Send(void); //高压监测指令发送函数
 void Lowvoltage_Send(void); //低压监测指令发送函数
-void Lowvoltage_Send(void); //机械手指令发送函数
-void Manipulator_SendDate(void); //机械手指令发送函数
 void Relay_Control(void); //继电器控制函数
+void Manipulator_SendDate(void);//机械手指令发送函数
+void Manipulator_Analysis(void);//机械手数据分析函数
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -129,6 +148,7 @@ void UserLogic_Code(void)
 //	Uplink_Data.Magnetometer_R.Y.f_data = 64435.4;
 //	Uplink_Data.Magnetometer_R.Z.f_data = 56684.1;
 //	Uplink_Data.Depthometer_Data = 254.7;
+	Manipulator_Uptask = 'A';
 	Uplink_Data.Altimeter_Data = 0;
 	
 	Relay_Control();
@@ -139,6 +159,7 @@ void UserLogic_Code(void)
 		ShumeiData_Analysis();
 		Depthometer_Analysis();
 		CH438Q_Analysis();
+		Manipulator_Analysis();
 		
 		if(Timeflag_100MS)
 		{
@@ -163,7 +184,7 @@ void UserLogic_Code(void)
 		}
 		if(Timeflag_500MS) 
 		{
-			TuikongData_Send();
+//			TuikongData_Send();
 			Timeflag_500MS = RESET;
 		}
 		if(Timeflag_1S)
@@ -173,7 +194,6 @@ void UserLogic_Code(void)
 			Highvoltage_Send();
 			Depthometer_Send();
 			Lowvoltage_Send();
-			Manipulator_SendDate();
 		}
 	}
 }	
@@ -240,11 +260,17 @@ void TuikongData_Analysis(void)
 		{
 			//应答
 			case 'A': 
-				Usart_SendString(&demoUart1, (uint8_t *)Tuikong_buf); 
 				break;
 			//状态
 			case 'S':
-				Usart_SendString(&demoUart1, (uint8_t *)Tuikong_buf); 
+				if(Tuikong_buf[23] == 0xF0)
+				{
+					Hatchdoor_flag = SET;
+				}
+				else if(Tuikong_buf[23] == 0x00)
+				{
+					Hatchdoor_flag = RESET;
+				}
 				MotorStatus_Analysis();
 //				Usart_SendString(&demoUart2, Uplink_Data.Motor_Status); 
 				break;
@@ -281,38 +307,40 @@ void ShumeiData_Analysis(void)
 			//状态
 			case 'J':
 				ShumeiCmd_Send();
-				switch(Shumei_buf[3])
-				{
-					
-					case 'A':
-						
-						break;
-					
-					case 'B':
-						
-						break;
-					
-					case 'C':
-						
-						break;
-					
-					case 'D':
-						
-						break;
-					
-					case 'E':
-						
-						break;
-					
-					case 'F':
-						
-						break;
-					
-					default:
-				
-						break;
-					
-				}
+				Manipulator_flag = SET;
+				Manipulator_Uptask = Shumei_buf[3];
+//				switch(Shumei_buf[3])
+//				{
+//					
+//					case 'A':
+//						
+//						break;
+//					
+//					case 'B':
+//						
+//						break;
+//					
+//					case 'C':
+//						
+//						break;
+//					
+//					case 'D':
+//						
+//						break;
+//					
+//					case 'E':
+//						
+//						break;
+//					
+//					case 'F':
+//						
+//						break;
+//					
+//					default:
+//				
+//						break;
+//					
+//				}
 				break;
 			
 			case 'M':
@@ -408,13 +436,96 @@ void Highvoltage_Send() //高压监测指令发送函数
 	Highvoltage_RS485_Recive;
 }
 
-void Manipulator_SendDate(void)
+void Manipulator_SendDate()//机械手指令发送函数
 {
 	Manipulator_RS485_Send;
 	Drv_Delay_Ms(2);
-	Drv_Uart_Transmit(&demoUart5, Manipulator_SendCmd, 8);
-	Drv_Delay_Ms(1);	
+	Drv_Uart_Transmit(&demoUart3, Manipulator_SendCmd, 8);
+	Drv_Delay_Ms(2);	
 	Manipulator_RS485_Recive;
+}
+
+void Manipulator_Analysis(void)//机械手数据分析函数
+{
+	if(Manipulator_Recvflag == SET)
+	{
+		switch(Manipulator_buf[3])
+		{
+			case Notask:
+				if(Manipulator_Uptask == 'A' || Manipulator_Uptask == 'B' )
+				{
+					Usart_SendString(&demoUart2, (uint8_t *)"@HD");
+					Usart_SendString(&demoUart2, (uint8_t *)"1"); 
+					Usart_SendString(&demoUart2, (uint8_t *)"0"); 
+					Usart_SendString(&demoUart2, (uint8_t *)"$");	
+				}
+				if(Hatchdoor_flag)
+				{
+					Manipulator_SendCmd[2] = 'D'; //舱门已开（可以作业/收回手）
+					Manipulator_SendDate();
+				}
+				break;
+			case Extend:
+				if(Manipulator_Uptask == 'A' && Manipulator_buf[2] == Accomplish_State)
+				{
+					Manipulator_SendCmd[2] = 'A';
+					Manipulator_SendDate();
+				}
+				else if(Manipulator_Uptask == 'B' && Manipulator_buf[2] == Accomplish_State)
+				{
+					Manipulator_SendCmd[2] = 'B';
+					Manipulator_SendDate();
+				}
+				break;
+			case Release:
+				if(Manipulator_buf[2] == Accomplish_State)
+				{
+					Manipulator_SendCmd[2] = 'C';
+					Manipulator_SendDate();
+				}
+				break;
+			case Grab:
+				if(Manipulator_buf[2] == Accomplish_State)
+				{
+					Manipulator_SendCmd[2] = 'C';
+					Manipulator_SendDate();
+				}
+				break;
+			case Reset:
+				if(Manipulator_buf[2] == Accomplish_State)
+				{
+					Usart_SendString(&demoUart2, (uint8_t *)"@HD");
+					Usart_SendString(&demoUart2, (uint8_t *)"0"); 
+					Usart_SendString(&demoUart2, (uint8_t *)"0"); 
+					Usart_SendString(&demoUart2, (uint8_t *)"$");
+				}
+				if(!Hatchdoor_flag)
+				{
+					Manipulator_SendCmd[2] = 'E';
+					Manipulator_SendDate();
+					Manipulator_Uptask =100;
+				}
+				break;
+			case Back:
+				if(Manipulator_buf[2] == Accomplish_State)
+				{
+					Usart_SendString(&demoUart1, (uint8_t *)"@HD");
+					Usart_SendString(&demoUart1, (uint8_t *)"0"); 
+					Usart_SendString(&demoUart1, (uint8_t *)"0"); 
+					Usart_SendString(&demoUart1, (uint8_t *)"$");
+				}
+				if(!Hatchdoor_flag)
+				{
+					Manipulator_SendCmd[2] = 'E';
+					Manipulator_SendDate();
+					Manipulator_Uptask =100;
+				}
+				break;
+			default:
+				break;
+		}
+		Manipulator_Recvflag = RESET;
+	}
 }
 
 void Depthometer_Analysis()
@@ -451,22 +562,6 @@ void CH438Q_Analysis()
 				break;
 		}
 		CH438Q_flag = RESET;
-	}
-}
-
-void Manipulator_Analysis(void)//机械手数据分析函数
-{
-	if(Manipulator_flag == SET)
-	{
-		switch(Manipulator_buf[2])
-		{
-			
-		}
-		switch(Manipulator_buf[3])
-		{
-			
-		}
-		Manipulator_flag = RESET;
 	}
 }
 

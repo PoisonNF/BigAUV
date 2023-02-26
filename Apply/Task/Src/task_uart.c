@@ -1,4 +1,5 @@
 #include "task_conf.h"
+#include "bsp_io.h"
 
 //USART1串口接收缓冲区
 /* 接收一级缓冲 */
@@ -23,7 +24,7 @@ static uint16_t s_ucCntUart2 = 0;	/* 缓冲区计数器 */
 #define Rx3_BUFFER_SIZE 	1
 static uint8_t s_ucRxBufferUart3[Rx3_BUFFER_SIZE] = {0};
 /* 二级缓冲 */
-#define Rx3_DATA_LENTH 		100
+#define Rx3_DATA_LENTH 		20
 static uint8_t s_ucRxUart3[Rx3_DATA_LENTH] = {0};
 static uint16_t s_ucCntUart3 = 0;	/* 缓冲区计数器 */
 
@@ -57,6 +58,11 @@ int RecTail_flag2 = RESET; //帧尾接收标志位
 int Rec_finish2 = RESET; //接收完成标志位
 int Data_length2 = 30; //接收数据长度
 
+//串口3接收数据处理标志位
+int RecHead_flag3 = RESET; //帧头接收标志位
+int Rec_finish3 = RESET; //接收完成标志位
+int Data_length3 = 30; //接收数据长度
+
 //串口4接收数据处理标志位
 int RecHead_flag4 = RESET; //帧头接收标志位
 int Rec_finish4 = RESET; //接收完成标志位
@@ -67,7 +73,7 @@ extern uint8_t Tuikong_flag; //推控舱串口数据接收完成标志
 extern uint8_t Shumei_buf[50]; //树莓派串口接收缓冲区
 extern uint8_t Shumei_flag; //树莓派串口数据接收完成标志
 extern uint8_t Manipulator_buf[15]; //机械手串口接收缓冲区
-extern uint8_t Manipulator_flag; //机械手串口数据接收完成标志
+extern uint8_t Manipulator_Recvflag; //机械手串口数据接收完成标志
 extern uint8_t Depthometer_buf[15]; //深度计串口接收缓冲区
 extern uint8_t Depthometer_flag; //深度计串口数据接收完成标志
 
@@ -197,15 +203,31 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle) //中断回调函数
 	//串口3中断处理部分 机械手
 	else if(UartHandle->Instance == USART3)
 	{		
-		s_ucRxUart3[s_ucCntUart3] = s_ucRxBufferUart3[0];
-		s_ucCntUart3++;
-	
+		if(s_ucRxBufferUart3[0] == '@' && RecHead_flag3 == RESET)  //第一个帧头判断
+		{	
+			RecHead_flag3 = SET;
+			s_ucCntUart3 = 0;
+		}
+		if(RecHead_flag3)  //成功接收到帧头，开始命令接收
+		{
+			s_ucRxUart3[s_ucCntUart3++] = s_ucRxBufferUart3[0];
+			
+			if(s_ucRxBufferUart3[0] == '$' && s_ucCntUart3 == 7)
+			{
+				RecHead_flag3 = RESET;
+				Rec_finish3 = SET;
+				s_ucCntUart3 = 0;
+				memcpy(Manipulator_buf, s_ucRxUart3, 10);
+				memset(s_ucRxUart3, 0, Rx3_DATA_LENTH);
+				Manipulator_Recvflag = Rec_finish3;
+			}
+		}
 		if(s_ucCntUart3 > Rx3_DATA_LENTH)
 		{
 			s_ucCntUart3 = 0;
-			Usart_SendString(&demoUart3, s_ucRxUart3);
+			RecHead_flag3 = RESET;
+			memset(s_ucRxUart3, 0, Rx3_DATA_LENTH);
 		}
-		
 		Drv_Uart_ReceIT_Enable(&demoUart3, s_ucRxBufferUart3, Rx3_BUFFER_SIZE);
 	}
 	//串口4中断处理部分 深度计

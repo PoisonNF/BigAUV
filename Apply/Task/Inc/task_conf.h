@@ -5,7 +5,10 @@
 #include "task_sysinit.h"
 #include "task_userinit.h"
 #include "task_adcollect.h"
-
 #include "task_uart.h"
+//#include "task_manipulator.h"
 
 #endif
+
+
+

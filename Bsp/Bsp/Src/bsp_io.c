@@ -373,6 +373,17 @@ tagGPIO_T RS485_GPIO[] =
     
 };
 
+tagGPIO_T RS485TEST_GPIO = //测试板485
+{
+	 
+	.tGPIOInit.Pin 		= GPIO_PIN_8,				/* GPIO引脚 */
+	.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
+	.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
+	.tGPIOPort 			= GPIOC,					/* GPIO分组 */
+    
+};
+
 tagGPIO_T Relay_GPIO[] =
 {
 	

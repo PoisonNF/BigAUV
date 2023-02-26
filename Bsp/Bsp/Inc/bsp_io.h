@@ -13,6 +13,7 @@ extern tagGPIO_T CH438Q_GPIO[];
 extern tagGPIO_T CH438Q_GPIO_EXIT[];
 extern tagGPIO_T RS485_GPIO[];
 extern tagGPIO_T Relay_GPIO[];
+extern tagGPIO_T RS485TEST_GPIO;
 
 extern tagUART_T demoUart1;
 extern tagUART_T demoUart2;

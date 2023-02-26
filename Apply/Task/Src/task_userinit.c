@@ -12,6 +12,8 @@ void Task_UserInit(void)
 	
 	Drv_GPIO_Init(RS485_GPIO, 5); 
 //	Drv_GPIO_Set(RS485_GPIO); //RS485设置为接收模式
+	 
+	Drv_GPIO_Init(&RS485TEST_GPIO, 1); //测试板485，平时可注释
 	
 	Drv_GPIO_Init(Relay_GPIO, 3);
 			
@@ -39,11 +41,11 @@ void Task_UserInit(void)
 	Drv_Timer_Enable(&tTimer2);//启动溢出中断并使能定时器
 	Drv_Timer_Enable(&tTimer3);//启动溢出中断并使能定时器
 		
-	ret = OCD_AD24BIT_Init(&tAD24BIT);/*24位AD初始化 */
-	if (ret != 0)
-	{
-		DBG_ERROR("##AD init fail, error code:%d!!!\r\n",ret);
-		while(1);  //程序报错stop	
-	}
-	DBG_INFO("##AD Initialization Complete!\n");
+//	ret = OCD_AD24BIT_Init(&tAD24BIT);/*24位AD初始化 */
+//	if (ret != 0)
+//	{
+//		DBG_ERROR("##AD init fail, error code:%d!!!\r\n",ret);
+//		while(1);  //程序报错stop	
+//	}
+//	DBG_INFO("##AD Initialization Complete!\n");
 }
