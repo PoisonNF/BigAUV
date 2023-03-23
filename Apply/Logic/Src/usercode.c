@@ -102,8 +102,8 @@ void CH438Q_Analysis(void); //CH438Q串口数据分析函数
 void Highvoltage_Send(void); //高压监测指令发送函数
 void Lowvoltage_Send(void); //低压监测指令发送函数
 void Relay_Control(void); //继电器控制函数
-void Manipulator_SendDate(void);//机械手指令发送函数
-void Manipulator_Analysis(void);//机械手数据分析函数
+void Manipulator_SendDate(void); //机械手指令发送函数
+void Manipulator_Analysis(void); //机械手数据分析函数
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -202,7 +202,7 @@ void UserLogic_Code(void)
 
 /* 用户函数定义 */
 
-void TuikongData_Send(void)
+void TuikongData_Send(void) //下行数据发送函数，即向推控舱数据定时发送 0.5秒发送一次到推控舱
 {
 	Tuikong_SendData[24] = Uplink_Data.Depthometer_Data*10 / 256; //深度计数据
 	Tuikong_SendData[25] = (int)(Uplink_Data.Depthometer_Data*10) % 256;
@@ -215,7 +215,7 @@ void TuikongData_Send(void)
 	Usart_SendString(&demoUart2, (uint8_t *)"$");
 }
 
-void ShumeiData_Send(void)
+void ShumeiData_Send(void) //上行数据发送函数，即向树莓派数据定时发送 1秒发送一次到树莓派
 {
 	Shumei_SendData_Int[0] = Uplink_Data.Depthometer_Data*10 / 256; //深度计数据
 	Shumei_SendData_Int[1] = (int)(Uplink_Data.Depthometer_Data*10) % 256;
@@ -244,7 +244,7 @@ void ShumeiData_Send(void)
 //	Usart_SendString(&demoUart2, (uint8_t *)"$");	
 }
 
-void ShumeiCmd_Send(void)
+void ShumeiCmd_Send(void) //上行命令发送函数，即向树莓派数据应答
 {
 	memcpy(Shumei_SendCmd, &Shumei_buf[1], 3);
 	Usart_SendString(&demoUart1, (uint8_t *)"@ACK");
@@ -252,17 +252,18 @@ void ShumeiCmd_Send(void)
 	Usart_SendString(&demoUart1, (uint8_t *)"$");	
 }
 
-void TuikongData_Analysis(void)
+void TuikongData_Analysis(void) //推控舱数据解析
 {
 	if(Tuikong_flag == SET)
 	{
 		switch(Tuikong_buf[1])
 		{
 			//应答
-			case 'A': 
+			case 'A': //推控舱应答
+				Usart_SendString(&demoUart1, Tuikong_buf);
 				break;
 			//状态
-			case 'S':
+			case 'S': //推控舱上行数据
 				if(Tuikong_buf[23] == 0xF0)
 				{
 					Hatchdoor_flag = SET;
@@ -284,28 +285,28 @@ void TuikongData_Analysis(void)
 	}
 }
 	
-void ShumeiData_Analysis(void)
+void ShumeiData_Analysis(void) //树莓派数据解析
 {
 	if(Shumei_flag == SET)
 	{
 		switch(Shumei_buf[1])
 		{
 			//应答
-			case 'R': 
+			case 'R': //电源控制
 				ShumeiCmd_Send();
 				switch(Shumei_buf[2])
 				{
-					case 'S':
+					case 'S': //单一模式
 						
 						break;
 					
-					case 'A':
+					case 'A': //整体模式
 						
 						break;
 				}
 			break;
 			//状态
-			case 'J':
+				case 'J': //机械手控制
 				ShumeiCmd_Send();
 				Manipulator_flag = SET;
 				Manipulator_Uptask = Shumei_buf[3];
@@ -343,36 +344,70 @@ void ShumeiData_Analysis(void)
 //				}
 				break;
 			
-			case 'M':
+			case 'M': //运动控制
 				ShumeiCmd_Send();
 				Usart_SendString(&demoUart2, Shumei_buf);
 				switch(Shumei_buf[2])
 				{
-					case 'T':
+					case 'T': //测试模式
 						
 						break;
 					
-					case 'P':
+					case 'P': //平动模式
 						
 						break;
 					
-					case 'R':
+					case 'R': //转动模式
 						
 						break;
 					
-					case 'A':
+					case 'A': //自动模式
+						
+						break;
+					
+					case 'Y': //摇杆模式
 						
 						break;
 				}
 			break;
 			
-			case 'T':
+			case 'G': //重心调节
 				ShumeiCmd_Send();
 				Usart_SendString(&demoUart2, Shumei_buf);
 				break;
 			
-			case 'D':
-				memcpy(Shumei_RecvData, &Shumei_buf[4], 24);
+			case 'B': //浮力调节
+				ShumeiCmd_Send();
+				Usart_SendString(&demoUart2, Shumei_buf);
+				break;
+			
+			case 'E': //应急控制
+				ShumeiCmd_Send();
+				Usart_SendString(&demoUart2, Shumei_buf);
+				break;
+				
+			case 'T': //时间同步
+				ShumeiCmd_Send();
+				Usart_SendString(&demoUart2, Shumei_buf);
+				break;
+			
+			case 'D': //舱门控制 或 树莓派下行数据
+				switch(Shumei_buf[2])
+				{
+					case 'T': //舱门控制 测试模式
+						ShumeiCmd_Send();
+						Usart_SendString(&demoUart2, Shumei_buf);
+						break;
+					
+					case 'A': //舱门控制 自动模式
+						ShumeiCmd_Send();
+						Usart_SendString(&demoUart2, Shumei_buf);
+						break;
+					
+					case 'D': //树莓派下行数据
+						memcpy(Shumei_RecvData, &Shumei_buf[4], 24);
+						break;
+				}
 				break;
 			
 			default:
@@ -385,7 +420,7 @@ void ShumeiData_Analysis(void)
 }
 
 //int Motor_Speed[10]; //推进器速度
-void MotorStatus_Analysis(void)
+void MotorStatus_Analysis(void) //推进器状态分析函数
 {
 	int Motor_Speed[10]; //推进器速度
 	uint8_t i = 0;
@@ -407,42 +442,6 @@ void MotorStatus_Analysis(void)
 				Uplink_Data.Motor_Status[0] &= ~(1 << (i-8));
 		}	
 	}
-}
-
-void Depthometer_Send()
-{
-	Depthometer_RS485_Send;
-	Drv_Delay_Ms(2);
-	Drv_Uart_Transmit(&demoUart4, Depthometer_Instruction1, 8);
-	Drv_Delay_Ms(1);
-	Depthometer_RS485_Recive;
-}
-
-void Lowvoltage_Send() //低压监测指令发送函数
-{
-	Lowvoltage_RS485_Send;
-	Drv_Delay_Ms(2);
-	CH438_SendDatas(CHIP1, 1, Lowvoltage_Instruction, 7);
-	Drv_Delay_Ms(2);
-	Lowvoltage_RS485_Recive;
-}
-
-void Highvoltage_Send() //高压监测指令发送函数
-{
-	Highvoltage_RS485_Send;
-	Drv_Delay_Ms(2);
-	CH438_SendDatas(CHIP1, 2, Highvoltage_Instruction, 8);
-	Drv_Delay_Ms(2);
-	Highvoltage_RS485_Recive;
-}
-
-void Manipulator_SendDate()//机械手指令发送函数
-{
-	Manipulator_RS485_Send;
-	Drv_Delay_Ms(2);
-	Drv_Uart_Transmit(&demoUart3, Manipulator_SendCmd, 8);
-	Drv_Delay_Ms(2);	
-	Manipulator_RS485_Recive;
 }
 
 void Manipulator_Analysis(void)//机械手数据分析函数
@@ -528,7 +527,7 @@ void Manipulator_Analysis(void)//机械手数据分析函数
 	}
 }
 
-void Depthometer_Analysis()
+void Depthometer_Analysis() //深度计数据分析函数
 {
 	if(Depthometer_flag == SET)
 	{
@@ -540,7 +539,7 @@ void Depthometer_Analysis()
 	}
 }
 
-void CH438Q_Analysis()
+void CH438Q_Analysis() //CH438Q串口数据分析函数
 {
 	if(CH438Q_flag == SET)
 	{
@@ -565,7 +564,43 @@ void CH438Q_Analysis()
 	}
 }
 
-void Relay_Control()
+void Depthometer_Send() //深度计指令发送函数
+{
+	Depthometer_RS485_Send;
+	Drv_Delay_Ms(2);
+	Drv_Uart_Transmit(&demoUart4, Depthometer_Instruction1, 8);
+	Drv_Delay_Ms(1);
+	Depthometer_RS485_Recive;
+}
+
+void Lowvoltage_Send() //低压监测指令发送函数
+{
+	Lowvoltage_RS485_Send;
+	Drv_Delay_Ms(2);
+	CH438_SendDatas(CHIP1, 1, Lowvoltage_Instruction, 7);
+	Drv_Delay_Ms(2);
+	Lowvoltage_RS485_Recive;
+}
+
+void Highvoltage_Send() //高压监测指令发送函数
+{
+	Highvoltage_RS485_Send;
+	Drv_Delay_Ms(2);
+	CH438_SendDatas(CHIP1, 2, Highvoltage_Instruction, 8);
+	Drv_Delay_Ms(2);
+	Highvoltage_RS485_Recive;
+}
+
+void Manipulator_SendDate()//机械手指令发送函数
+{
+	Manipulator_RS485_Send;
+	Drv_Delay_Ms(2);
+	Drv_Uart_Transmit(&demoUart3, Manipulator_SendCmd, 8);
+	Drv_Delay_Ms(2);	
+	Manipulator_RS485_Recive;
+}
+
+void Relay_Control() //继电器控制函数
 {
 	ShengTong_OFF;
 	Manipulator_OFF;
