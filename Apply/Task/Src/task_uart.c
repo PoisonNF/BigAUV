@@ -108,22 +108,13 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle) //中断回调函数
 			{
 				Data_length1 = 29;
 			}
-			else if(s_ucCntUart1 == 2 && s_ucRxBufferUart1[0] == 'T') //时间信息，接收19个字节
+			else if(s_ucCntUart1 == 2 && s_ucRxBufferUart1[0] == 'T') //时间信息，接收18个字节
 			{
-				Data_length1 = 19;
+				Data_length1 = 18;
 			}
 			else if(s_ucCntUart1 == 2)//其他命令，接收6个字节
 			{
 				Data_length1 = 6;
-				if(s_ucRxBufferUart1[0] == 'M')//MA命令，接收7个字节
-				{
-					MA_flag = SET;
-				}
-			}
-			
-			if(s_ucCntUart1 == 3 && s_ucRxBufferUart1[0] == 'A' && MA_flag == SET) //MA命令，接收7个字节
-			{
-				Data_length1 = 7;
 			}
 			
 			if(s_ucRxBufferUart1[0] == '$' && s_ucCntUart1 == Data_length1)
@@ -279,127 +270,3 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle) //中断回调函数
 	}
 }
 
-//static uint8_t s_ucpPCData[Rx1_DATA_LENTH] = {0};
-//#define FRAME_HEARD		'@'
-//#define FRAME_END		"\r\n"
-
-//static void S_Task_PCUart_Clear(void)
-//{
-//	s_ucCntUart1 = 0;
-//	memset(s_ucRxBufferUart1, 0, Rx1_BUFFER_SIZE);
-//	memset(s_ucRxUart1, 0, Rx1_DATA_LENTH);
-//}
-
-//static void S_Task_ConfOutput(void)
-//{
-//	printf("Alarm Freq Conf	->%d\r\n", Task_AlarmFreqRead());
-//}
-
-//static uint8_t S_Task_DataProcess(uint8_t _ucIndex)
-//{
-//	switch(s_ucpPCData[_ucIndex + 1])
-//	{
-//		case 'A':		/* 读系统信息，系统配置 */
-//			Task_SysInfoOutput();
-//			S_Task_ConfOutput();
-//		return 'A';
-//		
-//		case 'C':		/* 数据问询 */
-////			printf("@C*");
-////			printf("*\r\n");
-//		return 'C';
-//		
-//		case 'D':		/* 写系统时间 */
-//			Task_SysTimeConfig(s_ucpPCData);
-//			printf("@D**\r\n");
-//		return 'D';
-//		
-//		case 'F':		/* 数据通信频率配置 */
-//			Task_AlarmFreqSet(atoi((const char*)s_ucpPCData + 2));
-////			printf("@F**\r\n");
-//		return 'F';
-//		
-//		case 'G':
-//			
-//		return 'G';
-//		
-//		case 'H':		/* 心跳 */
-//			printf("@H**\r\n");
-//		return 'H';
-//		
-//		case 'g':		/* 读文件列表 */
-//			Task_FATFSReadDir();
-//			printf("@i**\r\n");
-//		return 'g';
-//		
-//		case 'j':
-//			Task_FATFSSendFile(s_ucpPCData);
-//			printf("@l**\r\n");
-//		return 'j';
-//		
-//		default:		/* CMD错误 */
-//			Task_Led_RedOn();
-//#ifdef DEBUG_ENABLE
-//			printf("CMD Error!!!\r\n");
-//#endif
-//		return 0;
-//	}
-//}
-
-//uint8_t Task_PCListen(void)
-//{
-//	uint8_t ucRes = 0;
-//	uint8_t index;
-//	int8_t ucFrameHead,ucFrameEnd = 0;
-//	
-//	do
-//	{
-//		if(s_ucCntUart1 == 0)
-//			break;
-//		
-//		memcpy(s_ucpPCData, s_ucRxUart1, Rx1_DATA_LENTH);
-//		
-//		/* 协议解析 */
-//		for(index = 0; index < Rx1_DATA_LENTH; index++)
-//		{
-//			/* 寻找帧头 */
-//			if(s_ucpPCData[index] == FRAME_HEARD)
-//			{
-//				ucFrameHead = index;
-//				continue;
-//			}
-//			
-//			do
-//			{
-//				if(s_ucpPCData[index] != FRAME_END[0])
-//					break;
-//				if(s_ucpPCData[index + 1] != FRAME_END[1])
-//					break;
-//				ucFrameEnd = index;
-//				
-//				if((ucFrameEnd - ucFrameHead) < 0)
-//					break;
-//				
-//				ucRes = S_Task_DataProcess(ucFrameHead);
-//				if(ucRes == 0)	/* 数据处理 */
-//				{
-//					/* CMD错误 */
-//					S_Task_PCUart_Clear();	/* 清缓冲区 */
-//					return 0;
-//				}
-//				
-//				S_Task_PCUart_Clear();
-//				memset(s_ucpPCData, 0, Rx1_DATA_LENTH);
-//				
-//				return ucRes;	/* 协议解析正确 */
-//			}while(0);
-//		}
-//	}while(0);
-//	
-//	return 0;
-//}
-
-//uint8_t *Task_GetPCUart(void)
-//{
-//	return s_ucpPCData;
-//}
