@@ -3,17 +3,19 @@
 
 #include "drv_hal_conf.h"
 
+#define MAX_RELOAD		1000000
+
 typedef struct
 {
 	TIM_HandleTypeDef 	tPWMHandle;		/* STM32内部PWM设备句柄 */
 	TIM_OC_InitTypeDef	tPWMChannel;	/* STM32内部PWM通道句柄 */
-	uint32_t			ulFreq;			/* 频率 */
-	float				fDuty;			/* 占空比 */
-	uint8_t				ulChannel;		/* 通道 */
+	uint32_t			ulFreq;			/* 频率(Hz) */
+	float				fDuty;			/* 占空比(%) */
+	uint8_t				ucChannel;		/* 通道 */
 	tagGPIO_T			tGPIO;			/* GPIO设置 */
 }tagPWM_T;
 
-/*  重映射表
+/*  定时器重映射表
 	TIM1 	full remap (ETR/PE7,  CH1/PE9, CH2/PE11, CH3/PE13, CH4/PE14, BKIN/PE15, CH1N/PE8,  CH2N/PE10, CH3N/PE12)
 			partial remap (ETR/PA12, CH1/PA8, CH2/PA9,  CH3/PA10, CH4/PA11, BKIN/PA6,  CH1N/PA7,  CH2N/PB0,  CH3N/PB1)
 			no remap (ETR/PA12, CH1/PA8, CH2/PA9,  CH3/PA10, CH4/PA11, BKIN/PB12, CH1N/PB13, CH2N/PB14, CH3N/PB15)
@@ -36,6 +38,7 @@ typedef struct
 */
 
 void Drv_PWM_DutyfactorSet(tagPWM_T *_tPWM,float _fDuty);
+void Drv_PMW_FreqSet(tagPWM_T *_tPWM, uint32_t _ulFreq);
 void Drv_PWM_Init(tagPWM_T *_tPWM, uint8_t _ucNum);
 
 #endif

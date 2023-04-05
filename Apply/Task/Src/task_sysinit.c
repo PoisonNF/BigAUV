@@ -1,8 +1,8 @@
 #include "task_conf.h"
 
-#include "bsp_io.h"
+#include "config.h"
 
 void Task_Sys_Init(void)
 {
-	Drv_HAL_Init();		/* Sigma库驱动，必需 */
+	Drv_HAL_Init();		/* SGA库启动必需 */
 }

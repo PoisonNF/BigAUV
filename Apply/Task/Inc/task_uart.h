@@ -1,7 +1,7 @@
 #ifndef __TASK_UART_H_
 #define __TASK_UART_H_
 
-#include "bsp_io.h"
+#include "ocd_conf.h"
 
 void Task_PCUart_Enable(void);
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle);
