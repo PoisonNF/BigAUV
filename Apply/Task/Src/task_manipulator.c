@@ -1,76 +1,123 @@
 #include "task_conf.h"
-#include "bsp_io.h"
 
-uint8_t Manipulator_flag = RESET; //»úĞµÊÖ´®¿ÚÊı¾İ½ÓÊÕÍê³É±êÖ¾
-uint8_t Manipulator_buf[15]; //»úĞµÊÖ´®¿Ú½ÓÊÕ»º³åÇø
+#include "config.h"
+
+#define Manipulator_RS485_Recive 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_RESET);//Drv_GPIO_Reset(&RS485_GPIO[1]); //æœºæ¢°æ‰‹485æ¥æ”¶æ¨¡å¼
+#define Manipulator_RS485_Send 		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_SET);//Drv_GPIO_Set(&RS485_GPIO[1]); //æœºæ¢°æ‰‹485å‘é€æ¨¡å¼ 
+
+uint8_t Manipulator_flag = RESET; //æœºæ¢°æ‰‹å·¥ä½œæ ‡å¿—ä½
+uint8_t Manipulator_Recvflag = RESET; //æœºæ¢°æ‰‹ä¸²å£æ•°æ®æ¥æ”¶å®Œæˆæ ‡å¿—
+uint8_t Manipulator_buf[20]; //æœºæ¢°æ‰‹ä¸²å£æ¥æ”¶ç¼“å†²åŒº
+uint8_t Manipulator_Uptask = 100; //ä¸Šè¡Œå‘½ä»¤æœºæ¢°æ‰‹ä»»åŠ¡ç±»å‹
 
 enum{
-	Notask_State = 'A', //ÎŞÈÎÎñ
-	Progress_State, //ÈÎÎñ½øĞĞÖĞ
-	Accomplish_State, //ÈÎÎñÍê³É
-	Abnormal_State, //ÈÎÎñÖ´ĞĞÒì³£
-}; //»úĞµÊÖ¹¤×÷×´Ì¬
+	Notask_State = 'A', //æ— ä»»åŠ¡
+	Progress_State, //ä»»åŠ¡è¿›è¡Œä¸­
+	Accomplish_State, //ä»»åŠ¡å®Œæˆ
+	Abnormal_State, //ä»»åŠ¡æ‰§è¡Œå¼‚å¸¸
+}; //æœºæ¢°æ‰‹å·¥ä½œçŠ¶æ€
 
 enum{
-	Notask = 'A', //ÎŞÈÎÎñ
-	Extend, //Éì³ö
-	Release, //Éè±¸ÊÍ·Å
-	Grab, //ÊÓ¾õ×ÔÖ÷×¥È¡
-	Reset, //¸´Î»
-	Back, //ÊÕ»Ø
-}; //»úĞµÊÖÈÎÎñÀàĞÍ
+	Notask = 'A', //æ— ä»»åŠ¡
+	Extend, //ä¼¸å‡º
+	Release, //è®¾å¤‡é‡Šæ”¾
+	Grab, //è§†è§‰è‡ªä¸»æŠ“å–
+	Reset, //å¤ä½
+	Back, //æ”¶å›
+}; //æœºæ¢°æ‰‹ä»»åŠ¡ç±»å‹
 
-//enum{
-//	Extend, //Éì³ö
-//	Release, //¿ªÊ¼Éè±¸ÊÍ·ÅÈÎÎñ
-//	Grab, //¿ªÊ¼×ÔÖ÷×¥È¡ÈÎÎñ
-//	Reset, //¸´Î»
-//	Back, //ÊÕ»Ø
-//}; //ÉÏĞĞÃüÁî»úĞµÊÖÈÎÎñÀàĞÍ
+uint8_t Manipulator_Task = Notask; //æœºæ¢°æ‰‹å½“å‰ä»»åŠ¡ç±»å‹
+uint8_t Manipulator_SendCmd[8] = {'@', 'C', '0', '0', '0', '0', '$'}; //æœºæ¢°æ‰‹å‘½ä»¤å‘é€
 
-uint8_t Manipulator_Task = Notask; //»úĞµÊÖµ±Ç°ÈÎÎñÀàĞÍ
-//extern uint8_t Manipulator_Uptask = Notask; //ÉÏĞĞÃüÁî»úĞµÊÖÈÎÎñÀàĞÍ
-
-void Manipulator_Stateswitch(void) //»úĞµÊÖ×´Ì¬ÇĞ»»º¯Êı
+void Manipulator_SendDate()//æœºæ¢°æ‰‹æŒ‡ä»¤å‘é€å‡½æ•°
 {
-	switch(Manipulator_Task)
-	{
-		case Notask:
-			
-			break;
-		case Extend:
-			
-			break;
-		case Release:
-			
-			break;
-		case Grab:
-			
-			break;
-		case Reset:
-			
-			break;
-		case Back:
-			
-			break;
-		default:
-			break;
-	}
+	Manipulator_RS485_Send;
+	Drv_Delay_Ms(2);
+	Drv_Uart_Transmit(&tManipulator_Uart, Manipulator_SendCmd, 8);
+	Drv_Delay_Ms(2);	
+	Manipulator_RS485_Recive;
 }
 
-void Manipulator_Analysis(void)//»úĞµÊÖÊı¾İ·ÖÎöº¯Êı
+void Manipulator_Analysis(void)//æœºæ¢°æ‰‹æ•°æ®åˆ†æå‡½æ•°
 {
-	if(Manipulator_flag == SET)
+	if(Manipulator_Recvflag == SET)
 	{
-		switch(Manipulator_buf[2])
-		{
-			
-		}
 		switch(Manipulator_buf[3])
 		{
-			
+			case Notask:
+				if(Manipulator_Uptask == 'A' || Manipulator_Uptask == 'B' )
+				{
+					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"@DA", 3);
+					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"O0", 2); 
+					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"$", 1);	
+				}
+				if(Hatchdoor_flag)
+				{
+					Manipulator_SendCmd[2] = 'D'; //èˆ±é—¨å·²å¼€ï¼ˆå¯ä»¥ä½œä¸š/æ”¶å›æ‰‹ï¼‰
+					Manipulator_SendDate();
+				}
+				break;
+			case Extend:
+				if(Manipulator_Uptask == 'A' && Manipulator_buf[2] == Accomplish_State)
+				{
+					Manipulator_SendCmd[2] = 'A';
+					Manipulator_SendDate();
+				}
+				else if(Manipulator_Uptask == 'B' && Manipulator_buf[2] == Accomplish_State)
+				{
+					Manipulator_SendCmd[2] = 'B';
+					Manipulator_SendDate();
+				}
+				break;
+			case Release:
+				if(Manipulator_buf[2] == Accomplish_State)
+				{
+					Manipulator_SendCmd[2] = 'C';
+					Manipulator_SendDate();
+				}
+				break;
+			case Grab:
+				if(Manipulator_buf[2] == Accomplish_State)
+				{
+					Manipulator_SendCmd[2] = 'C';
+					Manipulator_SendDate();
+				}
+				break;
+			case Reset:
+				if(Manipulator_buf[2] == Accomplish_State)
+				{
+					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"@DA", 3);
+					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"O0", 2); 
+					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"$", 1);	
+				}
+				if(!Hatchdoor_flag)
+				{
+					Manipulator_SendCmd[2] = 'E';
+					Manipulator_SendDate();
+					Manipulator_Uptask =100;
+				}
+				break;
+			case Back:
+				if(Manipulator_buf[2] == Accomplish_State)
+				{
+					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"@DA", 3);
+					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"O0", 2); 
+					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"$", 1);	
+				}
+				if(!Hatchdoor_flag)
+				{
+					Manipulator_SendCmd[2] = 'E';
+					Manipulator_SendDate();
+					Manipulator_Uptask =100;
+				}
+				break;
+			default:
+				break;
 		}
-		Manipulator_flag = RESET;
+		Manipulator_Recvflag = RESET;
 	}
 }
+
+
+
 

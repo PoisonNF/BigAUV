@@ -109,8 +109,8 @@
         <DllOption>
           <SimDllName>SARMCM3.DLL</SimDllName>
           <SimDllArguments> -REMAP</SimDllArguments>
-          <SimDlgDll>DCM.DLL</SimDlgDll>
-          <SimDlgDllArguments>-pCM3</SimDlgDllArguments>
+          <SimDlgDll>DRAMSTM.DLL</SimDlgDll>
+          <SimDlgDllArguments>-pSTM32F103ZE</SimDlgDllArguments>
           <TargetDllName>SARMCM3.DLL</TargetDllName>
           <TargetDllArguments></TargetDllArguments>
           <TargetDlgDll>TCM.DLL</TargetDlgDll>
@@ -149,7 +149,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>11</TargetSelection>
+          <TargetSelection>12</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -163,7 +163,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver>STLink\ST-LINKIII-KEIL_SWO.dll</Driver>
+            <Driver>BIN\CMSIS_AGDI.dll</Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -369,7 +369,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE,STM32F1_SGA_ENABLE</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Apply\Logic\Inc;..\Apply\Task\Inc;..\Bsp\Bsp\Inc;..\Bsp\OCD\Inc;..\Bsp\FatFs\Inc;..\Bsp\Third\SGA\inc;..\Driver\Inc;..\Hardware\STM32F1XX\CMSIS\Include;..\Hardware\STM32F1XX\CMSIS\Device\ST\STM32F1xx\Include;..\Hardware\STM32F1XX\STM32F1xx_HAL_Driver\Inc;..\Hardware\STM32F1XX\STM32F1xx_HAL_Driver\Inc\Legacy;..\Bsp\Third\RT-Thread\include</IncludePath>
+              <IncludePath>..\Apply\Logic\Inc;..\Apply\Task\Inc;..\Bsp\OCD\Inc;..\Bsp\FatFs\Inc;..\Bsp\Algo\Inc;..\Bsp\Dev\Inc;..\Bsp\RTOS\RT-Thread\include;..\Driver\Inc;..\Hardware\STM32F1XX\CMSIS\Include;..\Hardware\STM32F1XX\CMSIS\Device\ST\STM32F1xx\Include;..\Hardware\STM32F1XX\STM32F1xx_HAL_Driver\Inc;..\Hardware\STM32F1XX\STM32F1xx_HAL_Driver\Inc\Legacy</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -422,6 +422,11 @@
               <FileType>1</FileType>
               <FilePath>..\Apply\Logic\Src\usercode.c</FilePath>
             </File>
+            <File>
+              <FileName>config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Apply\Logic\Src\config.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -443,24 +448,44 @@
               <FilePath>..\Apply\Task\Src\task_userinit.c</FilePath>
             </File>
             <File>
+              <FileName>task_adcollect.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Apply\Task\Src\task_adcollect.c</FilePath>
+            </File>
+            <File>
               <FileName>task_uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Apply\Task\Src\task_uart.c</FilePath>
             </File>
             <File>
-              <FileName>task_adcollect.c</FileName>
+              <FileName>task_altimeter.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Apply\Task\Src\task_adcollect.c</FilePath>
+              <FilePath>..\Apply\Task\Src\task_altimeter.c</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Bsp/Bsp</GroupName>
-          <Files>
             <File>
-              <FileName>bsp_io.c</FileName>
+              <FileName>task_depthometer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Bsp\Bsp\Src\bsp_io.c</FilePath>
+              <FilePath>..\Apply\Task\Src\task_depthometer.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_manipulator.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Apply\Task\Src\task_manipulator.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_smp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Apply\Task\Src\task_smp.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_tkc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Apply\Task\Src\task_tkc.c</FilePath>
+            </File>
+            <File>
+              <FileName>task_voltage.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Apply\Task\Src\task_voltage.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -468,19 +493,9 @@
           <GroupName>Bsp/OCD</GroupName>
           <Files>
             <File>
-              <FileName>ocd_ch438q.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Bsp\OCD\Src\ocd_ch438q.c</FilePath>
-            </File>
-            <File>
               <FileName>ocd_ads1256.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Bsp\OCD\Src\ocd_ads1256.c</FilePath>
-            </File>
-            <File>
-              <FileName>ocd_ads4111.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Bsp\OCD\Src\ocd_ads4111.c</FilePath>
             </File>
             <File>
               <FileName>ocd_at24cxx.c</FileName>
@@ -508,9 +523,44 @@
               <FilePath>..\Bsp\OCD\Src\ocd_sdcard.c</FilePath>
             </File>
             <File>
+              <FileName>ocd_oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Bsp\OCD\Src\ocd_oled.c</FilePath>
+            </File>
+            <File>
+              <FileName>ocd_ch438q.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Bsp\OCD\Src\ocd_ch438q.c</FilePath>
+            </File>
+            <File>
+              <FileName>ocd_rm3100.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Bsp\OCD\Src\ocd_rm3100.c</FilePath>
+            </File>
+            <File>
               <FileName>ocd_ad24bit.lib</FileName>
               <FileType>4</FileType>
               <FilePath>..\Bsp\OCD\Src\ocd_ad24bit.lib</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Bsp/Dev</GroupName>
+          <Files>
+            <File>
+              <FileName>dev_ps2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Bsp\Dev\Src\dev_ps2.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Bsp/Algo</GroupName>
+          <Files>
+            <File>
+              <FileName>algo_func.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Bsp\Algo\Src\algo_func.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -526,16 +576,6 @@
               <FileName>diskio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Bsp\FatFs\Src\diskio.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Bsp/SGA</GroupName>
-          <Files>
-            <File>
-              <FileName>sga_func.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Bsp\Third\SGA\src\sga_func.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -576,6 +616,11 @@
               <FileName>drv_hal_spi.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Driver\Src\drv_hal_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_hal_spi_soft.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Driver\Src\drv_hal_spi_soft.c</FilePath>
             </File>
             <File>
               <FileName>drv_hal_timer.c</FileName>
