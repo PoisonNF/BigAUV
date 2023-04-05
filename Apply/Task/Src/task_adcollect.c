@@ -1,8 +1,8 @@
 #include "task_conf.h"
 
-#include "bsp_io.h"
+#include "config.h"
 
-int Mag_data_getL(double* LX,double* LY,double* LZ, double* allL, double* RX,double* RY,double* RZ, double* allR)
+int Mag_data_getL(double* LX, double* LY, double* LZ, double* allL, double* RX, double* RY, double* RZ, double* allR)
 {
 		
 		int ret;
@@ -24,19 +24,21 @@ int Mag_data_getL(double* LX,double* LY,double* LZ, double* allL, double* RX,dou
 		*LY = (*LY)*10000;
 		*LZ = (*LZ)*10000;
 		*allL = (double)((*LX)*(*LX));
-		*allL	+=(double)((*LY)*(*LY));
-		*allL	+= (double)((*LZ)*(*LZ));
-		*allL=sqrt(*allL);//总磁场
+		*allL += (double)((*LY)*(*LY));
+		*allL += (double)((*LZ)*(*LZ));
+		*allL = sqrt(*allL);//总磁场
 		
 		*RX = (*RX)*10000;//电压对应磁场关系
 		*RY = (*RY)*10000;
 		*RZ = (*RZ)*10000;
 		*allR = (double)((*RX)*(*RX));
-		*allR	+=(double)((*RY)*(*RY));
-		*allR	+= (double)((*RZ)*(*RZ));
-		*allR=sqrt(*allR);//总磁场
+		*allR += (double)((*RY)*(*RY));
+		*allR += (double)((*RZ)*(*RZ));
+		*allR = sqrt(*allR);//总磁场
 		
 		return 0;
 		
 }
+
+
 

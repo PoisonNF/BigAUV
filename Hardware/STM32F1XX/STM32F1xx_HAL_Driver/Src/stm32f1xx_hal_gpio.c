@@ -189,11 +189,6 @@ void HAL_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GPIO_Init)
   assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
   assert_param(IS_GPIO_PIN(GPIO_Init->Pin));
   assert_param(IS_GPIO_MODE(GPIO_Init->Mode));
-	
-	
-	__HAL_RCC_AFIO_CLK_ENABLE(); 
-	__HAL_AFIO_REMAP_SWJ_NOJTAG(); //¹Ø±Õjtag¹¦ÄÜ
-	
 
   /* Configure the port pins */
   while (((GPIO_Init->Pin) >> position) != 0x00u)
