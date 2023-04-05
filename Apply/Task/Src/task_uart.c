@@ -90,10 +90,10 @@ void Receive_DMA(void)
 	// 	}
 	// 	tTKC_Uart.tUartDMA.ucDMARxCplt = 0;	
 	// }
-	if(tSMP_Uart.tUartDMA.ucDMARxCplt)
+	if(tSMP_Uart.tRxInfo.ucDMARxCplt)
 	{
-		memcpy(s_ucRxUart1, tSMP_Uart.tRxInfo.ucpRxCache, tSMP_Uart.tRxInfo.usRxLenth);
-		size = tSMP_Uart.tRxInfo.usRxLenth;
+		memcpy(s_ucRxUart1, tSMP_Uart.tRxInfo.ucpDMARxCache, tSMP_Uart.tRxInfo.usDMARxLength);
+		size = tSMP_Uart.tRxInfo.usDMARxLength;
 		
 		if(s_ucRxUart1[0] == '@')  //第一个帧头判断
 		{	
@@ -121,12 +121,12 @@ void Receive_DMA(void)
 				memset(s_ucRxUart1, 0, Rx1_DATA_LENTH);
 			}
 		}
-		tSMP_Uart.tUartDMA.ucDMARxCplt = 0;	
+		tSMP_Uart.tRxInfo.ucDMARxCplt = 0;	
 	}
-	else if (tTKC_Uart.tUartDMA.ucDMARxCplt)
+	else if (tTKC_Uart.tRxInfo.ucDMARxCplt)
 	{
-		memcpy(Tuikong_buf, tTKC_Uart.tRxInfo.ucpRxCache, tTKC_Uart.tRxInfo.usRxLenth);
-		size = tTKC_Uart.tRxInfo.usRxLenth;
+		memcpy(Tuikong_buf, tTKC_Uart.tRxInfo.ucpDMARxCache, tTKC_Uart.tRxInfo.usDMARxLength);
+		size = tTKC_Uart.tRxInfo.usDMARxLength;
 		
 		if(s_ucRxUart2[0] == '@')  //第一个帧头判断
 		{	
@@ -150,12 +150,12 @@ void Receive_DMA(void)
 				memset(s_ucRxUart2, 0, Rx2_DATA_LENTH);
 			}
 		}
-		tTKC_Uart.tUartDMA.ucDMARxCplt = 0;	
+		tTKC_Uart.tRxInfo.ucDMARxCplt = 0;	
 	}
-	else if (tManipulator_Uart.tUartDMA.ucDMARxCplt)
+	else if (tManipulator_Uart.tRxInfo.ucDMARxCplt)
 	{
-		memcpy(Manipulator_buf, tManipulator_Uart.tRxInfo.ucpRxCache, tManipulator_Uart.tRxInfo.usRxLenth);
-		size = tManipulator_Uart.tRxInfo.usRxLenth;
+		memcpy(Manipulator_buf, tManipulator_Uart.tRxInfo.ucpDMARxCache, tManipulator_Uart.tRxInfo.usDMARxLength);
+		size = tManipulator_Uart.tRxInfo.usDMARxLength;
 
 		if(s_ucRxUart3[0] == '@')  //第一个帧头判断
 		{	
@@ -171,12 +171,12 @@ void Receive_DMA(void)
 				memset(s_ucRxUart3, 0, Rx3_DATA_LENTH);
 			}
 		}
-		tManipulator_Uart.tUartDMA.ucDMARxCplt = 0;	
+		tManipulator_Uart.tRxInfo.ucDMARxCplt = 0;	
 	}
-	else if (tDepthometer_Uart.tUartDMA.ucDMARxCplt)
+	else if (tDepthometer_Uart.tRxInfo.ucDMARxCplt)
 	{
-		memcpy(Depthometer_buf, tDepthometer_Uart.tRxInfo.ucpRxCache, tDepthometer_Uart.tRxInfo.usRxLenth);
-		size = tDepthometer_Uart.tRxInfo.usRxLenth;
+		memcpy(Depthometer_buf, tDepthometer_Uart.tRxInfo.ucpDMARxCache, tDepthometer_Uart.tRxInfo.usDMARxLength);
+		size = tDepthometer_Uart.tRxInfo.usDMARxLength;
 
 		if(s_ucRxUart4[0] == '@')  //第一个帧头判断
 		{	
@@ -192,7 +192,7 @@ void Receive_DMA(void)
 				memset(s_ucRxUart4, 0, Rx4_DATA_LENTH);
 			}
 		}
-		tDepthometer_Uart.tUartDMA.ucDMARxCplt = 0;	
+		tDepthometer_Uart.tRxInfo.ucDMARxCplt = 0;	
 	}
 	
 		
