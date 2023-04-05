@@ -78,7 +78,7 @@ tagUART_T tSMP_Uart =
 	.tUartDMA.tDMARx.Init.Mode			= DMA_CIRCULAR,
 	.tUartDMA.tDMARx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tRxInfo.usRxMAXLenth             	= 100,              		/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
+	.tRxInfo.usDMARxMAXSize             	= 100,              	/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
 
 	.tUartDMA.ucDMARxPriority				= 1,					/* DMA接收中断优先级 */
 	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMA接收中断子优先级 */
@@ -94,7 +94,7 @@ tagUART_T tSMP_Uart =
 	.tUartDMA.tDMATx.Init.Mode			= DMA_NORMAL,
 	.tUartDMA.tDMATx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tTxInfo.usTxMAXLenth				= 50,						/* 最大发送数据长度 */
+	.tTxInfo.usDMATxMAXSize				= 50,						/* 最大发送数据长度 */
 	
 	.tUartDMA.ucDMATxPriority				= 1,					/* DMA发送中断优先级 */
 	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMA发送中断子优先级 */
@@ -149,7 +149,7 @@ tagUART_T tTKC_Uart =
 	.tUartDMA.tDMARx.Init.Mode			= DMA_CIRCULAR,
 	.tUartDMA.tDMARx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tRxInfo.usRxMAXLenth             	= 100,              		/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
+	.tRxInfo.usDMARxMAXSize             	= 100,              	/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
 
 	.tUartDMA.ucDMARxPriority				= 1,					/* DMA接收中断优先级 */
 	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMA接收中断子优先级 */
@@ -165,7 +165,7 @@ tagUART_T tTKC_Uart =
 	.tUartDMA.tDMATx.Init.Mode			= DMA_NORMAL,
 	.tUartDMA.tDMATx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tTxInfo.usTxMAXLenth				= 50,						/* 最大发送数据长度 */
+	.tTxInfo.usDMATxMAXSize				= 50,						/* 最大发送数据长度 */
 	
 	.tUartDMA.ucDMATxPriority				= 1,					/* DMA发送中断优先级 */
 	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMA发送中断子优先级 */
@@ -220,7 +220,7 @@ tagUART_T tManipulator_Uart =
 	.tUartDMA.tDMARx.Init.Mode			= DMA_CIRCULAR,
 	.tUartDMA.tDMARx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tRxInfo.usRxMAXLenth             	= 100,              		/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
+	.tRxInfo.usDMARxMAXSize             	= 100,              	/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
 
 	.tUartDMA.ucDMARxPriority				= 1,					/* DMA接收中断优先级 */
 	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMA接收中断子优先级 */
@@ -236,7 +236,7 @@ tagUART_T tManipulator_Uart =
 	.tUartDMA.tDMATx.Init.Mode			= DMA_NORMAL,
 	.tUartDMA.tDMATx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tTxInfo.usTxMAXLenth				= 50,						/* 最大发送数据长度 */
+	.tTxInfo.usDMATxMAXSize				= 50,						/* 最大发送数据长度 */
 	
 	.tUartDMA.ucDMATxPriority				= 1,					/* DMA发送中断优先级 */
 	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMA发送中断子优先级 */
@@ -291,7 +291,7 @@ tagUART_T tDepthometer_Uart =
 	.tUartDMA.tDMARx.Init.Mode			= DMA_CIRCULAR,
 	.tUartDMA.tDMARx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tRxInfo.usRxMAXLenth             	= 100,              		/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
+	.tRxInfo.usDMARxMAXSize             	= 100,              	/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
 
 	.tUartDMA.ucDMARxPriority				= 1,					/* DMA接收中断优先级 */
 	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMA接收中断子优先级 */
@@ -307,7 +307,7 @@ tagUART_T tDepthometer_Uart =
 	.tUartDMA.tDMATx.Init.Mode			= DMA_NORMAL,
 	.tUartDMA.tDMATx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tTxInfo.usTxMAXLenth				= 50,						/* 最大发送数据长度 */
+	.tTxInfo.usDMATxMAXSize				= 50,						/* 最大发送数据长度 */
 	
 	.tUartDMA.ucDMATxPriority				= 1,					/* DMA发送中断优先级 */
 	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMA发送中断子优先级 */
@@ -362,7 +362,7 @@ tagUART_T tStandby_Uart =
 	.tUartDMA.tDMARx.Init.Mode			= DMA_CIRCULAR,
 	.tUartDMA.tDMARx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tRxInfo.usRxMAXLenth             	= 100,              		/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
+	.tRxInfo.usDMARxMAXSize             	= 100,              	/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
 
 	.tUartDMA.ucDMARxPriority				= 1,					/* DMA接收中断优先级 */
 	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMA接收中断子优先级 */
@@ -378,7 +378,7 @@ tagUART_T tStandby_Uart =
 	.tUartDMA.tDMATx.Init.Mode			= DMA_NORMAL,
 	.tUartDMA.tDMATx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tTxInfo.usTxMAXLenth				= 50,						/* 最大发送数据长度 */
+	.tTxInfo.usDMATxMAXSize				= 50,						/* 最大发送数据长度 */
 	
 	.tUartDMA.ucDMATxPriority				= 1,					/* DMA发送中断优先级 */
 	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMA发送中断子优先级 */
