@@ -55,7 +55,93 @@ void ShumeiData_Analysis(void) //树莓派数据解析
 				switch(Shumei_buf[2])
 				{
 					case 'S': //单一模式
+						switch(Shumei_buf[3])
+						{
+							case 'A': //
+								if(Shumei_buf[4] == '0') //声通机电源关闭
+									ShengTong_OFF; 
+								else if(Shumei_buf[4] == '1') //声通机电源开启
+									ShengTong_ON;
+								break;
+							
+							case 'B': //平动模式
+								if(Shumei_buf[4] == '0')
+									Beiyong24V_OFF;
+								else if(Shumei_buf[4] == '1')
+									Beiyong24V_ON;
+								break;
+							
+							case 'C': //转动模式
+								if(Shumei_buf[4] == '0')
+									Manipulator_OFF;
+								else if(Shumei_buf[4] == '1')
+									Manipulator_ON;
+								break;
+							
+							case 'D': //自动模式
+								if(Shumei_buf[4] == '0')
+									CeSao_OFF;
+								else if(Shumei_buf[4] == '1')
+									CeSao_ON;
+								break;
+							
+							case 'E': //摇杆模式
+								if(Shumei_buf[4] == '0')
+									Camera_OFF;
+								else if(Shumei_buf[4] == '1')
+									Camera_ON;
+								break;
+								
+							case 'F': //测试模式
+								if(Shumei_buf[4] == '0')
+									BDGPS_OFF;
+								else if(Shumei_buf[4] == '1')
+									BDGPS_ON;
+								break;
+							
+							case 'G': //平动模式
+								if(Shumei_buf[4] == '0')
+									Inertial_navigation_OFF;
+								else if(Shumei_buf[4] == '1')
+									Inertial_navigation_ON;
+								break;
+							
+							case 'H': //转动模式
+								if(Shumei_buf[4] == '0')
+									UHF_OFF;
+								else if(Shumei_buf[4] == '1')
+									UHF_ON;
+								break;
+							
+							case 'I': //自动模式
+								if(Shumei_buf[4] == '0')
+									P360_OFF;
+								else if(Shumei_buf[4] == '1')
+									P360_ON;
+								break;
+							
+							case 'J': //摇杆模式
+								if(Shumei_buf[4] == '0')
+									DVL_OFF;
+								else if(Shumei_buf[4] == '1')
+									DVL_ON;
+								break;
+								
+							case 'K': //转动模式
+								if(Shumei_buf[4] == '0')
+									Altimeter_OFF;
+								else if(Shumei_buf[4] == '1')
+									Altimeter_ON;
+								break;
+							
+							case 'L': //自动模式
+								if(Shumei_buf[4] == '0')
+									Beiyong12V_OFF;
+								else if(Shumei_buf[4] == '1')
+									Beiyong12V_ON;
+								break;
 						
+						}
 						break;
 					
 					case 'A': //整体模式

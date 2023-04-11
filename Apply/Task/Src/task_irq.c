@@ -48,6 +48,12 @@ void EXTI15_10_IRQHandler(void)
 	Task_EXTI15_10_IRQHandler();
 }
 
+//CH438Q触发外部中断函数
+void EXTI0_IRQHandler(void)
+{
+	Drv_GPIO_EXTI_IRQHandler(&tCH438Q_EXIT_GPIO);
+}
+
 /**
  * @brief 串口1中断任务函数
  * @param null
