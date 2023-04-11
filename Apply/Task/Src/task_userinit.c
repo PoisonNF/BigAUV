@@ -7,14 +7,12 @@ void Task_UserInit(void)
 	int ret = 0;
 	
 	Drv_GPIO_Init(tLED_GPIO, 3);
-	Drv_GPIO_Init(tCH438Q_GPIO, 2);
+	Drv_GPIO_Init(tCH438Q_GPIO, 15);
 	Drv_GPIO_Init(&tCH438Q_EXIT_GPIO, 1);
 	
 	Drv_GPIO_Init(tRS485_GPIO, 5); 
 //	Drv_GPIO_Set(RS485_GPIO); //RS485设置为接收模式
-	
-//	Drv_GPIO_Init(&tAD_GPIO, 1);
-	 
+
 	Drv_GPIO_Init(&tRS485TEST_GPIO, 1); //测试板485，平时可注释
 	
 	Drv_GPIO_Init(tRelay_GPIO, 12);

@@ -62,13 +62,6 @@ void UserLogic_Code(void)
 		Downlink_Data.Altimeter_Data = Uplink_Data.Altimeter_Data;
 		Downlink_Data.Depthometer_Data = Uplink_Data.Depthometer_Data;
 		memcpy(Downlink_Data.Pose_Velocity_Data, &Shumei_buf[4], 24);
-		
-//		Drv_Delay_Ms(5000);
-//		Inertial_navigation_OFF;
-//		//Camera_OFF;
-//		Drv_Delay_Ms(5000);
-//		Inertial_navigation_ON;
-//		//Camera_ON;
 
 		if(Timeflag_100MS)
 		{
@@ -116,12 +109,12 @@ void Relay_Control() //¼ÌµçÆ÷¿ØÖÆº¯Êý
 	ShengTong_OFF;
 	Manipulator_OFF;
 	CeSao_OFF;
-	BDGPS_OFF;
+	BDGPS_ON;
 	Camera_OFF;
-	Inertial_navigation_OFF;
-	P360_OFF;
-	DVL_OFF;
-	Altimeter_OFF;
+	Inertial_navigation_ON;
+	P360_ON;
+	DVL_ON;
+	Altimeter_ON;
 	UHF_OFF;
 	Beiyong24V_OFF;
 	Beiyong12V_OFF;
