@@ -2,8 +2,8 @@
 
 #include "config.h"
 
-#define Manipulator_RS485_Recive 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_RESET);//Drv_GPIO_Reset(&RS485_GPIO[1]); //机械手485接收模式
-#define Manipulator_RS485_Send 		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_SET);//Drv_GPIO_Set(&RS485_GPIO[1]); //机械手485发送模式 
+#define Manipulator_RS485_Recive 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);//Drv_GPIO_Reset(&RS485_GPIO[1]); //机械手485接收模式
+#define Manipulator_RS485_Send 		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_SET);//Drv_GPIO_Set(&RS485_GPIO[1]); //机械手485发送模式 
 
 uint8_t Manipulator_flag = RESET; //机械手工作标志位
 uint8_t Manipulator_Recvflag = RESET; //机械手串口数据接收完成标志

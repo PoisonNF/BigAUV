@@ -400,146 +400,102 @@ tagUART_T tStandby_Uart =
 
 };
 
-/* CH438Q芯片GPIO */
-tagGPIO_T tCH438Q_GPIO[] =
+tagCH438Q_T tCH438Q = 
 {
-	
-	[0]=
-	{ 
-		.tGPIOInit.Pin			= GPIO_PIN_0,			/* GPIO引脚 */
-		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,											/* GPIO模式 */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,													/* GPIO上下拉设置，是否需要上下拉看硬件 */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,											/* GPIO速度 */	
-		.tGPIOPort 				= GPIOE,														/* GPIO分组 */
-	},
-	[1]=
-	{ 
-		.tGPIOInit.Pin			= GPIO_PIN_1,			/* GPIO引脚 */
-		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,											/* GPIO模式 */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,													/* GPIO上下拉设置，是否需要上下拉看硬件 */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,											/* GPIO速度 */	
-		.tGPIOPort 				= GPIOE,														/* GPIO分组 */
-	},
-	[2]=
-	{ 
-		.tGPIOInit.Pin			= GPIO_PIN_2,			/* GPIO引脚 */
-		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,											/* GPIO模式 */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,													/* GPIO上下拉设置，是否需要上下拉看硬件 */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,											/* GPIO速度 */	
-		.tGPIOPort 				= GPIOE,														/* GPIO分组 */
-	},
-	[3]=
-	{ 
-		.tGPIOInit.Pin			= GPIO_PIN_6,			/* GPIO引脚 */
-		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,											/* GPIO模式 */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,													/* GPIO上下拉设置，是否需要上下拉看硬件 */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,											/* GPIO速度 */	
-		.tGPIOPort 				= GPIOE,														/* GPIO分组 */
-	},
-    [4]=
-	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_0,				/* GPIO引脚 */
-		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-		.tGPIOPort 				= GPIOC,					/* GPIO分组 */
-	},
-	[5]=
-	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_1,				/* GPIO引脚 */
-		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-		.tGPIOPort 				= GPIOC,					/* GPIO分组 */
-	},
-	[6]=
-	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_2,				/* GPIO引脚 */
-		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-		.tGPIOPort 				= GPIOC,					/* GPIO分组 */
-	},
-	[7]=
-	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_3,				/* GPIO引脚 */
-		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-		.tGPIOPort 				= GPIOC,					/* GPIO分组 */
-	},
-	[8]=
-	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_4,				/* GPIO引脚 */
-		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-		.tGPIOPort 				= GPIOC,					/* GPIO分组 */
-	},
-	[9]=
-	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_5,				/* GPIO引脚 */
-		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-		.tGPIOPort 				= GPIOC,					/* GPIO分组 */
-	},
-	[10]=
-	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_6,				/* GPIO引脚 */
-		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-		.tGPIOPort 				= GPIOC,					/* GPIO分组 */
-	},
-	[11]=
-	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_7,				/* GPIO引脚 */
-		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-		.tGPIOPort 				= GPIOC,					/* GPIO分组 */
-	},
-	[12]=
-	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_8,				/* GPIO引脚 */
-		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-		.tGPIOPort 				= GPIOC,					/* GPIO分组 */
-	},
-	[13]=
-	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_13,				/* GPIO引脚 */
-		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-		.tGPIOPort 				= GPIOC,					/* GPIO分组 */
-	},
-	[14]=
-	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_14,				/* GPIO引脚 */
-		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-		.tGPIOPort 				= GPIOC,					/* GPIO分组 */
-	},
-    
-};
+	.tCH438Q_GPIO.tGPIO_CS.tGPIOInit.Pin		= GPIO_PIN_14,					/* GPIO引脚 */
+	.tCH438Q_GPIO.tGPIO_CS.tGPIOInit.Mode		= GPIO_MODE_OUTPUT_PP,			/* GPIO模式 */
+	.tCH438Q_GPIO.tGPIO_CS.tGPIOInit.Pull		= GPIO_NOPULL,					/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tCH438Q_GPIO.tGPIO_CS.tGPIOInit.Speed		= GPIO_SPEED_FREQ_HIGH,			/* GPIO速度 */
+	.tCH438Q_GPIO.tGPIO_CS.tGPIOPort			= GPIOC,						/* GPIO分组 */
 
-/* CH438Q外部中断GPIO */
-tagGPIO_T tCH438Q_EXIT_GPIO =
-{
+	.tCH438Q_GPIO.tGPIO_RD.tGPIOInit.Pin		= GPIO_PIN_0,					/* GPIO引脚 */
+	.tCH438Q_GPIO.tGPIO_RD.tGPIOInit.Mode		= GPIO_MODE_OUTPUT_PP,			/* GPIO模式 */
+	.tCH438Q_GPIO.tGPIO_RD.tGPIOInit.Pull		= GPIO_NOPULL,					/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tCH438Q_GPIO.tGPIO_RD.tGPIOInit.Speed		= GPIO_SPEED_FREQ_HIGH,			/* GPIO速度 */
+	.tCH438Q_GPIO.tGPIO_RD.tGPIOPort			= GPIOE,						/* GPIO分组 */
+
+	.tCH438Q_GPIO.tGPIO_WR.tGPIOInit.Pin		= GPIO_PIN_1,					/* GPIO引脚 */
+	.tCH438Q_GPIO.tGPIO_WR.tGPIOInit.Mode		= GPIO_MODE_OUTPUT_PP,			/* GPIO模式 */
+	.tCH438Q_GPIO.tGPIO_WR.tGPIOInit.Pull		= GPIO_NOPULL,					/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tCH438Q_GPIO.tGPIO_WR.tGPIOInit.Speed		= GPIO_SPEED_FREQ_HIGH,			/* GPIO速度 */
+	.tCH438Q_GPIO.tGPIO_WR.tGPIOPort			= GPIOE,						/* GPIO分组 */
+
+	.tCH438Q_GPIO.tGPIO_AMOD.tGPIOInit.Pin		= GPIO_PIN_6,					/* GPIO引脚 */
+	.tCH438Q_GPIO.tGPIO_AMOD.tGPIOInit.Mode		= GPIO_MODE_OUTPUT_PP,			/* GPIO模式 */
+	.tCH438Q_GPIO.tGPIO_AMOD.tGPIOInit.Pull		= GPIO_NOPULL,					/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tCH438Q_GPIO.tGPIO_AMOD.tGPIOInit.Speed	= GPIO_SPEED_FREQ_HIGH,			/* GPIO速度 */
+	.tCH438Q_GPIO.tGPIO_AMOD.tGPIOPort			= GPIOE,						/* GPIO分组 */
+
+	.tCH438Q_GPIO.tGPIO_ALE.tGPIOInit.Pin		= GPIO_PIN_13,					/* GPIO引脚 */
+	.tCH438Q_GPIO.tGPIO_ALE.tGPIOInit.Mode		= GPIO_MODE_OUTPUT_PP,			/* GPIO模式 */
+	.tCH438Q_GPIO.tGPIO_ALE.tGPIOInit.Pull		= GPIO_NOPULL,					/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tCH438Q_GPIO.tGPIO_ALE.tGPIOInit.Speed		= GPIO_SPEED_FREQ_HIGH,			/* GPIO速度 */
+	.tCH438Q_GPIO.tGPIO_ALE.tGPIOPort			= GPIOC,						/* GPIO分组 */
+
+	.tCH438Q_GPIO.tGPIO_INT.tGPIOInit.Pin		= GPIO_PIN_0,					/* GPIO引脚 */
+	.tCH438Q_GPIO.tGPIO_INT.tGPIOInit.Mode		= GPIO_MODE_IT_FALLING,			/* GPIO模式 */
+	.tCH438Q_GPIO.tGPIO_INT.tGPIOInit.Pull		= GPIO_PULLUP,					/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tCH438Q_GPIO.tGPIO_INT.tGPIOInit.Speed		= GPIO_SPEED_FREQ_HIGH,			/* GPIO速度 */
+	.tCH438Q_GPIO.tGPIO_INT.tGPIOPort			= GPIOB,						/* GPIO分组 */
+	.tCH438Q_GPIO.tGPIO_INT.ucPriority			= 0,
+	.tCH438Q_GPIO.tGPIO_INT.ucSubPriority		= 2,
+
+	.tCH438Q_GPIO.tGPIO_DATA[0].tGPIOInit.Pin		= GPIO_PIN_0,				/* GPIO引脚 */
+	.tCH438Q_GPIO.tGPIO_DATA[0].tGPIOInit.Mode		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
+	.tCH438Q_GPIO.tGPIO_DATA[0].tGPIOInit.Pull		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tCH438Q_GPIO.tGPIO_DATA[0].tGPIOInit.Speed		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */
+	.tCH438Q_GPIO.tGPIO_DATA[0].tGPIOPort			= GPIOC,					/* GPIO分组 */
+
+	.tCH438Q_GPIO.tGPIO_DATA[1].tGPIOInit.Pin		= GPIO_PIN_1,				/* GPIO引脚 */
+	.tCH438Q_GPIO.tGPIO_DATA[1].tGPIOInit.Mode		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
+	.tCH438Q_GPIO.tGPIO_DATA[1].tGPIOInit.Pull		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tCH438Q_GPIO.tGPIO_DATA[1].tGPIOInit.Speed		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */
+	.tCH438Q_GPIO.tGPIO_DATA[1].tGPIOPort			= GPIOC,					/* GPIO分组 */
+
+	.tCH438Q_GPIO.tGPIO_DATA[2].tGPIOInit.Pin		= GPIO_PIN_2,				/* GPIO引脚 */
+	.tCH438Q_GPIO.tGPIO_DATA[2].tGPIOInit.Mode		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
+	.tCH438Q_GPIO.tGPIO_DATA[2].tGPIOInit.Pull		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tCH438Q_GPIO.tGPIO_DATA[2].tGPIOInit.Speed		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */
+	.tCH438Q_GPIO.tGPIO_DATA[2].tGPIOPort			= GPIOC,					/* GPIO分组 */
+
+	.tCH438Q_GPIO.tGPIO_DATA[3].tGPIOInit.Pin		= GPIO_PIN_3,				/* GPIO引脚 */
+	.tCH438Q_GPIO.tGPIO_DATA[3].tGPIOInit.Mode		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
+	.tCH438Q_GPIO.tGPIO_DATA[3].tGPIOInit.Pull		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tCH438Q_GPIO.tGPIO_DATA[3].tGPIOInit.Speed		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */
+	.tCH438Q_GPIO.tGPIO_DATA[3].tGPIOPort			= GPIOC,					/* GPIO分组 */
+
+	.tCH438Q_GPIO.tGPIO_DATA[4].tGPIOInit.Pin		= GPIO_PIN_4,				/* GPIO引脚 */
+	.tCH438Q_GPIO.tGPIO_DATA[4].tGPIOInit.Mode		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
+	.tCH438Q_GPIO.tGPIO_DATA[4].tGPIOInit.Pull		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tCH438Q_GPIO.tGPIO_DATA[4].tGPIOInit.Speed		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */
+	.tCH438Q_GPIO.tGPIO_DATA[4].tGPIOPort			= GPIOC,					/* GPIO分组 */
+
+	.tCH438Q_GPIO.tGPIO_DATA[5].tGPIOInit.Pin		= GPIO_PIN_5,				/* GPIO引脚 */
+	.tCH438Q_GPIO.tGPIO_DATA[5].tGPIOInit.Mode		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
+	.tCH438Q_GPIO.tGPIO_DATA[5].tGPIOInit.Pull		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tCH438Q_GPIO.tGPIO_DATA[5].tGPIOInit.Speed		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */
+	.tCH438Q_GPIO.tGPIO_DATA[5].tGPIOPort			= GPIOC,					/* GPIO分组 */
+
+	.tCH438Q_GPIO.tGPIO_DATA[6].tGPIOInit.Pin		= GPIO_PIN_6,				/* GPIO引脚 */
+	.tCH438Q_GPIO.tGPIO_DATA[6].tGPIOInit.Mode		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
+	.tCH438Q_GPIO.tGPIO_DATA[6].tGPIOInit.Pull		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tCH438Q_GPIO.tGPIO_DATA[6].tGPIOInit.Speed		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */
+	.tCH438Q_GPIO.tGPIO_DATA[6].tGPIOPort			= GPIOC,					/* GPIO分组 */
+
+	.tCH438Q_GPIO.tGPIO_DATA[7].tGPIOInit.Pin		= GPIO_PIN_7,				/* GPIO引脚 */
+	.tCH438Q_GPIO.tGPIO_DATA[7].tGPIOInit.Mode		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
+	.tCH438Q_GPIO.tGPIO_DATA[7].tGPIOInit.Pull		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tCH438Q_GPIO.tGPIO_DATA[7].tGPIOInit.Speed		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */
+	.tCH438Q_GPIO.tGPIO_DATA[7].tGPIOPort			= GPIOC,					/* GPIO分组 */
 	
-	.tGPIOInit.Pin		= GPIO_PIN_0,				/* GPIO引脚 */
-	.tGPIOInit.Mode 	= GPIO_MODE_IT_FALLING,		/* GPIO模式 */
-	.tGPIOInit.Pull 	= GPIO_PULLUP,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
-	.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
-	.tGPIOPort 			= GPIOB,					/* GPIO分组 */
-	
-	.ucPriority = 0,
-	.ucSubPriority = 2,
-	
+	.tCH438Q_SerialPort.ulaBaudRate[0] = 9600,
+	.tCH438Q_SerialPort.ulaBaudRate[1] = 9600,
+	.tCH438Q_SerialPort.ulaBaudRate[2] = 9600,
+	.tCH438Q_SerialPort.ulaBaudRate[3] = 9600,
+	.tCH438Q_SerialPort.ulaBaudRate[4] = 9600,
+	.tCH438Q_SerialPort.ulaBaudRate[5] = 9600,
+	.tCH438Q_SerialPort.ulaBaudRate[6] = 9600,
+	.tCH438Q_SerialPort.ulaBaudRate[7] = 9600,
 };
 
 /* AD芯片配置 */

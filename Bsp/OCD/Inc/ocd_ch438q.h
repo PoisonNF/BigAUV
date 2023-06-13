@@ -8,20 +8,21 @@
 #define CHIP3 0x02
 #define CHIP4 0x03
 
-#define CS1_SET_HIGH HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET);
-#define CS1_SET_LOW HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_RESET);
-#define CS2_SET_HIGH HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2, GPIO_PIN_SET);
-#define CS2_SET_LOW HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2, GPIO_PIN_RESET);
-#define RD_SET_HIGH HAL_GPIO_WritePin(GPIOE, GPIO_PIN_0, GPIO_PIN_SET);
-#define RD_SET_LOW HAL_GPIO_WritePin(GPIOE, GPIO_PIN_0, GPIO_PIN_RESET);
-#define WR_SET_HIGH HAL_GPIO_WritePin(GPIOE, GPIO_PIN_1, GPIO_PIN_SET);
-#define WR_SET_LOW HAL_GPIO_WritePin(GPIOE, GPIO_PIN_1, GPIO_PIN_RESET);
-#define AMOD_SET_HIGH HAL_GPIO_WritePin(GPIOE, GPIO_PIN_6, GPIO_PIN_SET);
-#define AMOD_SET_LOW HAL_GPIO_WritePin(GPIOE, GPIO_PIN_6, GPIO_PIN_RESET);
-#define ALE_SET_HIGH HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);
-#define ALE_SET_LOW HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
-#define INT1_GPIO_PIN GPIO_PIN_0
-#define INT2_GPIO_PIN GPIO_PIN_2
+/* CS1和CS2分别对两片CH438Q芯片进行片选，若只有一片CH438Q芯片，则只需对CS1修改 */
+#define CS_SET_HIGH         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET);   /* 芯片1片选控制输入无效 */
+#define CS_SET_LOW          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_RESET); /* 芯片1片选控制输入有效 */
+#define CS2_SET_HIGH        HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2, GPIO_PIN_SET);    /* 芯片2片选控制输入无效 */
+#define CS2_SET_LOW         HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2, GPIO_PIN_RESET);  /* 芯片2片选控制输入有效 */
+#define RD_SET_HIGH         HAL_GPIO_WritePin(GPIOE, GPIO_PIN_0, GPIO_PIN_SET);    /* 读选通输入无效 */
+#define RD_SET_LOW          HAL_GPIO_WritePin(GPIOE, GPIO_PIN_0, GPIO_PIN_RESET);  /* 读选通输入有效 */
+#define WR_SET_HIGH         HAL_GPIO_WritePin(GPIOE, GPIO_PIN_1, GPIO_PIN_SET);    /* 写选通输入无效 */
+#define WR_SET_LOW          HAL_GPIO_WritePin(GPIOE, GPIO_PIN_1, GPIO_PIN_RESET);  /* 写选通输入有效 */
+#define AMOD_SET_HIGH       HAL_GPIO_WritePin(GPIOE, GPIO_PIN_6, GPIO_PIN_SET);    /* 复用地址方式 */
+#define AMOD_SET_LOW        HAL_GPIO_WritePin(GPIOE, GPIO_PIN_6, GPIO_PIN_RESET);  /* 直接地址方式 */
+#define ALE_SET_HIGH        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);   /* 复用地址方式的地址锁存使能输入有效 */
+#define ALE_SET_LOW         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET); /* 复用地址方式的地址锁存使能输入无效 */
+#define INT1_GPIO_PIN       GPIO_PIN_0  /* 芯片1中断请求输出引脚 */
+#define INT2_GPIO_PIN       GPIO_PIN_2  /* 芯片2中断请求输出引脚 */
 
 #define REG_RBR_ADDR 0x00 /* 串口0接收缓冲寄存器地址 */
 #define REG_THR_ADDR 0x00 /* 串口0发送保持寄存器地址 */
@@ -130,56 +131,40 @@
 
 #define CH438_IIR_FIFOS_ENABLED 0xC0 /* 起用FIFO */
 
-#define CS_SET_HIGH(CHIPNUM)                                    \
-    do                                                          \
-    {                                                           \
-        switch (CHIPNUM)                                        \
-        {                                                       \
-        case CHIP1:                                             \
-            HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_SET); \
-            break;                                              \
-        case CHIP2:                                             \
-            HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2, GPIO_PIN_SET); \
-            break;                                              \
-        default:                                                \
-            break;                                              \
-        }                                                       \
-    } while (0)
+typedef struct 
+{
+    tagGPIO_T       tGPIO_CS;
+    tagGPIO_T       tGPIO_RD;
+    tagGPIO_T       tGPIO_WR;
+    tagGPIO_T       tGPIO_AMOD;
+    tagGPIO_T       tGPIO_ALE;
+    tagGPIO_T       tGPIO_INT;
+    tagGPIO_T       tGPIO_DATA[8];
+}tagCH438Q_GPIO;
 
-#define CS_SET_LOW(CHIPNUM)                                       \
-    do                                                            \
-    {                                                             \
-        switch (CHIPNUM)                                          \
-        {                                                         \
-        case CHIP1:                                               \
-            HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_RESET); \
-            break;                                                \
-        case CHIP2:                                               \
-            HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2, GPIO_PIN_RESET); \
-            break;                                                \
-        default:                                                  \
-            break;                                                \
-        }                                                         \
-    } while (0)
+typedef struct 
+{
+    uint32_t        ulaBaudRate[8];
+    // uint8_t         cSerial_Port[8];
+}tagCH438Q_SerialPort;
 
-void SetOutPut(void);
-void SetInPut(void);
-void CH438_Init(void);
-void CH438WriteReg(uint8_t ChipNum, uint8_t add, uint8_t data);
-uint8_t CH438ReadReg(uint8_t ChipNum, uint8_t add);
-unsigned char CH438_CheckIIR(uint8_t ChipNum, unsigned char num);
-void CH438_CloseSeril(uint8_t ChipNum, unsigned char num);
-void CH438_CloseALLSeril(uint8_t ChipNum);
-void CH438_ResetSeril(uint8_t ChipNum, unsigned char num);
-void CH438_SetBandrate(uint8_t ChipNum, unsigned char num, unsigned long value);
-void CH438_UARTInit(uint8_t ChipNum, unsigned char num);
-void CH438_SendDatas(uint8_t ChipNum, unsigned char num, unsigned char *sendbuff, unsigned char len);
-unsigned char CH438_RecvDatas(uint8_t ChipNum, unsigned char num, unsigned char *revbuff);
-void CH438_TranConfig(uint8_t ChipNum, unsigned char num);
-void CH438_INTConfig(uint8_t ChipNum, unsigned char num);
-void CH438_AutoHFCtrl(uint8_t ChipNum, unsigned char num);
-void CH438_RegTEST(uint8_t ChipNum, unsigned char num);
-void CH438_Uart_Init(uint8_t ChipNum, unsigned char num, unsigned long value);
+typedef struct 
+{
+    tagCH438Q_GPIO           tCH438Q_GPIO;
+    tagCH438Q_SerialPort    tCH438Q_SerialPort;
+}tagCH438Q_T;
+
+uint8_t OCD_CH438Q_CheckIIR(tagCH438Q_T *_tCH438Q, uint8_t _ucNum);
+void OCD_CH438Q_CloseSeril(tagCH438Q_T *_tCH438Q, uint8_t _ucNum); /* 关闭某位串口 */
+void OCD_CH438Q_CloseALLSeril(tagCH438Q_T *_tCH438Q); /* 关闭所有串口 */
+void OCD_CH438Q_ResetSeril(tagCH438Q_T *_tCH438Q, uint8_t _ucNum); /* 复位串口 */
+void OCD_CH438Q_SetBandrate(tagCH438Q_T *_tCH438Q, uint8_t _ucNum, uint8_t _ucValue); /* 设置波特率 未使用此函数 */
+void OCD_CH438Q_SendDatas(tagCH438Q_T *_tCH438Q, uint8_t _ucNum, uint8_t *_ucpSendBuff, uint8_t _ucLen);
+unsigned char OCD_CH438Q_RecvDatas(tagCH438Q_T *_tCH438Q, uint8_t _ucNum, uint8_t *_ucpRevBuff);
+void OCD_CH438Q_GPIO_Init(tagCH438Q_T *_tCH438Q);
+void OCD_CH438Q_Init(tagCH438Q_T *_tCH438Q); //IO口中断等初始化
+void OCD_CH438Q_Uart_Init(tagCH438Q_T *_tCH438Q, uint8_t _ucNum, uint16_t _ucValue);
+void OCD_CH438Q_RxHandler(tagCH438Q_T *_tCH438Q);
 
 #endif
 

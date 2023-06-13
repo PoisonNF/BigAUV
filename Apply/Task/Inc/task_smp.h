@@ -7,8 +7,8 @@
 #define ShengTong_OFF 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET) //声通机电源关闭
 #define Manipulator_ON	 HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET) //机械手电源开启
 #define Manipulator_OFF 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET) //机械手电源关闭
-#define Beiyong24V_ON	 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_7, GPIO_PIN_SET) //备用24V电源开启
-#define Beiyong24V_OFF 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_7, GPIO_PIN_RESET) //备用24V电源关闭
+#define Front_Magnetometer_ON	 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_7, GPIO_PIN_SET) //前置磁力仪电源开启
+#define Front_Magnetometer_OFF 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_7, GPIO_PIN_RESET) //前置磁力仪电源关闭
 
 #define CeSao_ON 		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_8, GPIO_PIN_SET) //侧扫声呐电源开启
 #define CeSao_OFF		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_8, GPIO_PIN_RESET) //侧扫声呐电源关闭
@@ -44,11 +44,12 @@ typedef struct {
 	uint8_t Manipulator_WorkState; //机械手工作状态
 	uint8_t Manipulator_TaskType; //机械手任务类型
 	uint8_t Manipulator_ErrorState; //机械手错误状态
+	uint8_t Motor_Turning_State[18]; //1-9号推进器转动状态，1-4号为电压值，5-9号为PWM值
 }tagUplinkData_T; //上行数据内容，发送至树莓派
 
 extern tagUplinkData_T Uplink_Data;
 
-extern uint8_t Shumei_RecvData[30] ; //树莓派下行数据接收 数据24字节
+extern uint8_t Shumei_RecvData[40] ; //树莓派下行数据接收 数据24字节
 
 extern uint8_t Shumei_buf[100]; //树莓派串口接收缓冲区
 extern uint8_t Shumei_flag; //树莓派串口数据接收完成标志

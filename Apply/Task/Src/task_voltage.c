@@ -44,7 +44,7 @@ void Lowvoltage_Send() //低压监测指令发送函数
 {
 	Lowvoltage_RS485_Send;
 	Drv_Delay_Ms(2);
-	CH438_SendDatas(CHIP1, 1, Lowvoltage_Instruction, 7);
+	OCD_CH438Q_SendDatas(&tCH438Q, 1, Lowvoltage_Instruction, 7);
 	Drv_Delay_Ms(2);
 	Lowvoltage_RS485_Recive;
 }
@@ -53,7 +53,7 @@ void Highvoltage_Send() //高压监测指令发送函数
 {
 	Highvoltage_RS485_Send;
 	Drv_Delay_Ms(2);
-	CH438_SendDatas(CHIP1, 2, Highvoltage_Instruction, 8);
+	OCD_CH438Q_SendDatas(&tCH438Q, 2, Highvoltage_Instruction, 8);
 	Drv_Delay_Ms(2);
 	Highvoltage_RS485_Recive;
 }

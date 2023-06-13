@@ -39,6 +39,8 @@ void Test_Code(void); //测试程序
 uint8_t receive[10] ;
 char receive11[20];
 int time_rand; //随机数生成种子
+uint8_t ssss[7] = {0xDD, 0xA5, 0x03, 0x00, 0xFF, 0xFD, 0x77}; //????????
+uint8_t AAA[7] = {0xDD}; //????????
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -56,13 +58,13 @@ void UserLogic_Code(void)
 		ShumeiData_Analysis();
 		Manipulator_Analysis();
 
-		CH438Q_Analysis(&Uplink_Data.Altimeter_Data, Uplink_Data.Lowvoltage_Data, Uplink_Data.Highvoltage_Data); //CH438Q串口数据获取函数
+//		CH438Q_Analysis(&Uplink_Data.Altimeter_Data, Uplink_Data.Lowvoltage_Data, Uplink_Data.Highvoltage_Data); //CH438Q串口数据获取函数
 		Depthometer_Analysis(&Uplink_Data.Depthometer_Data);
 
 		Downlink_Data.Altimeter_Data = Uplink_Data.Altimeter_Data;
 		Downlink_Data.Depthometer_Data = Uplink_Data.Depthometer_Data;
-		memcpy(Downlink_Data.Pose_Velocity_Data, &Shumei_buf[4], 24);
-		memcpy(Downlink_Data.Cursor_Coordinate, &Shumei_buf[28], 4);
+		memcpy(Downlink_Data.Pose_Velocity_Data, &Shumei_RecvData[4], 24);
+		memcpy(Downlink_Data.Cursor_Coordinate, &Shumei_RecvData[28], 4);
 
 		if(Timeflag_100MS)
 		{
@@ -90,11 +92,12 @@ void UserLogic_Code(void)
 		}
 		if(Timeflag_1S)
 		{
+//			OCD_CH438Q_SendDatas(&tCH438Q, 0, ssss, 7);
 			Timeflag_1S = RESET;
 			Timeflag_Count1 = RESET;
-			Highvoltage_Send();
+//			Highvoltage_Send();
 			Depthometer_Send();
-			Lowvoltage_Send();
+//			Lowvoltage_Send();
 			Manipulator_SendDate();
 		}
 	}
@@ -115,11 +118,24 @@ void Relay_Control() //继电器控制函数
 	Camera_OFF;
 	Inertial_navigation_ON;
 	P360_OFF;
-	DVL_OFF;
+	DVL_ON;
 	Altimeter_OFF;
 	UHF_ON;
-	Beiyong24V_OFF;
+	Front_Magnetometer_ON;
 	Beiyong12V_OFF;
+	
+//	ShengTong_ON;
+//	Manipulator_ON;
+//	CeSao_ON;
+//	BDGPS_ON;
+//	Camera_ON;
+//	Inertial_navigation_ON;
+//	P360_ON;
+//	DVL_ON;
+//	Altimeter_ON;
+//	UHF_ON;
+//	Front_Magnetometer_ON;
+//	Beiyong12V_ON;
 	
 //	ShengTong_OFF;
 //	Manipulator_OFF;
@@ -131,7 +147,7 @@ void Relay_Control() //继电器控制函数
 //	DVL_OFF;
 //	Altimeter_OFF;
 //	UHF_OFF;
-//	Beiyong24V_OFF;
+//	Front_Magnetometer_OFF;
 //	Beiyong12V_OFF;
 }
 

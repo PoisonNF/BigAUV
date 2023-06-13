@@ -13,8 +13,7 @@ extern tagUART_T tTKC_Uart;
 extern tagUART_T tManipulator_Uart;
 extern tagUART_T tDepthometer_Uart;
 extern tagUART_T tStandby_Uart;
-extern tagGPIO_T tCH438Q_GPIO[];
-extern tagGPIO_T tCH438Q_EXIT_GPIO;
+extern tagCH438Q_T tCH438Q;
 extern tagAD24BIT_T tAD24BIT;
 extern tagTIM_T tTimer3;
 extern tagTIM_T tTimer2;
@@ -22,6 +21,11 @@ extern tagGPIO_T tRS485_GPIO[];
 extern tagGPIO_T tRS485TEST_GPIO;
 extern tagGPIO_T tRelay_GPIO[];
 
+extern tagGPIO_T tCH438Q_GPIO[];
+extern tagGPIO_T tCH438Q_EXIT_GPIO;
+
+
 #endif
+
 
 

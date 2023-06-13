@@ -45,13 +45,18 @@ void EXTI15_10_IRQHandler(void)
 {
 //	Drv_GPIO_EXTI_IRQHandler(&tPCUart.tGPIO[1]);	/* 必须加，参数需修改 */
 	
-	Task_EXTI15_10_IRQHandler();
+//	Task_EXTI15_10_IRQHandler();
 }
 
 //CH438Q触发外部中断函数
 void EXTI0_IRQHandler(void)
 {
-	Drv_GPIO_EXTI_IRQHandler(&tCH438Q_EXIT_GPIO);
+	Drv_GPIO_EXTI_IRQHandler(&tCH438Q.tCH438Q_GPIO.tGPIO_INT);
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	OCD_CH438Q_RxHandler(&tCH438Q);
 }
 
 /**
@@ -101,10 +106,10 @@ void USART2_IRQHandler(void)
 //	Task_USART2_IRQHandler();
 }
 
-void DMA1_Channel7_IRQHandler(void)
-{
-	Drv_Uart_DMA_TxHandler(&tTKC_Uart);
-}
+//void DMA1_Channel7_IRQHandler(void)
+//{
+//	Drv_Uart_DMA_TxHandler(&tTKC_Uart);
+//}
 /**
  * @brief 串口3中断服务函数
  * @param null

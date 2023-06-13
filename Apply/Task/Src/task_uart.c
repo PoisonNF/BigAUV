@@ -57,9 +57,13 @@ void Receive_DMA(void)
 			{
 				Data_length1 = 33;
 			}
-			else if(s_ucRxUart1[1] == 'T') //时间信息，接收18个字节
+			else if((s_ucRxUart1[1] == 'T') && (s_ucRxUart1[2] == 'S')) //时间信息，接收18个字节
 			{
 				Data_length1 = 18;
+			}
+			else if((s_ucRxUart1[1] == 'T') && (s_ucRxUart1[2] == 'P')) //时间信息，接收18个字节
+			{
+				Data_length1 = 11;
 			}
 			else 
 			{
