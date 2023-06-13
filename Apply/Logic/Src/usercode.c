@@ -1,21 +1,21 @@
-#include "usercode.h"		/* usercodeÍ·ÎÄ¼þ */
-#include "drv_hal_conf.h"   /* SGA¿âÍ·ÎÄ¼þÅäÖÃ */
-#include "task_conf.h"      /* task²ãÍ·ÎÄ¼þÅäÖÃ */
-#include "ocd_conf.h"       /* OCD²ãÍ·ÎÄ¼þÅäÖÃ */
-#include "dev_conf.h"		/* Dev²ãÍ·ÎÄ¼þÅäÖÃ */
-#include "algo_conf.h"		/* Algo²ãÍ·ÎÄ¼þÅäÖÃ */
-#include "config.h"			/* I/OÅäÖÃÍ·ÎÄ¼þÅäÖÃ */
+#include "usercode.h"		/* usercodeÍ·ï¿½Ä¼ï¿½ */
+#include "drv_hal_conf.h"   /* SGAï¿½ï¿½Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
+#include "task_conf.h"      /* taskï¿½ï¿½Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
+#include "ocd_conf.h"       /* OCDï¿½ï¿½Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
+#include "dev_conf.h"		/* Devï¿½ï¿½Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
+#include "algo_conf.h"		/* Algoï¿½ï¿½Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
+#include "config.h"			/* I/Oï¿½ï¿½ï¿½ï¿½Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
 
 ///////////////////////////////////////////////////////////////////////////////
 
-/* ÓÃ»§±äÁ¿¶¨Òå */
+/* ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 
-char Timeflag_200MS = RESET; //0.2ÃëÊ±¼ä±êÖ¾Î»
-char Timeflag_100MS = RESET; //0.1ÃëÊ±¼ä±êÖ¾Î»
-char Timeflag_Count1; //1S¶¨Ê±Æ÷ÖÐ¶Ï¼ÆÊý±êÖ¾Î»
-char Timeflag_Count2; //0.2S¶¨Ê±Æ÷ÖÐ¶Ï¼ÆÊý±êÖ¾Î»
-char Timeflag_500MS = RESET; //0.5ÃëÊ±¼ä±êÖ¾Î»
-char Timeflag_1S = RESET; //1ÃëÊ±¼ä±êÖ¾Î»
+char Timeflag_200MS = RESET; //0.2ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ö¾Î»
+char Timeflag_100MS = RESET; //0.1ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ö¾Î»
+char Timeflag_Count1; //1Sï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ð¶Ï¼ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾Î»
+char Timeflag_Count2; //0.2Sï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ð¶Ï¼ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾Î»
+char Timeflag_500MS = RESET; //0.5ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ö¾Î»
+char Timeflag_1S = RESET; //1ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ö¾Î»
 
 double LX;
 double LY;
@@ -26,23 +26,23 @@ double RY;
 double RZ;
 double RALL;
 
-/* ÓÃ»§º¯ÊýÉùÃ÷ */
+/* ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 
-void Relay_Control(void); //¼ÌµçÆ÷¿ØÖÆº¯Êý
+void Relay_Control(void); //ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æºï¿½ï¿½ï¿½
 void Receive_DMA(void);
 
 ///////////////////////////////////////////////////////////////////////////////
 
-/* ²âÊÔ²¿·Ö */
+/* ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ */
 
-void Test_Code(void); //²âÊÔ³ÌÐò
+void Test_Code(void); //ï¿½ï¿½ï¿½Ô³ï¿½ï¿½ï¿½
 uint8_t receive[10] ;
 char receive11[20];
-int time_rand; //Ëæ»úÊýÉú³ÉÖÖ×Ó
+int time_rand; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 ///////////////////////////////////////////////////////////////////////////////
 
-/* ÓÃ»§Âß¼­´úÂë */
+/* ï¿½Ã»ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
 void UserLogic_Code(void)
 {
 	Uplink_Data.Altimeter_Data = 98.6;
@@ -56,7 +56,7 @@ void UserLogic_Code(void)
 		ShumeiData_Analysis();
 		Manipulator_Analysis();
 
-		CH438Q_Analysis(&Uplink_Data.Altimeter_Data, Uplink_Data.Lowvoltage_Data, Uplink_Data.Highvoltage_Data); //CH438Q´®¿ÚÊý¾Ý»ñÈ¡º¯Êý
+		CH438Q_Analysis(&Uplink_Data.Altimeter_Data, Uplink_Data.Lowvoltage_Data, Uplink_Data.Highvoltage_Data); //CH438Qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý»ï¿½È¡ï¿½ï¿½ï¿½ï¿½
 		Depthometer_Analysis(&Uplink_Data.Depthometer_Data);
 
 		Downlink_Data.Altimeter_Data = Uplink_Data.Altimeter_Data;
@@ -103,10 +103,10 @@ void UserLogic_Code(void)
 
 ///////////////////////////////////////////////////////////////////////////////
 
-/* ÓÃ»§º¯Êý¶¨Òå */
+/* ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 int size = 0;
 
-void Relay_Control() //¼ÌµçÆ÷¿ØÖÆº¯Êý
+void Relay_Control() //ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æºï¿½ï¿½ï¿½
 {
 	ShengTong_OFF;
 	Manipulator_OFF;
@@ -115,11 +115,24 @@ void Relay_Control() //¼ÌµçÆ÷¿ØÖÆº¯Êý
 	Camera_OFF;
 	Inertial_navigation_ON;
 	P360_OFF;
-	DVL_OFF;
+	DVL_ON;
 	Altimeter_OFF;
 	UHF_ON;
-	Beiyong24V_OFF;
+	Front_Magnetometer_ON;
 	Beiyong12V_OFF;
+	
+//	ShengTong_ON;
+//	Manipulator_ON;
+//	CeSao_ON;
+//	BDGPS_ON;
+//	Camera_ON;
+//	Inertial_navigation_ON;
+//	P360_ON;
+//	DVL_ON;
+//	Altimeter_ON;
+//	UHF_ON;
+//	Front_Magnetometer_ON;
+//	Beiyong12V_ON;
 	
 //	ShengTong_OFF;
 //	Manipulator_OFF;
@@ -131,7 +144,7 @@ void Relay_Control() //¼ÌµçÆ÷¿ØÖÆº¯Êý
 //	DVL_OFF;
 //	Altimeter_OFF;
 //	UHF_OFF;
-//	Beiyong24V_OFF;
+//	Front_Magnetometer_OFF;
 //	Beiyong12V_OFF;
 }
 

@@ -50,6 +50,7 @@ void Receive_DMA(void)
 	{
 		memcpy(s_ucRxUart1, tSMP_Uart.tRxInfo.ucpDMARxCache, tSMP_Uart.tRxInfo.usDMARxLength);
 		size = tSMP_Uart.tRxInfo.usDMARxLength;
+		tSMP_Uart.tRxInfo.ucDMARxCplt = 0;
 		
 		if(s_ucRxUart1[0] == '@')  //第一个帧头判断
 		{	
@@ -57,15 +58,25 @@ void Receive_DMA(void)
 			{
 				Data_length1 = 33;
 			}
-			else if(s_ucRxUart1[1] == 'T') //时间信息，接收18个字节
+			else if((s_ucRxUart1[1] == 'T') && (s_ucRxUart1[2] == 'S')) //时间信息，接收18个字节
 			{
 				Data_length1 = 18;
+			}
+			else if((s_ucRxUart1[1] == 'T') && (s_ucRxUart1[2] == 'P')) //时间信息，接收18个字节
+			{
+				Data_length1 = 11;
 			}
 			else 
 			{
 				Data_length1 = 6;
 			}
-			
+
+//			if(Shumei_buf[size-1] == '$' && Shumei_buf[0] == '@')
+//			{
+//				memcpy(Shumei_buf, s_ucRxUart1, Rx1_DATA_LENTH);
+//				memset(s_ucRxUart1, 0, Rx1_DATA_LENTH);
+//				Shumei_flag = SET;
+//			}
 			if(s_ucRxUart1[Data_length1-1] == '$' && size == Data_length1)
 			{
 				memcpy(Shumei_buf, s_ucRxUart1, Rx1_DATA_LENTH);
@@ -76,13 +87,13 @@ void Receive_DMA(void)
 			{
 				memset(s_ucRxUart1, 0, Rx1_DATA_LENTH);
 			}
-		}
-		tSMP_Uart.tRxInfo.ucDMARxCplt = 0;	
+		}	
 	}
 	else if (tTKC_Uart.tRxInfo.ucDMARxCplt)
 	{
 		memcpy(s_ucRxUart2, tTKC_Uart.tRxInfo.ucpDMARxCache, tTKC_Uart.tRxInfo.usDMARxLength);
 		size = tTKC_Uart.tRxInfo.usDMARxLength;
+		tTKC_Uart.tRxInfo.ucDMARxCplt = 0;	
 		
 		if(s_ucRxUart2[0] == '@')  //第一个帧头判断
 		{	
@@ -106,16 +117,15 @@ void Receive_DMA(void)
 				memset(s_ucRxUart2, 0, Rx2_DATA_LENTH);
 			}
 		}
-		tTKC_Uart.tRxInfo.ucDMARxCplt = 0;	
 	}
 	else if (tManipulator_Uart.tRxInfo.ucDMARxCplt)
 	{
 		memcpy(s_ucRxUart3, tManipulator_Uart.tRxInfo.ucpDMARxCache, tManipulator_Uart.tRxInfo.usDMARxLength);
 		size = tManipulator_Uart.tRxInfo.usDMARxLength;
-
+		tManipulator_Uart.tRxInfo.ucDMARxCplt = 0;	
+		
 		if(s_ucRxUart3[0] == '@')  //第一个帧头判断
 		{	
-			
 			if(s_ucRxUart3[6] == '$' && size == 7)
 			{
 				memcpy(Manipulator_buf, s_ucRxUart3, Rx3_DATA_LENTH);
@@ -127,7 +137,6 @@ void Receive_DMA(void)
 				memset(s_ucRxUart3, 0, Rx3_DATA_LENTH);
 			}
 		}
-		tManipulator_Uart.tRxInfo.ucDMARxCplt = 0;	
 	}
 	else if (tDepthometer_Uart.tRxInfo.ucDMARxCplt)
 	{

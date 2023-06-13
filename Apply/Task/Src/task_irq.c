@@ -101,6 +101,16 @@ void USART2_IRQHandler(void)
 //	Task_USART2_IRQHandler();
 }
 
+void DMA1_Channel5_IRQHandler(void)
+{
+//	Drv_Uart_DMA_TxHandler(&tTKC_Uart);
+}
+
+void DMA1_Channel6_IRQHandler(void)
+{
+	
+}
+
 void DMA1_Channel7_IRQHandler(void)
 {
 	Drv_Uart_DMA_TxHandler(&tTKC_Uart);

@@ -7,43 +7,73 @@ tagUplinkData_T Uplink_Data;
 uint8_t Shumei_buf[100]; //树莓派串口接收缓冲区
 uint8_t Shumei_flag = RESET; //树莓派串口数据接收完成标志
 
-uint8_t Shumei_RecvData[30] ; //树莓派下行数据接收 数据24字节
-uint8_t Shumei_SendData_Int[50] ; //int类型树莓派上行数据发送 数据50字节
-uint8_t Shumei_SendData_Float[30] ; //float类型树莓派上行数据发送 数据24字节
-uint8_t Shumei_SendCmd[5]; //树莓派上行命令发送 数据3字节
+uint8_t Shumei_RecvData[40] ; //树莓派下行数据接收 数据33字节
+uint8_t Shumei_SendData[100] ; //int类型树莓派上行数据发送 数据50字节或68字节
+uint8_t Shumei_SendCmd[10]; //树莓派上行命令发送 数据8字节
+
+uint8_t Shumei_PID_Flag = RESET; //测试模式PID调试
 
 void ShumeiCmd_Send(void) //上行命令发送函数，即向树莓派数据应答
 {
-	memcpy(Shumei_SendCmd, &Shumei_buf[1], 2);
-	Drv_Uart_Transmit(&tSMP_Uart, (uint8_t *)"@ACK_", 5);
-	Drv_Uart_Transmit(&tSMP_Uart, (uint8_t *)Shumei_SendCmd, 2); 
-	Drv_Uart_Transmit(&tSMP_Uart, (uint8_t *)"$", 1);	
+//	memcpy(Shumei_SendCmd, (uint8_t *)"@ACK_", 5);
+	memcpy(Shumei_SendCmd, (uint8_t *)"@APP_", 5);
+	memcpy(&Shumei_SendCmd[5], &Shumei_buf[1], 2);
+	Shumei_SendCmd[7] = '$';
+	Drv_Uart_Transmit(&tSMP_Uart, (uint8_t *)Shumei_SendCmd, 8); 
 }
 
 void ShumeiData_Send(void) //上行数据发送函数，即向树莓派数据定时发送 0.2秒发送一次到树莓派
 {
-	Shumei_SendData_Int[0] = Uplink_Data.Depthometer_Data*10 / 256; //深度计数据
-	Shumei_SendData_Int[1] = (int)(Uplink_Data.Depthometer_Data*10) % 256;
-	Shumei_SendData_Int[2] = Uplink_Data.Altimeter_Data*100 / 256; //高度计数据
-	Shumei_SendData_Int[3] = (int)(Uplink_Data.Altimeter_Data*100) % 256;
-	Shumei_SendData_Int[12] = Uplink_Data.Motor_Status[0]; //9号推进器状态
-	Shumei_SendData_Int[13] = Uplink_Data.Motor_Status[1]; //1-8号推进器状态
-	Shumei_SendData_Int[18] = Uplink_Data.Manipulator_WorkState; //机械手工作状态
-	Shumei_SendData_Int[19] = Uplink_Data.Manipulator_TaskType; //机械手任务类型
-	Shumei_SendData_Int[20] = Uplink_Data.Manipulator_ErrorState; //机械手错误状态
+	memcpy(&Shumei_SendData[0], (uint8_t *)"@DUP", 4);
 	
-	memcpy(&Shumei_SendData_Float[0], &Uplink_Data.Magnetometer_L.X.byte, 4);
-	memcpy(&Shumei_SendData_Float[4], &Uplink_Data.Magnetometer_L.Y.byte, 4);
-	memcpy(&Shumei_SendData_Float[8], &Uplink_Data.Magnetometer_L.Z.byte, 4);
-	memcpy(&Shumei_SendData_Float[12], &Uplink_Data.Magnetometer_R.X.byte, 4);
-	memcpy(&Shumei_SendData_Float[16], &Uplink_Data.Magnetometer_R.Y.byte, 4);
-	memcpy(&Shumei_SendData_Float[20], &Uplink_Data.Magnetometer_R.Z.byte, 4);
+	Shumei_SendData[4] = (uint8_t)(Uplink_Data.Depthometer_Data*100) % 256; //深度计数据
+	Shumei_SendData[5] = Uplink_Data.Depthometer_Data*10 / 256;
+	Shumei_SendData[6] = (uint8_t)(Uplink_Data.Altimeter_Data*100) % 256; //高度计数据
+	Shumei_SendData[7] = Uplink_Data.Altimeter_Data*100 / 256;	
+	Shumei_SendData[8] = 0x31;
+	Shumei_SendData[9] = 0x31;
+	Shumei_SendData[10] = 0x31;
+	Shumei_SendData[11] = 0x31;
+
+	memcpy(&Shumei_SendData[12], &Uplink_Data.Magnetometer_L.X.byte, 4);
+	memcpy(&Shumei_SendData[16], &Uplink_Data.Magnetometer_L.Y.byte, 4);
+	memcpy(&Shumei_SendData[20], &Uplink_Data.Magnetometer_L.Z.byte, 4);
+	memcpy(&Shumei_SendData[24], &Uplink_Data.Magnetometer_R.X.byte, 4);
+	memcpy(&Shumei_SendData[28], &Uplink_Data.Magnetometer_R.Y.byte, 4);
+	memcpy(&Shumei_SendData[32], &Uplink_Data.Magnetometer_R.Z.byte, 4);
+
+	Shumei_SendData[36] = 0x31;
+	Shumei_SendData[37] = 0x31;
+	Shumei_SendData[38] = 0x31;
+	Shumei_SendData[39] = 0x31;
+	Shumei_SendData[40] = Uplink_Data.Motor_Status[0]; //9号推进器状态
+	Shumei_SendData[41] = Uplink_Data.Motor_Status[1]; //1-8号推进器状态'
+	Shumei_SendData[42] = 0x31;
+	Shumei_SendData[43] = 0x31;
+	Shumei_SendData[44] = 0x31;
+	Shumei_SendData[45] = 0x31;
+	Shumei_SendData[46] = Uplink_Data.Manipulator_WorkState; //机械手工作状态
+	Shumei_SendData[47] = Uplink_Data.Manipulator_TaskType; //机械手任务类型
+	Shumei_SendData[48] = Uplink_Data.Manipulator_ErrorState; //机械手错误状态
+//	Shumei_SendData[49] = '$';
+	memcpy(&Shumei_SendData[49], Uplink_Data.Motor_Turning_State, 18);
+	Shumei_SendData[67] = '$';
+//	Shumei_SendData[29] = '$';
 	
-	Drv_Uart_Transmit(&tSMP_Uart, (uint8_t *)"@DUP", 4);
-	Drv_Uart_Transmit(&tSMP_Uart, Shumei_SendData_Int, 8);
-	Drv_Uart_Transmit(&tSMP_Uart, Shumei_SendData_Float, 24);
-	Drv_Uart_Transmit(&tSMP_Uart, &Shumei_SendData_Int[8], 13); //13
-	Drv_Uart_Transmit(&tSMP_Uart, (uint8_t *)"$", 1);	
+//	uint8_t i = 0;
+//	
+//	memcpy(&Shumei_SendData[0], (uint8_t *)"@DUP", 4);
+//	
+//	for(i = 4; i < 63; i++)
+//	{
+//		Shumei_SendData[i] = 0x31; 
+//	}
+//	Shumei_SendData[63] = '$';
+
+//	if(RESET == Shumei_PID_Flag) 
+//		Drv_Uart_Transmit(&tSMP_Uart, Shumei_SendData, 50);
+//	else  if (SET == Shumei_PID_Flag)
+	Drv_Uart_Transmit(&tSMP_Uart, Shumei_SendData, 68);
 }
 	
 void ShumeiData_Analysis(void) //树莓派数据解析
@@ -68,10 +98,10 @@ void ShumeiData_Analysis(void) //树莓派数据解析
 								break;
 							
 							case 'B': 
-								if(Shumei_buf[4] == '0') //备用24V电源关闭
-									Beiyong24V_OFF;
-								else if(Shumei_buf[4] == '1') //备用24V电源开启
-									Beiyong24V_ON;
+								if(Shumei_buf[4] == '0') //前置磁力仪电源关闭
+									Front_Magnetometer_OFF;
+								else if(Shumei_buf[4] == '1') //前置磁力仪电源开启
+									Front_Magnetometer_ON;
 								break;
 							
 							case 'C': 
@@ -159,7 +189,7 @@ void ShumeiData_Analysis(void) //树莓派数据解析
 							DVL_OFF;
 							Altimeter_OFF;
 							UHF_OFF;
-							Beiyong24V_OFF;
+							Front_Magnetometer_OFF;
 							Beiyong12V_OFF;
 						}
 						else if(Shumei_buf[3] == '1') //所有设备开始工作
@@ -174,7 +204,7 @@ void ShumeiData_Analysis(void) //树莓派数据解析
 							DVL_ON;
 							Altimeter_ON;
 							UHF_ON;
-							Beiyong24V_ON;
+							Front_Magnetometer_ON;
 							Beiyong12V_ON;
 						}
 						break;
@@ -230,11 +260,12 @@ void ShumeiData_Analysis(void) //树莓派数据解析
 				switch(Shumei_buf[2])
 				{
 					case 'S': //时间同步
-						Drv_Uart_Transmit(&tTKC_Uart, Shumei_buf, 6);
+						Drv_Uart_Transmit(&tTKC_Uart, Shumei_buf, 18);
 						break;
 					
 					case 'P': //PID控制
-						Drv_Uart_Transmit(&tTKC_Uart, Shumei_buf, 6);
+						Drv_Uart_Transmit(&tTKC_Uart, Shumei_buf, 11);
+						Shumei_PID_Flag = SET;
 						break;
 				}
 				break;
@@ -254,7 +285,7 @@ void ShumeiData_Analysis(void) //树莓派数据解析
 				break;
 				
 			case 'W': //树莓派下行数据
-				memcpy(Shumei_RecvData, &Shumei_buf[4], 24);
+				memcpy(Shumei_RecvData, Shumei_buf, 40);
 				break;
 			
 			default:

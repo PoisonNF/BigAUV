@@ -57,6 +57,7 @@ void TuikongData_Analysis(void) //推控舱数据解析
 					Hatchdoor_flag = RESET;
 				}
 				MotorStatus_Analysis(Uplink_Data.Motor_Status);
+				memcpy(Uplink_Data.Motor_Turning_State, &Tuikong_buf[3], 18);
 				break;
 			
 			default:
@@ -69,16 +70,15 @@ void TuikongData_Analysis(void) //推控舱数据解析
 
 void TuikongData_Send(void) //下行数据发送函数，即向推控舱数据定时发送 0.2秒发送一次到推控舱
 {
-	Tuikong_SendData[24] = Downlink_Data.Depthometer_Data*10 / 256; //深度计数据
-	Tuikong_SendData[25] = (int)(Downlink_Data.Depthometer_Data*10) % 256;
-	Tuikong_SendData[26] = Downlink_Data.Altimeter_Data*100 / 256; //高度计数据
-	Tuikong_SendData[27] = (int)(Downlink_Data.Altimeter_Data*100) % 256;
+	memcpy(&Tuikong_SendData[0], (uint8_t *)"@TT", 3);
+	memcpy(&Tuikong_SendData[3], Downlink_Data.Pose_Velocity_Data, 24);
+	Tuikong_SendData[27] = Downlink_Data.Depthometer_Data*100 / 256; //深度计数据
+	Tuikong_SendData[28] = (int)(Downlink_Data.Depthometer_Data*10) % 256;
+	Tuikong_SendData[29] = Downlink_Data.Altimeter_Data*100 / 256; //高度计数据
+	Tuikong_SendData[30]= (int)(Downlink_Data.Altimeter_Data*100) % 256;
+	memcpy(&Tuikong_SendData[31], Downlink_Data.Cursor_Coordinate, 4);
+	Tuikong_SendData[35] = '$';
 
-	memcpy(Tuikong_SendData, Downlink_Data.Pose_Velocity_Data, 24);
-	memcpy(&Tuikong_SendData[28], Downlink_Data.Cursor_Coordinate, 4);
-
-	Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"@DD", 3);
-	Drv_Uart_Transmit(&tTKC_Uart, Tuikong_SendData, 31);
-	Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"$", 1);
+	Drv_Uart_Transmit(&tTKC_Uart, Tuikong_SendData, 36);
 }
 
