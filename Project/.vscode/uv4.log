@@ -1,6 +1,4 @@
-*** Using Compiler 'V5.05 update 2 (build 169)', folder: 'E:\Program Files\Keil_v5\ARM\ARMCC\Bin'
-Build target 'Demo'
-compiling usercode.c...
-linking...
-Program Size: Code=24572 RO-data=404 RW-data=3956 ZI-data=2556  
-".\Objects\STM32.axf" - 0 Error(s), 0 Warning(s).
+Load "d:\\大AUV\\程序\\BIGAUV_1.9.2_高度计深度计数据有误\\Project\\Objects\\STM32.axf" 
+RDDI-DAP Error
+Error: Flash Download failed  -  Target DLL has been cancelled
+Flash Load finished at 20:55:35

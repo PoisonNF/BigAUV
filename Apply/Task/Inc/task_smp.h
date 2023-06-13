@@ -3,12 +3,12 @@
 
 #include "ocd_conf.h"
 
-#define ShengTong_ON 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET) //备用24V电源开启
-#define ShengTong_OFF 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET) //备用24V电源关闭
+#define ShengTong_ON 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET) //声通机电源开启
+#define ShengTong_OFF 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET) //声通机电源关闭
 #define Manipulator_ON	 HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET) //机械手电源开启
 #define Manipulator_OFF 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET) //机械手电源关闭
-#define Beiyong24V_ON	 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_7, GPIO_PIN_SET) //声通机电源开启
-#define Beiyong24V_OFF 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_7, GPIO_PIN_RESET) //声通机电源关闭
+#define Beiyong24V_ON	 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_7, GPIO_PIN_SET) //备用24V电源开启
+#define Beiyong24V_OFF 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_7, GPIO_PIN_RESET) //备用24V电源关闭
 
 #define CeSao_ON 		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_8, GPIO_PIN_SET) //侧扫声呐电源开启
 #define CeSao_OFF		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_8, GPIO_PIN_RESET) //侧扫声呐电源关闭
@@ -38,9 +38,12 @@ typedef struct {
 	tagMagnetometerData_T Magnetometer_R; //右梯度磁力仪数据
 	uint8_t Lowvoltage_Data[2]; //电池低压数据
 	uint8_t Highvoltage_Data[2]; //电池高压数据
-	uint8_t Motor_Status[2]; //推进器状态
+	uint8_t Motor_Status[2]; //推进器工作状态
 	uint8_t Other_Status[2]; //其他状态，即重心/浮心/舱门/漏水状态
 	uint8_t Relay_Status[2]; //继电器状态
+	uint8_t Manipulator_WorkState; //机械手工作状态
+	uint8_t Manipulator_TaskType; //机械手任务类型
+	uint8_t Manipulator_ErrorState; //机械手错误状态
 }tagUplinkData_T; //上行数据内容，发送至树莓派
 
 extern tagUplinkData_T Uplink_Data;

@@ -291,7 +291,7 @@ tagUART_T tDepthometer_Uart =
 	.tUartDMA.tDMARx.Init.Mode			= DMA_CIRCULAR,
 	.tUartDMA.tDMARx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tRxInfo.usDMARxMAXSize             	= 100,              	/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
+	.tRxInfo.usDMARxMAXSize             	= 20,              	/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
 
 	.tUartDMA.ucDMARxPriority				= 1,					/* DMA接收中断优先级 */
 	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMA接收中断子优先级 */
@@ -536,6 +536,9 @@ tagGPIO_T tCH438Q_EXIT_GPIO =
 	.tGPIOInit.Pull 	= GPIO_PULLUP,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
 	.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
 	.tGPIOPort 			= GPIOB,					/* GPIO分组 */
+	
+	.ucPriority = 0,
+	.ucSubPriority = 2,
 	
 };
 

@@ -55,6 +55,11 @@
         "task_smp.h": "c",
         "task_tkc.h": "c",
         "task_depthometer.h": "c",
-        "task_manipulator.h": "c"
+        "task_manipulator.h": "c",
+        "task_irq.h": "c",
+        "task_sysinit.h": "c",
+        "task_adcollect.h": "c",
+        "task_uart.h": "c",
+        "task_voltage.h": "c"
     }
 }

@@ -7,6 +7,7 @@ typedef struct {
     uint8_t Pose_Velocity_Data[24]; //树莓派下行数据中 位姿速度信息
 	float Depthometer_Data; //深度计数据
 	float Altimeter_Data; //高度计数据
+	uint8_t Cursor_Coordinate[4]; //光标坐标
 }tagDownlinkData_T; //下行数据内容，发送至推控舱
 
 extern tagDownlinkData_T Downlink_Data;
