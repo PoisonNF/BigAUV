@@ -2,8 +2,8 @@
 
 #include "config.h"
 
-#define Depthometer_RS485_Recive 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET);//Drv_GPIO_Reset(&RS485_GPIO[0]); //深度计485接收模式
-#define Depthometer_RS485_Send 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);//Drv_GPIO_Set(&RS485_GPIO[0]); //深度计485发送模式
+#define Depthometer_RS485_Recive 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET)//Drv_GPIO_Reset(&RS485_GPIO[0]); //深度计485接收模式
+#define Depthometer_RS485_Send 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET)//Drv_GPIO_Set(&RS485_GPIO[0]); //深度计485发送模式
 
 uint8_t Depthometer_buf[20]; //深度计串口接收缓冲区
 uint8_t Depthometer_flag = RESET; //深度计串口数据接收完成标志

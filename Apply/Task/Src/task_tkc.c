@@ -5,7 +5,7 @@
 tagDownlinkData_T Downlink_Data;
 
 uint8_t Tuikong_buf[50]; //推控舱串口接收缓冲区
-uint8_t Tuikong_SendData[30]; //推控舱下行数据发送 数据28字节
+uint8_t Tuikong_SendData[50]; //推控舱下行数据发送 数据28字节
 
 uint8_t Tuikong_flag = RESET; //推控舱串口数据接收完成标志
 uint8_t Hatchdoor_flag = RESET; //舱门开关标志位
@@ -48,14 +48,14 @@ void TuikongData_Analysis(void) //推控舱数据解析
 				break;
 			//状态
 			case 'S': //推控舱上行数据
-//				if(Tuikong_buf[23] == 0xF0)
-//				{
-//					Hatchdoor_flag = SET;
-//				}
-//				else if(Tuikong_buf[23] == 0x00)
-//				{
-//					Hatchdoor_flag = RESET;
-//				}
+				if(Tuikong_buf[26] == 0xF0)
+				{
+					Hatchdoor_flag = SET;
+				}
+				else if(Tuikong_buf[26] == 0x00)
+				{
+					Hatchdoor_flag = RESET;
+				}
 				MotorStatus_Analysis(Uplink_Data.Motor_Status);
 				break;
 			
@@ -73,12 +73,12 @@ void TuikongData_Send(void) //下行数据发送函数，即向推控舱数据�
 	Tuikong_SendData[25] = (int)(Downlink_Data.Depthometer_Data*10) % 256;
 	Tuikong_SendData[26] = Downlink_Data.Altimeter_Data*100 / 256; //高度计数据
 	Tuikong_SendData[27] = (int)(Downlink_Data.Altimeter_Data*100) % 256;
-	Tuikong_SendData[28] = 0x45;
 
 	memcpy(Tuikong_SendData, Downlink_Data.Pose_Velocity_Data, 24);
+	memcpy(&Tuikong_SendData[28], Downlink_Data.Cursor_Coordinate, 4);
 
 	Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"@DD", 3);
-	Drv_Uart_Transmit(&tTKC_Uart, Tuikong_SendData, 29);
+	Drv_Uart_Transmit(&tTKC_Uart, Tuikong_SendData, 31);
 	Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"$", 1);
 }
 

@@ -55,7 +55,7 @@ void Receive_DMA(void)
 		{	
 			if(s_ucRxUart1[1] == 'W' && s_ucRxUart1[2] == 'D' ) //树莓派下行数据，接收29个字节
 			{
-				Data_length1 = 29;
+				Data_length1 = 33;
 			}
 			else if(s_ucRxUart1[1] == 'T') //时间信息，接收18个字节
 			{
@@ -81,7 +81,7 @@ void Receive_DMA(void)
 	}
 	else if (tTKC_Uart.tRxInfo.ucDMARxCplt)
 	{
-		memcpy(Tuikong_buf, tTKC_Uart.tRxInfo.ucpDMARxCache, tTKC_Uart.tRxInfo.usDMARxLength);
+		memcpy(s_ucRxUart2, tTKC_Uart.tRxInfo.ucpDMARxCache, tTKC_Uart.tRxInfo.usDMARxLength);
 		size = tTKC_Uart.tRxInfo.usDMARxLength;
 		
 		if(s_ucRxUart2[0] == '@')  //第一个帧头判断
@@ -110,7 +110,7 @@ void Receive_DMA(void)
 	}
 	else if (tManipulator_Uart.tRxInfo.ucDMARxCplt)
 	{
-		memcpy(Manipulator_buf, tManipulator_Uart.tRxInfo.ucpDMARxCache, tManipulator_Uart.tRxInfo.usDMARxLength);
+		memcpy(s_ucRxUart3, tManipulator_Uart.tRxInfo.ucpDMARxCache, tManipulator_Uart.tRxInfo.usDMARxLength);
 		size = tManipulator_Uart.tRxInfo.usDMARxLength;
 
 		if(s_ucRxUart3[0] == '@')  //第一个帧头判断
@@ -131,19 +131,19 @@ void Receive_DMA(void)
 	}
 	else if (tDepthometer_Uart.tRxInfo.ucDMARxCplt)
 	{
-		memcpy(Depthometer_buf, tDepthometer_Uart.tRxInfo.ucpDMARxCache, tDepthometer_Uart.tRxInfo.usDMARxLength);
+		memcpy(s_ucRxUart4, tDepthometer_Uart.tRxInfo.ucpDMARxCache, tDepthometer_Uart.tRxInfo.usDMARxLength);
 		size = tDepthometer_Uart.tRxInfo.usDMARxLength;
 
-		if(s_ucRxUart4[0] == '@')  //第一个帧头判断
+		if(s_ucRxUart4[0] == 0x01)  //第一个帧头判断
 		{	
 			
-			if(s_ucRxUart4[6] == '$' && size == 7)
+			if(size == 7)
 			{
 				memcpy(Depthometer_buf, s_ucRxUart4, Rx4_DATA_LENTH);
 				memset(s_ucRxUart4, 0, Rx4_DATA_LENTH);
 				Depthometer_flag = SET;
 			}
-			else if(s_ucRxUart4[6] != '$' || size != 7)
+			else
 			{
 				memset(s_ucRxUart4, 0, Rx4_DATA_LENTH);
 			}
