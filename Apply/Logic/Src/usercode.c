@@ -1,21 +1,21 @@
-#include "usercode.h"		/* usercodeͷ�ļ� */
-#include "drv_hal_conf.h"   /* SGA��ͷ�ļ����� */
-#include "task_conf.h"      /* task��ͷ�ļ����� */
-#include "ocd_conf.h"       /* OCD��ͷ�ļ����� */
-#include "dev_conf.h"		/* Dev��ͷ�ļ����� */
-#include "algo_conf.h"		/* Algo��ͷ�ļ����� */
-#include "config.h"			/* I/O����ͷ�ļ����� */
+#include "usercode.h"		/* usercode头文件 */
+#include "drv_hal_conf.h"   /* SGA库头文件配置 */
+#include "task_conf.h"      /* task层头文件配置 */
+#include "ocd_conf.h"       /* OCD层头文件配置 */
+#include "dev_conf.h"		/* Dev层头文件配置 */
+#include "algo_conf.h"		/* Algo层头文件配置 */
+#include "config.h"			/* I/O配置头文件配置 */
 
 ///////////////////////////////////////////////////////////////////////////////
 
-/* �û��������� */
+/* 用户变量定义 */
 
-char Timeflag_200MS = RESET; //0.2��ʱ���־λ
-char Timeflag_100MS = RESET; //0.1��ʱ���־λ
-char Timeflag_Count1; //1S��ʱ���жϼ�����־λ
-char Timeflag_Count2; //0.2S��ʱ���жϼ�����־λ
-char Timeflag_500MS = RESET; //0.5��ʱ���־λ
-char Timeflag_1S = RESET; //1��ʱ���־λ
+char Timeflag_200MS = RESET; //0.2秒时间标志位
+char Timeflag_100MS = RESET; //0.1秒时间标志位
+char Timeflag_Count1; //1S定时器中断计数标志位
+char Timeflag_Count2; //0.2S定时器中断计数标志位
+char Timeflag_500MS = RESET; //0.5秒时间标志位
+char Timeflag_1S = RESET; //1秒时间标志位
 
 double LX;
 double LY;
@@ -26,23 +26,23 @@ double RY;
 double RZ;
 double RALL;
 
-/* �û��������� */
+/* 用户函数声明 */
 
-void Relay_Control(void); //�̵������ƺ���
+void Relay_Control(void); //继电器控制函数
 void Receive_DMA(void);
 
 ///////////////////////////////////////////////////////////////////////////////
 
-/* ���Բ��� */
+/* 测试部分 */
 
-void Test_Code(void); //���Գ���
+void Test_Code(void); //测试程序
 uint8_t receive[10] ;
 char receive11[20];
-int time_rand; //�������������
+int time_rand; //随机数生成种子
 
 ///////////////////////////////////////////////////////////////////////////////
 
-/* �û��߼����� */
+/* 用户逻辑代码 */
 void UserLogic_Code(void)
 {
 	Uplink_Data.Altimeter_Data = 98.6;
@@ -56,7 +56,7 @@ void UserLogic_Code(void)
 		ShumeiData_Analysis();
 		Manipulator_Analysis();
 
-		CH438Q_Analysis(&Uplink_Data.Altimeter_Data, Uplink_Data.Lowvoltage_Data, Uplink_Data.Highvoltage_Data); //CH438Q�������ݻ�ȡ����
+		CH438Q_Analysis(&Uplink_Data.Altimeter_Data, Uplink_Data.Lowvoltage_Data, Uplink_Data.Highvoltage_Data); //CH438Q串口数据获取函数
 		Depthometer_Analysis(&Uplink_Data.Depthometer_Data);
 
 		Downlink_Data.Altimeter_Data = Uplink_Data.Altimeter_Data;
@@ -103,19 +103,19 @@ void UserLogic_Code(void)
 
 ///////////////////////////////////////////////////////////////////////////////
 
-/* �û��������� */
+/* 用户函数定义 */
 int size = 0;
 
-void Relay_Control() //�̵������ƺ���
+void Relay_Control() //继电器控制函数
 {
 	ShengTong_OFF;
 	Manipulator_OFF;
-	CeSao_OFF;
+	CeSao_ON;
 	BDGPS_ON;
 	Camera_OFF;
 	Inertial_navigation_ON;
 	P360_OFF;
-	DVL_ON;
+	DVL_OFF;
 	Altimeter_OFF;
 	UHF_ON;
 	Front_Magnetometer_ON;
