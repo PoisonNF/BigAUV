@@ -255,6 +255,7 @@ void ShumeiData_Analysis(void) //树莓派数据解析
 				Drv_Uart_Transmit(&tTKC_Uart, Shumei_buf, 6);
 				break;
 			
+			
 			case 'T': //时间同步
 				ShumeiCmd_Send();
 				switch(Shumei_buf[2])

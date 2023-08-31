@@ -1,32 +1,32 @@
 #include "config.h"
 
-/* ºËÐÄ°åÈý»ùÉ«µÆ¹âÏÔÊ¾ */
+/* ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½Æ¹ï¿½ï¿½ï¿½Ê¾ */
 tagGPIO_T tLED_GPIO[] =
 {
 	
 	[0]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_13,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_13,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOD,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOD,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
     [1]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_14,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_14,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOD,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOD,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
     [2]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_15,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_15,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOD,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOD,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
     
 };
@@ -35,23 +35,23 @@ tagGPIO_T tAD_GPIO =
 {
 
 	/* AD24BIT CS */
-	.tGPIOInit.Pin 		= GPIO_PIN_12,				/* GPIOÒý½Å */
+	.tGPIOInit.Pin 		= GPIO_PIN_12,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-	.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-	.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-	.tGPIOPort 			= GPIOB,					/* GPIO·Ö×é */
+	.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+	.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+	.tGPIOPort 			= GPIOB,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 
 };
 
 
 
-/* Ê÷Ý®ÅÉÍ¨ÐÅ */
+/* ï¿½ï¿½Ý®ï¿½ï¿½Í¨ï¿½ï¿½ */
 tagUART_T tSMP_Uart = 
 {
 
-	//´®¿Ú¹¤×÷Ä£Ê½ÅäÖÃ
-	.tUARTHandle.Instance 				= USART1,					/* STM32 ´®¿ÚÉè±¸ */
-	.tUARTHandle.Init.BaudRate   		= 115200,					/* ´®¿Ú²¨ÌØÂÊ */
+	//ï¿½ï¿½ï¿½Ú¹ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½
+	.tUARTHandle.Instance 				= USART1,					/* STM32 ï¿½ï¿½ï¿½ï¿½ï¿½è±¸ */
+	.tUARTHandle.Init.BaudRate   		= 115200,					/* ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	.tUARTHandle.Init.WordLength 		= UART_WORDLENGTH_8B,
 	.tUARTHandle.Init.StopBits   		= UART_STOPBITS_1,
 	.tUARTHandle.Init.Parity     		= UART_PARITY_NONE,
@@ -64,11 +64,11 @@ tagUART_T tSMP_Uart =
 	.tUARTHandle.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT,
 #endif
 	
-	.ucPriority							= 1,						/* ÖÐ¶ÏÓÅÏÈ¼¶ */
-	.ucSubPriority						= 3,						/* ÖÐ¶Ï×ÓÓÅÏÈ¼¶ */
+	.ucPriority							= 1,						/* ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
+	.ucSubPriority						= 3,						/* ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
 	
-	//´®¿ÚDMA½ÓÊÕ²ÎÊýÅäÖÃ
-	.tUartDMA.bRxEnable					= true,						/* DMA½ÓÊÕÊ¹ÄÜ */
+	//ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½ï¿½Õ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	.tUartDMA.bRxEnable					= true,						/* DMAï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ */
 	.tUartDMA.tDMARx.Instance			= DMA1_Channel5,
 	.tUartDMA.tDMARx.Init.Direction		= DMA_PERIPH_TO_MEMORY,
 	.tUartDMA.tDMARx.Init.PeriphInc		= DMA_PINC_DISABLE,
@@ -78,13 +78,13 @@ tagUART_T tSMP_Uart =
 	.tUartDMA.tDMARx.Init.Mode			= DMA_CIRCULAR,
 	.tUartDMA.tDMARx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tRxInfo.usDMARxMAXSize             	= 100,              	/* ½ÓÊÕÊý¾Ý³¤¶È ³¤¶È±£³ÖÔÚÐ­Òé×î³¤×Ö½Ú*2ÒÔÉÏ£¬È·±£»º´æ³ØÒ»¶¨ÄÜ¹»ÎÈ¶¨½ÓÊÕÒ»¸öÍêÕûµÄÊý¾ÝÖ¡*/
+	.tRxInfo.usDMARxMAXSize             	= 100,              	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½Ð­ï¿½ï¿½ï¿½î³¤ï¿½Ö½ï¿½*2ï¿½ï¿½ï¿½Ï£ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ü¹ï¿½ï¿½È¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¡*/
 
-	.tUartDMA.ucDMARxPriority				= 1,					/* DMA½ÓÊÕÖÐ¶ÏÓÅÏÈ¼¶ */
-	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMA½ÓÊÕÖÐ¶Ï×ÓÓÅÏÈ¼¶ */
+	.tUartDMA.ucDMARxPriority				= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
+	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
 	
-	//´®¿ÚDMA·¢ËÍ²ÎÊýÅäÖÃ
-	.tUartDMA.bTxEnable					= true,						/* DMA·¢ËÍÊ¹ÄÜ */
+	//ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	.tUartDMA.bTxEnable					= true,						/* DMAï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ */
 	.tUartDMA.tDMATx.Instance			= DMA1_Channel4,
 	.tUartDMA.tDMATx.Init.Direction		= DMA_MEMORY_TO_PERIPH,
 	.tUartDMA.tDMATx.Init.PeriphInc		= DMA_PINC_DISABLE,
@@ -94,35 +94,35 @@ tagUART_T tSMP_Uart =
 	.tUartDMA.tDMATx.Init.Mode			= DMA_NORMAL,
 	.tUartDMA.tDMATx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tTxInfo.usDMATxMAXSize				= 50,						/* ×î´ó·¢ËÍÊý¾Ý³¤¶È */
+	.tTxInfo.usDMATxMAXSize				= 50,						/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½ */
 	
-	.tUartDMA.ucDMATxPriority				= 1,					/* DMA·¢ËÍÖÐ¶ÏÓÅÏÈ¼¶ */
-	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMA·¢ËÍÖÐ¶Ï×ÓÓÅÏÈ¼¶ */
+	.tUartDMA.ucDMATxPriority				= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
+	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
 
-	//´®¿ÚGPIOÅäÖÃ
-	.tGPIO[0].tGPIOInit.Pin 			= GPIO_PIN_9,				/* GPIOÒý½Å */
+	//ï¿½ï¿½ï¿½ï¿½GPIOï¿½ï¿½ï¿½ï¿½
+	.tGPIO[0].tGPIOInit.Pin 			= GPIO_PIN_9,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	.tGPIO[0].tGPIOInit.Mode 			= GPIO_MODE_AF_PP,			/* GPIOÄ£Ê½ */
-	.tGPIO[0].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-	.tGPIO[0].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-	.tGPIO[0].tGPIOPort 				= GPIOA,					/* GPIO·Ö×é */
-	.tGPIO[0].ucAFMode					= NO_REMAP,					/* GPIOÖØÓ³Éä */
+	.tGPIO[0].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+	.tGPIO[0].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+	.tGPIO[0].tGPIOPort 				= GPIOA,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
+	.tGPIO[0].ucAFMode					= NO_REMAP,					/* GPIOï¿½ï¿½Ó³ï¿½ï¿½ */
 	
-	.tGPIO[1].tGPIOInit.Pin 			= GPIO_PIN_10,				/* GPIOÒý½Å */
+	.tGPIO[1].tGPIOInit.Pin 			= GPIO_PIN_10,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	.tGPIO[1].tGPIOInit.Mode 			= GPIO_MODE_INPUT,			/* GPIOÄ£Ê½ */
-	.tGPIO[1].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-	.tGPIO[1].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-	.tGPIO[1].tGPIOPort 				= GPIOA,					/* GPIO·Ö×é */
-	.tGPIO[1].ucAFMode					= NO_REMAP,					/* GPIOÖØÓ³Éä */
+	.tGPIO[1].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+	.tGPIO[1].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+	.tGPIO[1].tGPIOPort 				= GPIOA,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
+	.tGPIO[1].ucAFMode					= NO_REMAP,					/* GPIOï¿½ï¿½Ó³ï¿½ï¿½ */
 
 };
 
-/* ÍÆ¿Ø²ÕÍ¨ÐÅ */
+/* ï¿½Æ¿Ø²ï¿½Í¨ï¿½ï¿½ */
 tagUART_T tTKC_Uart = 
 {
 
-	//´®¿Ú¹¤×÷Ä£Ê½ÅäÖÃ
-	.tUARTHandle.Instance 				= USART2,					/* STM32 ´®¿ÚÉè±¸ */
-	.tUARTHandle.Init.BaudRate   		= 9600,						/* ´®¿Ú²¨ÌØÂÊ */
+	//ï¿½ï¿½ï¿½Ú¹ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½
+	.tUARTHandle.Instance 				= USART2,					/* STM32 ï¿½ï¿½ï¿½ï¿½ï¿½è±¸ */
+	.tUARTHandle.Init.BaudRate   		= 9600,						/* ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	.tUARTHandle.Init.WordLength 		= UART_WORDLENGTH_8B,
 	.tUARTHandle.Init.StopBits   		= UART_STOPBITS_1,
 	.tUARTHandle.Init.Parity     		= UART_PARITY_NONE,
@@ -135,11 +135,11 @@ tagUART_T tTKC_Uart =
 	.tUARTHandle.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT,
 #endif
 	
-	.ucPriority							= 1,						/* ÖÐ¶ÏÓÅÏÈ¼¶ */
-	.ucSubPriority						= 3,						/* ÖÐ¶Ï×ÓÓÅÏÈ¼¶ */
+	.ucPriority							= 1,						/* ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
+	.ucSubPriority						= 3,						/* ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
 	
-	//´®¿ÚDMA½ÓÊÕ²ÎÊýÅäÖÃ
-	.tUartDMA.bRxEnable					= true,						/* DMA½ÓÊÕÊ¹ÄÜ */
+	//ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½ï¿½Õ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	.tUartDMA.bRxEnable					= true,						/* DMAï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ */
 	.tUartDMA.tDMARx.Instance			= DMA1_Channel6,
 	.tUartDMA.tDMARx.Init.Direction		= DMA_PERIPH_TO_MEMORY,
 	.tUartDMA.tDMARx.Init.PeriphInc		= DMA_PINC_DISABLE,
@@ -149,13 +149,13 @@ tagUART_T tTKC_Uart =
 	.tUartDMA.tDMARx.Init.Mode			= DMA_CIRCULAR,
 	.tUartDMA.tDMARx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tRxInfo.usDMARxMAXSize             	= 100,              	/* ½ÓÊÕÊý¾Ý³¤¶È ³¤¶È±£³ÖÔÚÐ­Òé×î³¤×Ö½Ú*2ÒÔÉÏ£¬È·±£»º´æ³ØÒ»¶¨ÄÜ¹»ÎÈ¶¨½ÓÊÕÒ»¸öÍêÕûµÄÊý¾ÝÖ¡*/
+	.tRxInfo.usDMARxMAXSize             	= 100,              	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½Ð­ï¿½ï¿½ï¿½î³¤ï¿½Ö½ï¿½*2ï¿½ï¿½ï¿½Ï£ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ü¹ï¿½ï¿½È¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¡*/
 
-	.tUartDMA.ucDMARxPriority				= 1,					/* DMA½ÓÊÕÖÐ¶ÏÓÅÏÈ¼¶ */
-	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMA½ÓÊÕÖÐ¶Ï×ÓÓÅÏÈ¼¶ */
+	.tUartDMA.ucDMARxPriority				= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
+	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
 	
-	//´®¿ÚDMA·¢ËÍ²ÎÊýÅäÖÃ
-	.tUartDMA.bTxEnable					= true,						/* DMA·¢ËÍÊ¹ÄÜ */
+	//ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	.tUartDMA.bTxEnable					= true,						/* DMAï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ */
 	.tUartDMA.tDMATx.Instance			= DMA1_Channel7,
 	.tUartDMA.tDMATx.Init.Direction		= DMA_MEMORY_TO_PERIPH,
 	.tUartDMA.tDMATx.Init.PeriphInc		= DMA_PINC_DISABLE,
@@ -165,35 +165,35 @@ tagUART_T tTKC_Uart =
 	.tUartDMA.tDMATx.Init.Mode			= DMA_NORMAL,
 	.tUartDMA.tDMATx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tTxInfo.usDMATxMAXSize				= 50,						/* ×î´ó·¢ËÍÊý¾Ý³¤¶È */
+	.tTxInfo.usDMATxMAXSize				= 50,						/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½ */
 	
-	.tUartDMA.ucDMATxPriority				= 1,					/* DMA·¢ËÍÖÐ¶ÏÓÅÏÈ¼¶ */
-	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMA·¢ËÍÖÐ¶Ï×ÓÓÅÏÈ¼¶ */
+	.tUartDMA.ucDMATxPriority				= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
+	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
 
-	//´®¿ÚGPIOÅäÖÃ
-	.tGPIO[0].tGPIOInit.Pin 			= GPIO_PIN_2,				/* GPIOÒý½Å */
+	//ï¿½ï¿½ï¿½ï¿½GPIOï¿½ï¿½ï¿½ï¿½
+	.tGPIO[0].tGPIOInit.Pin 			= GPIO_PIN_2,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	.tGPIO[0].tGPIOInit.Mode 			= GPIO_MODE_AF_PP,			/* GPIOÄ£Ê½ */
-	.tGPIO[0].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-	.tGPIO[0].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-	.tGPIO[0].tGPIOPort 				= GPIOA,					/* GPIO·Ö×é */
-	.tGPIO[0].ucAFMode					= NO_REMAP,					/* GPIOÖØÓ³Éä */
+	.tGPIO[0].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+	.tGPIO[0].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+	.tGPIO[0].tGPIOPort 				= GPIOA,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
+	.tGPIO[0].ucAFMode					= NO_REMAP,					/* GPIOï¿½ï¿½Ó³ï¿½ï¿½ */
 	
-	.tGPIO[1].tGPIOInit.Pin 			= GPIO_PIN_3,				/* GPIOÒý½Å */
+	.tGPIO[1].tGPIOInit.Pin 			= GPIO_PIN_3,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	.tGPIO[1].tGPIOInit.Mode 			= GPIO_MODE_INPUT,			/* GPIOÄ£Ê½ */
-	.tGPIO[1].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-	.tGPIO[1].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-	.tGPIO[1].tGPIOPort 				= GPIOA,					/* GPIO·Ö×é */
-	.tGPIO[1].ucAFMode					= NO_REMAP,					/* GPIOÖØÓ³Éä */
+	.tGPIO[1].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+	.tGPIO[1].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+	.tGPIO[1].tGPIOPort 				= GPIOA,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
+	.tGPIO[1].ucAFMode					= NO_REMAP,					/* GPIOï¿½ï¿½Ó³ï¿½ï¿½ */
 
 };
 
-/* »úÐµÊÖÍ¨ÐÅ */
+/* ï¿½ï¿½Ðµï¿½ï¿½Í¨ï¿½ï¿½ */
 tagUART_T tManipulator_Uart = 
 {
 
-	//´®¿Ú¹¤×÷Ä£Ê½ÅäÖÃ
-	.tUARTHandle.Instance 				= USART3,					/* STM32 ´®¿ÚÉè±¸ */
-	.tUARTHandle.Init.BaudRate   		= 9600,						/* ´®¿Ú²¨ÌØÂÊ */
+	//ï¿½ï¿½ï¿½Ú¹ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½
+	.tUARTHandle.Instance 				= USART3,					/* STM32 ï¿½ï¿½ï¿½ï¿½ï¿½è±¸ */
+	.tUARTHandle.Init.BaudRate   		= 9600,						/* ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	.tUARTHandle.Init.WordLength 		= UART_WORDLENGTH_8B,
 	.tUARTHandle.Init.StopBits   		= UART_STOPBITS_1,
 	.tUARTHandle.Init.Parity     		= UART_PARITY_NONE,
@@ -206,11 +206,11 @@ tagUART_T tManipulator_Uart =
 	.tUARTHandle.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT,
 #endif
 	
-	.ucPriority							= 1,						/* ÖÐ¶ÏÓÅÏÈ¼¶ */
-	.ucSubPriority						= 3,						/* ÖÐ¶Ï×ÓÓÅÏÈ¼¶ */
+	.ucPriority							= 1,						/* ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
+	.ucSubPriority						= 3,						/* ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
 	
-	//´®¿ÚDMA½ÓÊÕ²ÎÊýÅäÖÃ
-	.tUartDMA.bRxEnable					= true,						/* DMA½ÓÊÕÊ¹ÄÜ */
+	//ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½ï¿½Õ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	.tUartDMA.bRxEnable					= true,						/* DMAï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ */
 	.tUartDMA.tDMARx.Instance			= DMA1_Channel3,
 	.tUartDMA.tDMARx.Init.Direction		= DMA_PERIPH_TO_MEMORY,
 	.tUartDMA.tDMARx.Init.PeriphInc		= DMA_PINC_DISABLE,
@@ -220,13 +220,13 @@ tagUART_T tManipulator_Uart =
 	.tUartDMA.tDMARx.Init.Mode			= DMA_CIRCULAR,
 	.tUartDMA.tDMARx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tRxInfo.usDMARxMAXSize             	= 100,              	/* ½ÓÊÕÊý¾Ý³¤¶È ³¤¶È±£³ÖÔÚÐ­Òé×î³¤×Ö½Ú*2ÒÔÉÏ£¬È·±£»º´æ³ØÒ»¶¨ÄÜ¹»ÎÈ¶¨½ÓÊÕÒ»¸öÍêÕûµÄÊý¾ÝÖ¡*/
+	.tRxInfo.usDMARxMAXSize             	= 100,              	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½Ð­ï¿½ï¿½ï¿½î³¤ï¿½Ö½ï¿½*2ï¿½ï¿½ï¿½Ï£ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ü¹ï¿½ï¿½È¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¡*/
 
-	.tUartDMA.ucDMARxPriority				= 1,					/* DMA½ÓÊÕÖÐ¶ÏÓÅÏÈ¼¶ */
-	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMA½ÓÊÕÖÐ¶Ï×ÓÓÅÏÈ¼¶ */
+	.tUartDMA.ucDMARxPriority				= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
+	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
 	
-	//´®¿ÚDMA·¢ËÍ²ÎÊýÅäÖÃ
-	.tUartDMA.bTxEnable					= true,						/* DMA·¢ËÍÊ¹ÄÜ */
+	//ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	.tUartDMA.bTxEnable					= true,						/* DMAï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ */
 	.tUartDMA.tDMATx.Instance			= DMA1_Channel2,
 	.tUartDMA.tDMATx.Init.Direction		= DMA_MEMORY_TO_PERIPH,
 	.tUartDMA.tDMATx.Init.PeriphInc		= DMA_PINC_DISABLE,
@@ -236,35 +236,35 @@ tagUART_T tManipulator_Uart =
 	.tUartDMA.tDMATx.Init.Mode			= DMA_NORMAL,
 	.tUartDMA.tDMATx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tTxInfo.usDMATxMAXSize				= 50,						/* ×î´ó·¢ËÍÊý¾Ý³¤¶È */
+	.tTxInfo.usDMATxMAXSize				= 50,						/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½ */
 	
-	.tUartDMA.ucDMATxPriority				= 1,					/* DMA·¢ËÍÖÐ¶ÏÓÅÏÈ¼¶ */
-	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMA·¢ËÍÖÐ¶Ï×ÓÓÅÏÈ¼¶ */
+	.tUartDMA.ucDMATxPriority				= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
+	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
 
-	//´®¿ÚGPIOÅäÖÃ
-	.tGPIO[0].tGPIOInit.Pin 			= GPIO_PIN_10,				/* GPIOÒý½Å */
+	//ï¿½ï¿½ï¿½ï¿½GPIOï¿½ï¿½ï¿½ï¿½
+	.tGPIO[0].tGPIOInit.Pin 			= GPIO_PIN_10,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	.tGPIO[0].tGPIOInit.Mode 			= GPIO_MODE_AF_PP,			/* GPIOÄ£Ê½ */
-	.tGPIO[0].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-	.tGPIO[0].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-	.tGPIO[0].tGPIOPort 				= GPIOB,					/* GPIO·Ö×é */
-	.tGPIO[0].ucAFMode					= NO_REMAP,					/* GPIOÖØÓ³Éä */
+	.tGPIO[0].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+	.tGPIO[0].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+	.tGPIO[0].tGPIOPort 				= GPIOB,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
+	.tGPIO[0].ucAFMode					= NO_REMAP,					/* GPIOï¿½ï¿½Ó³ï¿½ï¿½ */
 	
-	.tGPIO[1].tGPIOInit.Pin 			= GPIO_PIN_11,				/* GPIOÒý½Å */
+	.tGPIO[1].tGPIOInit.Pin 			= GPIO_PIN_11,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	.tGPIO[1].tGPIOInit.Mode 			= GPIO_MODE_INPUT,			/* GPIOÄ£Ê½ */
-	.tGPIO[1].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-	.tGPIO[1].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-	.tGPIO[1].tGPIOPort 				= GPIOB,					/* GPIO·Ö×é */
-	.tGPIO[1].ucAFMode					= NO_REMAP,					/* GPIOÖØÓ³Éä */
+	.tGPIO[1].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+	.tGPIO[1].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+	.tGPIO[1].tGPIOPort 				= GPIOB,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
+	.tGPIO[1].ucAFMode					= NO_REMAP,					/* GPIOï¿½ï¿½Ó³ï¿½ï¿½ */
 
 };
 
-/* Éî¶È¼ÆÍ¨ÐÅ */
+/* ï¿½ï¿½È¼ï¿½Í¨ï¿½ï¿½ */
 tagUART_T tDepthometer_Uart = 
 {
 
-	//´®¿Ú¹¤×÷Ä£Ê½ÅäÖÃ
-	.tUARTHandle.Instance 				= UART4,					/* STM32 ´®¿ÚÉè±¸ */
-	.tUARTHandle.Init.BaudRate   		= 9600,						/* ´®¿Ú²¨ÌØÂÊ */
+	//ï¿½ï¿½ï¿½Ú¹ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½
+	.tUARTHandle.Instance 				= UART4,					/* STM32 ï¿½ï¿½ï¿½ï¿½ï¿½è±¸ */
+	.tUARTHandle.Init.BaudRate   		= 9600,						/* ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	.tUARTHandle.Init.WordLength 		= UART_WORDLENGTH_8B,
 	.tUARTHandle.Init.StopBits   		= UART_STOPBITS_1,
 	.tUARTHandle.Init.Parity     		= UART_PARITY_NONE,
@@ -277,11 +277,11 @@ tagUART_T tDepthometer_Uart =
 	.tUARTHandle.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT,
 #endif
 	
-	.ucPriority							= 1,						/* ÖÐ¶ÏÓÅÏÈ¼¶ */
-	.ucSubPriority						= 3,						/* ÖÐ¶Ï×ÓÓÅÏÈ¼¶ */
+	.ucPriority							= 1,						/* ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
+	.ucSubPriority						= 3,						/* ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
 	
-	//´®¿ÚDMA½ÓÊÕ²ÎÊýÅäÖÃ
-	.tUartDMA.bRxEnable					= true,						/* DMA½ÓÊÕÊ¹ÄÜ */
+	//ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½ï¿½Õ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	.tUartDMA.bRxEnable					= true,						/* DMAï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ */
 	.tUartDMA.tDMARx.Instance			= DMA2_Channel3,
 	.tUartDMA.tDMARx.Init.Direction		= DMA_PERIPH_TO_MEMORY,
 	.tUartDMA.tDMARx.Init.PeriphInc		= DMA_PINC_DISABLE,
@@ -291,13 +291,13 @@ tagUART_T tDepthometer_Uart =
 	.tUartDMA.tDMARx.Init.Mode			= DMA_CIRCULAR,
 	.tUartDMA.tDMARx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tRxInfo.usDMARxMAXSize             	= 20,              	/* ½ÓÊÕÊý¾Ý³¤¶È ³¤¶È±£³ÖÔÚÐ­Òé×î³¤×Ö½Ú*2ÒÔÉÏ£¬È·±£»º´æ³ØÒ»¶¨ÄÜ¹»ÎÈ¶¨½ÓÊÕÒ»¸öÍêÕûµÄÊý¾ÝÖ¡*/
+	.tRxInfo.usDMARxMAXSize             	= 20,              	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½Ð­ï¿½ï¿½ï¿½î³¤ï¿½Ö½ï¿½*2ï¿½ï¿½ï¿½Ï£ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ü¹ï¿½ï¿½È¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¡*/
 
-	.tUartDMA.ucDMARxPriority				= 1,					/* DMA½ÓÊÕÖÐ¶ÏÓÅÏÈ¼¶ */
-	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMA½ÓÊÕÖÐ¶Ï×ÓÓÅÏÈ¼¶ */
+	.tUartDMA.ucDMARxPriority				= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
+	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
 	
-	//´®¿ÚDMA·¢ËÍ²ÎÊýÅäÖÃ
-	.tUartDMA.bTxEnable					= true,						/* DMA·¢ËÍÊ¹ÄÜ */
+	//ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	.tUartDMA.bTxEnable					= true,						/* DMAï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ */
 	.tUartDMA.tDMATx.Instance			= DMA2_Channel5,
 	.tUartDMA.tDMATx.Init.Direction		= DMA_MEMORY_TO_PERIPH,
 	.tUartDMA.tDMATx.Init.PeriphInc		= DMA_PINC_DISABLE,
@@ -307,35 +307,35 @@ tagUART_T tDepthometer_Uart =
 	.tUartDMA.tDMATx.Init.Mode			= DMA_NORMAL,
 	.tUartDMA.tDMATx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tTxInfo.usDMATxMAXSize				= 50,						/* ×î´ó·¢ËÍÊý¾Ý³¤¶È */
+	.tTxInfo.usDMATxMAXSize				= 50,						/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½ */
 	
-	.tUartDMA.ucDMATxPriority				= 1,					/* DMA·¢ËÍÖÐ¶ÏÓÅÏÈ¼¶ */
-	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMA·¢ËÍÖÐ¶Ï×ÓÓÅÏÈ¼¶ */
+	.tUartDMA.ucDMATxPriority				= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
+	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
 
-	//´®¿ÚGPIOÅäÖÃ
-	.tGPIO[0].tGPIOInit.Pin 			= GPIO_PIN_10,				/* GPIOÒý½Å */
+	//ï¿½ï¿½ï¿½ï¿½GPIOï¿½ï¿½ï¿½ï¿½
+	.tGPIO[0].tGPIOInit.Pin 			= GPIO_PIN_10,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	.tGPIO[0].tGPIOInit.Mode 			= GPIO_MODE_AF_PP,			/* GPIOÄ£Ê½ */
-	.tGPIO[0].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-	.tGPIO[0].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-	.tGPIO[0].tGPIOPort 				= GPIOC,					/* GPIO·Ö×é */
-	.tGPIO[0].ucAFMode					= NO_REMAP,					/* GPIOÖØÓ³Éä */
+	.tGPIO[0].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+	.tGPIO[0].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+	.tGPIO[0].tGPIOPort 				= GPIOC,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
+	.tGPIO[0].ucAFMode					= NO_REMAP,					/* GPIOï¿½ï¿½Ó³ï¿½ï¿½ */
 	
-	.tGPIO[1].tGPIOInit.Pin 			= GPIO_PIN_11,				/* GPIOÒý½Å */
+	.tGPIO[1].tGPIOInit.Pin 			= GPIO_PIN_11,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	.tGPIO[1].tGPIOInit.Mode 			= GPIO_MODE_INPUT,			/* GPIOÄ£Ê½ */
-	.tGPIO[1].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-	.tGPIO[1].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-	.tGPIO[1].tGPIOPort 				= GPIOC,					/* GPIO·Ö×é */
-	.tGPIO[1].ucAFMode					= NO_REMAP,					/* GPIOÖØÓ³Éä */
+	.tGPIO[1].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+	.tGPIO[1].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+	.tGPIO[1].tGPIOPort 				= GPIOC,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
+	.tGPIO[1].ucAFMode					= NO_REMAP,					/* GPIOï¿½ï¿½Ó³ï¿½ï¿½ */
 
 };
 
-/* ±¸ÓÃ´®¿ÚÍ¨ÐÅ */
+/* ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ */
 tagUART_T tStandby_Uart = 
 {
 
-	//´®¿Ú¹¤×÷Ä£Ê½ÅäÖÃ
-	.tUARTHandle.Instance 				= UART5,					/* STM32 ´®¿ÚÉè±¸ */
-	.tUARTHandle.Init.BaudRate   		= 9600,						/* ´®¿Ú²¨ÌØÂÊ */
+	//ï¿½ï¿½ï¿½Ú¹ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½
+	.tUARTHandle.Instance 				= UART5,					/* STM32 ï¿½ï¿½ï¿½ï¿½ï¿½è±¸ */
+	.tUARTHandle.Init.BaudRate   		= 9600,						/* ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	.tUARTHandle.Init.WordLength 		= UART_WORDLENGTH_8B,
 	.tUARTHandle.Init.StopBits   		= UART_STOPBITS_1,
 	.tUARTHandle.Init.Parity     		= UART_PARITY_NONE,
@@ -348,11 +348,11 @@ tagUART_T tStandby_Uart =
 	.tUARTHandle.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT,
 #endif
 	
-	.ucPriority							= 1,						/* ÖÐ¶ÏÓÅÏÈ¼¶ */
-	.ucSubPriority						= 3,						/* ÖÐ¶Ï×ÓÓÅÏÈ¼¶ */
+	.ucPriority							= 1,						/* ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
+	.ucSubPriority						= 3,						/* ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
 	
-	//´®¿ÚDMA½ÓÊÕ²ÎÊýÅäÖÃ
-	.tUartDMA.bRxEnable					= true,						/* DMA½ÓÊÕÊ¹ÄÜ */
+	//ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½ï¿½Õ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	.tUartDMA.bRxEnable					= true,						/* DMAï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ */
 	.tUartDMA.tDMARx.Instance			= DMA1_Channel3,
 	.tUartDMA.tDMARx.Init.Direction		= DMA_PERIPH_TO_MEMORY,
 	.tUartDMA.tDMARx.Init.PeriphInc		= DMA_PINC_DISABLE,
@@ -362,13 +362,13 @@ tagUART_T tStandby_Uart =
 	.tUartDMA.tDMARx.Init.Mode			= DMA_CIRCULAR,
 	.tUartDMA.tDMARx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tRxInfo.usDMARxMAXSize             	= 100,              	/* ½ÓÊÕÊý¾Ý³¤¶È ³¤¶È±£³ÖÔÚÐ­Òé×î³¤×Ö½Ú*2ÒÔÉÏ£¬È·±£»º´æ³ØÒ»¶¨ÄÜ¹»ÎÈ¶¨½ÓÊÕÒ»¸öÍêÕûµÄÊý¾ÝÖ¡*/
+	.tRxInfo.usDMARxMAXSize             	= 100,              	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½Ð­ï¿½ï¿½ï¿½î³¤ï¿½Ö½ï¿½*2ï¿½ï¿½ï¿½Ï£ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ü¹ï¿½ï¿½È¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¡*/
 
-	.tUartDMA.ucDMARxPriority				= 1,					/* DMA½ÓÊÕÖÐ¶ÏÓÅÏÈ¼¶ */
-	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMA½ÓÊÕÖÐ¶Ï×ÓÓÅÏÈ¼¶ */
+	.tUartDMA.ucDMARxPriority				= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
+	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
 	
-	//´®¿ÚDMA·¢ËÍ²ÎÊýÅäÖÃ
-	.tUartDMA.bTxEnable					= true,						/* DMA·¢ËÍÊ¹ÄÜ */
+	//ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	.tUartDMA.bTxEnable					= true,						/* DMAï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ */
 	.tUartDMA.tDMATx.Instance			= DMA1_Channel2,
 	.tUartDMA.tDMATx.Init.Direction		= DMA_MEMORY_TO_PERIPH,
 	.tUartDMA.tDMATx.Init.PeriphInc		= DMA_PINC_DISABLE,
@@ -378,25 +378,25 @@ tagUART_T tStandby_Uart =
 	.tUartDMA.tDMATx.Init.Mode			= DMA_NORMAL,
 	.tUartDMA.tDMATx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tTxInfo.usDMATxMAXSize				= 50,						/* ×î´ó·¢ËÍÊý¾Ý³¤¶È */
+	.tTxInfo.usDMATxMAXSize				= 50,						/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½ */
 	
-	.tUartDMA.ucDMATxPriority				= 1,					/* DMA·¢ËÍÖÐ¶ÏÓÅÏÈ¼¶ */
-	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMA·¢ËÍÖÐ¶Ï×ÓÓÅÏÈ¼¶ */
+	.tUartDMA.ucDMATxPriority				= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
+	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMAï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
 
-	//´®¿ÚGPIOÅäÖÃ
-	.tGPIO[0].tGPIOInit.Pin 			= GPIO_PIN_12,				/* GPIOÒý½Å */
+	//ï¿½ï¿½ï¿½ï¿½GPIOï¿½ï¿½ï¿½ï¿½
+	.tGPIO[0].tGPIOInit.Pin 			= GPIO_PIN_12,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	.tGPIO[0].tGPIOInit.Mode 			= GPIO_MODE_AF_PP,			/* GPIOÄ£Ê½ */
-	.tGPIO[0].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-	.tGPIO[0].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-	.tGPIO[0].tGPIOPort 				= GPIOC,					/* GPIO·Ö×é */
-	.tGPIO[0].ucAFMode					= NO_REMAP,					/* GPIOÖØÓ³Éä */
+	.tGPIO[0].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+	.tGPIO[0].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+	.tGPIO[0].tGPIOPort 				= GPIOC,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
+	.tGPIO[0].ucAFMode					= NO_REMAP,					/* GPIOï¿½ï¿½Ó³ï¿½ï¿½ */
 	
-	.tGPIO[1].tGPIOInit.Pin 			= GPIO_PIN_2,				/* GPIOÒý½Å */
+	.tGPIO[1].tGPIOInit.Pin 			= GPIO_PIN_2,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	.tGPIO[1].tGPIOInit.Mode 			= GPIO_MODE_INPUT,			/* GPIOÄ£Ê½ */
-	.tGPIO[1].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-	.tGPIO[1].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-	.tGPIO[1].tGPIOPort 				= GPIOD,					/* GPIO·Ö×é */
-	.tGPIO[1].ucAFMode					= NO_REMAP,					/* GPIOÖØÓ³Éä */
+	.tGPIO[1].tGPIOInit.Pull 			= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+	.tGPIO[1].tGPIOInit.Speed 			= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+	.tGPIO[1].tGPIOPort 				= GPIOD,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
+	.tGPIO[1].ucAFMode					= NO_REMAP,					/* GPIOï¿½ï¿½Ó³ï¿½ï¿½ */
 
 };
 
@@ -406,232 +406,232 @@ tagGPIO_T tCH438Q_GPIO[] =
 	
 	[0]=
 	{ 
-		.tGPIOInit.Pin			= GPIO_PIN_0,			/* GPIOÒý½Å */
+		.tGPIOInit.Pin			= GPIO_PIN_0,			/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,											/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,													/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,											/* GPIOËÙ¶È */	
-		.tGPIOPort 				= GPIOE,														/* GPIO·Ö×é */
+		.tGPIOInit.Pull 		= GPIO_NOPULL,													/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,											/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 				= GPIOE,														/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[1]=
 	{ 
-		.tGPIOInit.Pin			= GPIO_PIN_1,			/* GPIOÒý½Å */
+		.tGPIOInit.Pin			= GPIO_PIN_1,			/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,											/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,													/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,											/* GPIOËÙ¶È */	
-		.tGPIOPort 				= GPIOE,														/* GPIO·Ö×é */
+		.tGPIOInit.Pull 		= GPIO_NOPULL,													/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,											/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 				= GPIOE,														/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[2]=
 	{ 
-		.tGPIOInit.Pin			= GPIO_PIN_2,			/* GPIOÒý½Å */
+		.tGPIOInit.Pin			= GPIO_PIN_2,			/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,											/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,													/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,											/* GPIOËÙ¶È */	
-		.tGPIOPort 				= GPIOE,														/* GPIO·Ö×é */
+		.tGPIOInit.Pull 		= GPIO_NOPULL,													/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,											/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 				= GPIOE,														/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[3]=
 	{ 
-		.tGPIOInit.Pin			= GPIO_PIN_6,			/* GPIOÒý½Å */
+		.tGPIOInit.Pin			= GPIO_PIN_6,			/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,											/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,													/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,											/* GPIOËÙ¶È */	
-		.tGPIOPort 				= GPIOE,														/* GPIO·Ö×é */
+		.tGPIOInit.Pull 		= GPIO_NOPULL,													/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,											/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 				= GPIOE,														/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
     [4]=
 	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_0,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 			= GPIO_PIN_0,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 				= GPIOC,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 				= GPIOC,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[5]=
 	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_1,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 			= GPIO_PIN_1,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 				= GPIOC,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 				= GPIOC,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[6]=
 	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_2,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 			= GPIO_PIN_2,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 				= GPIOC,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 				= GPIOC,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[7]=
 	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_3,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 			= GPIO_PIN_3,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 				= GPIOC,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 				= GPIOC,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[8]=
 	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_4,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 			= GPIO_PIN_4,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 				= GPIOC,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 				= GPIOC,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[9]=
 	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_5,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 			= GPIO_PIN_5,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 				= GPIOC,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 				= GPIOC,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[10]=
 	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_6,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 			= GPIO_PIN_6,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 				= GPIOC,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 				= GPIOC,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[11]=
 	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_7,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 			= GPIO_PIN_7,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 				= GPIOC,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 				= GPIOC,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[12]=
 	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_8,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 			= GPIO_PIN_8,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 				= GPIOC,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 				= GPIOC,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[13]=
 	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_13,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 			= GPIO_PIN_13,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 				= GPIOC,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 				= GPIOC,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[14]=
 	{ 
-		.tGPIOInit.Pin 			= GPIO_PIN_14,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 			= GPIO_PIN_14,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 				= GPIOC,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 				= GPIOC,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
     
 };
 
-/* CH438QÍâ²¿ÖÐ¶ÏGPIO */
+/* CH438Qï¿½â²¿ï¿½Ð¶ï¿½GPIO */
 tagGPIO_T tCH438Q_EXIT_GPIO =
 {
 	
-	.tGPIOInit.Pin		= GPIO_PIN_0,				/* GPIOÒý½Å */
+	.tGPIOInit.Pin		= GPIO_PIN_0,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	.tGPIOInit.Mode 	= GPIO_MODE_IT_FALLING,		/* GPIOÄ£Ê½ */
-	.tGPIOInit.Pull 	= GPIO_PULLUP,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-	.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-	.tGPIOPort 			= GPIOB,					/* GPIO·Ö×é */
+	.tGPIOInit.Pull 	= GPIO_PULLUP,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+	.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+	.tGPIOPort 			= GPIOB,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	
 	.ucPriority = 0,
 	.ucSubPriority = 2,
 	
 };
 
-/* ADÐ¾Æ¬ÅäÖÃ */
+/* ADÐ¾Æ¬ï¿½ï¿½ï¿½ï¿½ */
  tagAD24BIT_T tAD24BIT =
  {
 
  	.tSPI.tSPIHandle.Instance 				= SPI2,
 	
-	.tSPI.tGPIO[0].tGPIOInit.Pin 		= GPIO_PIN_13,				/* GPIOÒý½Å ,SPI2_SCK*/
+	.tSPI.tGPIO[0].tGPIOInit.Pin 		= GPIO_PIN_13,				/* GPIOï¿½ï¿½ï¿½ï¿½ ,SPI2_SCK*/
  	.tSPI.tGPIO[0].tGPIOInit.Mode 		= GPIO_MODE_AF_PP,			/* GPIOÄ£Ê½ */
- 	.tSPI.tGPIO[0].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
- 	.tSPI.tGPIO[0].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
- 	.tSPI.tGPIO[0].tGPIOPort 			= GPIOB,					/* GPIO·Ö×é */
+ 	.tSPI.tGPIO[0].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+ 	.tSPI.tGPIO[0].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+ 	.tSPI.tGPIO[0].tGPIOPort 			= GPIOB,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	
- 	.tSPI.tGPIO[1].tGPIOInit.Pin 		= GPIO_PIN_15,				/* GPIOÒý½Å ,SPI2_MOSI*/
+ 	.tSPI.tGPIO[1].tGPIOInit.Pin 		= GPIO_PIN_15,				/* GPIOï¿½ï¿½ï¿½ï¿½ ,SPI2_MOSI*/
  	.tSPI.tGPIO[1].tGPIOInit.Mode 		= GPIO_MODE_AF_PP,			/* GPIOÄ£Ê½ */
- 	.tSPI.tGPIO[1].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
- 	.tSPI.tGPIO[1].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
- 	.tSPI.tGPIO[1].tGPIOPort 			= GPIOB,					/* GPIO·Ö×é */
+ 	.tSPI.tGPIO[1].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+ 	.tSPI.tGPIO[1].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+ 	.tSPI.tGPIO[1].tGPIOPort 			= GPIOB,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	
- 	.tSPI.tGPIO[2].tGPIOInit.Pin 		= GPIO_PIN_14,				/* GPIOÒý½Å ,SPI2_MISO*/
+ 	.tSPI.tGPIO[2].tGPIOInit.Pin 		= GPIO_PIN_14,				/* GPIOï¿½ï¿½ï¿½ï¿½ ,SPI2_MISO*/
  	.tSPI.tGPIO[2].tGPIOInit.Mode 		= GPIO_MODE_AF_PP,			/* GPIOÄ£Ê½ */
- 	.tSPI.tGPIO[2].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
- 	.tSPI.tGPIO[2].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
- 	.tSPI.tGPIO[2].tGPIOPort 			= GPIOB,					/* GPIO·Ö×é */
+ 	.tSPI.tGPIO[2].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+ 	.tSPI.tGPIO[2].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+ 	.tSPI.tGPIO[2].tGPIOPort 			= GPIOB,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	
-	.tSPI.tGPIO[3].tGPIOInit.Pin 		= GPIO_PIN_12,				/* GPIOÒý½Å ,CS*/
+	.tSPI.tGPIO[3].tGPIOInit.Pin 		= GPIO_PIN_12,				/* GPIOï¿½ï¿½ï¿½ï¿½ ,CS*/
  	.tSPI.tGPIO[3].tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
- 	.tSPI.tGPIO[3].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
- 	.tSPI.tGPIO[3].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
- 	.tSPI.tGPIO[3].tGPIOPort 			= GPIOB,					/* GPIO·Ö×é */
+ 	.tSPI.tGPIO[3].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+ 	.tSPI.tGPIO[3].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+ 	.tSPI.tGPIO[3].tGPIOPort 			= GPIOB,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	
- 	.port_num = 6,  //²âÁ¿µÄ¶Ë¿ÚÊý£¬¸úÏÂÃæÅäÖÃµÄ¶Ë¿Ú¶ÔÓ¦ÆðÀ´
- 	.port[0].enable = PORT_ENABLE,//¶Ë¿ÚÊ¹ÄÜ
- 	.port[0].num = VIN0,  //²É¼¯ÐÅºÅµÄ,µ¥¶ËÄ£Ê½£¬ÐÅºÅµÄµØ½ÓVincom¶Ë¿Ú;²î·ÖÄ£Ê½£¬ÐÅºÅ½Ó¶ÔÓ¦¶Ë¿Ú
- 	.port[0].gain = 1.001068,  //Ð£Õý²ÎÊýÔöÒæY =  gain*X+offset,Èô²»ÐèÒªÐ£ÕýÔòÄ¬ÈÏgain = 1.0,offset = 0.0;
- 	.port[0].offset= 0.0,//Ð£Õý²ÎÊýÆ«ÒÆÁ¿Y =  gain*X+offset,Èô²»ÐèÒªÐ£ÕýÔòÄ¬ÈÏgain = 1.0,offset = 0.0;
+ 	.port_num = 6,  //ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ¶Ë¿Ú¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
+ 	.port[0].enable = PORT_ENABLE,//ï¿½Ë¿ï¿½Ê¹ï¿½ï¿½
+ 	.port[0].num = VIN0,  //ï¿½É¼ï¿½ï¿½ÅºÅµï¿½,ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ÅºÅµÄµØ½ï¿½Vincomï¿½Ë¿ï¿½;ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ÅºÅ½Ó¶ï¿½Ó¦ï¿½Ë¿ï¿½
+ 	.port[0].gain = 1.001068,  //Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Y =  gain*X+offset,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ£ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½gain = 1.0,offset = 0.0;
+ 	.port[0].offset= 0.0,//Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½Y =  gain*X+offset,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ£ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½gain = 1.0,offset = 0.0;
 
  	.port[1].enable = PORT_ENABLE,
- 	.port[1].num = VIN1,	//²É¼¯ÐÅºÅµÄ,µ¥¶ËÄ£Ê½£¬ÐÅºÅµÄµØ½ÓVincom¶Ë¿Ú;²î·ÖÄ£Ê½£¬ÐÅºÅ½Ó¶ÔÓ¦¶Ë¿Ú
- 	.port[1].gain = 1.00105,  //Ð£Õý²ÎÊýÔöÒæY =  gain*X+offset,Èô²»ÐèÒªÐ£ÕýÔòÄ¬ÈÏgain = 1.0,offset = 0.0;
- 	.port[1].offset= 0.0006,//Ð£Õý²ÎÊýÆ«ÒÆÁ¿Y =  gain*X+offset,Èô²»ÐèÒªÐ£ÕýÔòÄ¬ÈÏgain = 1.0,offset = 0.0;
+ 	.port[1].num = VIN1,	//ï¿½É¼ï¿½ï¿½ÅºÅµï¿½,ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ÅºÅµÄµØ½ï¿½Vincomï¿½Ë¿ï¿½;ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ÅºÅ½Ó¶ï¿½Ó¦ï¿½Ë¿ï¿½
+ 	.port[1].gain = 1.00105,  //Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Y =  gain*X+offset,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ£ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½gain = 1.0,offset = 0.0;
+ 	.port[1].offset= 0.0006,//Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½Y =  gain*X+offset,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ£ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½gain = 1.0,offset = 0.0;
 	
  	.port[2].enable = PORT_ENABLE,
- 	.port[2].num = VIN2,	//²É¼¯ÐÅºÅµÄ,µ¥¶ËÄ£Ê½£¬ÐÅºÅµÄµØ½ÓVincom¶Ë¿Ú;²î·ÖÄ£Ê½£¬ÐÅºÅ½Ó¶ÔÓ¦¶Ë¿Ú
- 	.port[2].gain = 1.001176,  //Ð£Õý²ÎÊýÔöÒæY =  gain*X+offset,Èô²»ÐèÒªÐ£ÕýÔòÄ¬ÈÏgain = 1.0,offset = 0.0;
- 	.port[2].offset= 0.0004,//Ð£Õý²ÎÊýÆ«ÒÆÁ¿Y =  gain*X+offset,Èô²»ÐèÒªÐ£ÕýÔòÄ¬ÈÏgain = 1.0,offset = 0.0;
+ 	.port[2].num = VIN2,	//ï¿½É¼ï¿½ï¿½ÅºÅµï¿½,ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ÅºÅµÄµØ½ï¿½Vincomï¿½Ë¿ï¿½;ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ÅºÅ½Ó¶ï¿½Ó¦ï¿½Ë¿ï¿½
+ 	.port[2].gain = 1.001176,  //Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Y =  gain*X+offset,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ£ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½gain = 1.0,offset = 0.0;
+ 	.port[2].offset= 0.0004,//Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½Y =  gain*X+offset,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ£ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½gain = 1.0,offset = 0.0;
 
- 	.port[3].enable = PORT_ENABLE,//¶Ë¿ÚÊ¹ÄÜ
- 	.port[3].num = VIN3,  //²É¼¯ÐÅºÅµÄ,µ¥¶ËÄ£Ê½£¬ÐÅºÅµÄµØ½ÓVincom¶Ë¿Ú;²î·ÖÄ£Ê½£¬ÐÅºÅ½Ó¶ÔÓ¦¶Ë¿Ú
- 	.port[3].gain = 1.001068,  //Ð£Õý²ÎÊýÔöÒæY =  gain*X+offset,Èô²»ÐèÒªÐ£ÕýÔòÄ¬ÈÏgain = 1.0,offset = 0.0;
- 	.port[3].offset= 0.0,//Ð£Õý²ÎÊýÆ«ÒÆÁ¿Y =  gain*X+offset,Èô²»ÐèÒªÐ£ÕýÔòÄ¬ÈÏgain = 1.0,offset = 0.0;
+ 	.port[3].enable = PORT_ENABLE,//ï¿½Ë¿ï¿½Ê¹ï¿½ï¿½
+ 	.port[3].num = VIN3,  //ï¿½É¼ï¿½ï¿½ÅºÅµï¿½,ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ÅºÅµÄµØ½ï¿½Vincomï¿½Ë¿ï¿½;ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ÅºÅ½Ó¶ï¿½Ó¦ï¿½Ë¿ï¿½
+ 	.port[3].gain = 1.001068,  //Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Y =  gain*X+offset,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ£ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½gain = 1.0,offset = 0.0;
+ 	.port[3].offset= 0.0,//Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½Y =  gain*X+offset,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ£ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½gain = 1.0,offset = 0.0;
 
  	.port[4].enable = PORT_ENABLE,
- 	.port[4].num = VIN4,	//²É¼¯ÐÅºÅµÄ,µ¥¶ËÄ£Ê½£¬ÐÅºÅµÄµØ½ÓVincom¶Ë¿Ú;²î·ÖÄ£Ê½£¬ÐÅºÅ½Ó¶ÔÓ¦¶Ë¿Ú
- 	.port[4].gain = 1.00105,  //Ð£Õý²ÎÊýÔöÒæY =  gain*X+offset,Èô²»ÐèÒªÐ£ÕýÔòÄ¬ÈÏgain = 1.0,offset = 0.0;
- 	.port[4].offset= 0.0006,//Ð£Õý²ÎÊýÆ«ÒÆÁ¿Y =  gain*X+offset,Èô²»ÐèÒªÐ£ÕýÔòÄ¬ÈÏgain = 1.0,offset = 0.0;
+ 	.port[4].num = VIN4,	//ï¿½É¼ï¿½ï¿½ÅºÅµï¿½,ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ÅºÅµÄµØ½ï¿½Vincomï¿½Ë¿ï¿½;ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ÅºÅ½Ó¶ï¿½Ó¦ï¿½Ë¿ï¿½
+ 	.port[4].gain = 1.00105,  //Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Y =  gain*X+offset,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ£ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½gain = 1.0,offset = 0.0;
+ 	.port[4].offset= 0.0006,//Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½Y =  gain*X+offset,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ£ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½gain = 1.0,offset = 0.0;
 	
  	.port[5].enable = PORT_ENABLE,
- 	.port[5].num = VIN5,	//²É¼¯ÐÅºÅµÄ,µ¥¶ËÄ£Ê½£¬ÐÅºÅµÄµØ½ÓVincom¶Ë¿Ú;²î·ÖÄ£Ê½£¬ÐÅºÅ½Ó¶ÔÓ¦¶Ë¿Ú
- 	.port[5].gain = 1.001176,  //Ð£Õý²ÎÊýÔöÒæY =  gain*X+offset,Èô²»ÐèÒªÐ£ÕýÔòÄ¬ÈÏgain = 1.0,offset = 0.0;
- 	.port[5].offset= 0.0004,//Ð£Õý²ÎÊýÆ«ÒÆÁ¿Y =  gain*X+offset,Èô²»ÐèÒªÐ£ÕýÔòÄ¬ÈÏgain = 1.0,offset = 0.0;
+ 	.port[5].num = VIN5,	//ï¿½É¼ï¿½ï¿½ÅºÅµï¿½,ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ÅºÅµÄµØ½ï¿½Vincomï¿½Ë¿ï¿½;ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ÅºÅ½Ó¶ï¿½Ó¦ï¿½Ë¿ï¿½
+ 	.port[5].gain = 1.001176,  //Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Y =  gain*X+offset,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ£ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½gain = 1.0,offset = 0.0;
+ 	.port[5].offset= 0.0004,//Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½Y =  gain*X+offset,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ£ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½gain = 1.0,offset = 0.0;
  
  };
 
-/* ¶¨Ê±Æ÷3ÅäÖÃ */
+/* ï¿½ï¿½Ê±ï¿½ï¿½3ï¿½ï¿½ï¿½ï¿½ */
 tagTIM_T tTimer3 = 
 {
 
-	.tTimerHandle.Instance				=TIM3,						/* Í¨ÓÃ¶¨Ê±Æ÷3 */
-	.tTimerHandle.Init.Prescaler		=7200-1,						 //((1+Prescaler )/72M)*(1+Period )//¶¨Ê±×îÐ¡Ê±¼ä½ÚÅÄ£¬
-	.tTimerHandle.Init.Period			=1000-1,				//100mS²úÉúÒ»´ÎÒç³ö
-	.tTimerHandle.Init.ClockDivision	=TIM_CLOCKDIVISION_DIV1,	/* ²»·ÖÆµ */
-	.tTimerHandle.Init.CounterMode		=TIM_COUNTERMODE_UP,		/* ÏòÉÏ¼ÆÊýÆ÷ */
-	.tTimerHandle.Init.RepetitionCounter = 0, //¼ÆÊýÆ÷Òç³ö¶àÉÙ´Îºó£¬ÖÐ¶ÏÒ»´Î£¬0£º±íÊ¾ÖÐ¶ÏÒ»´Î¼´Òç³ö¡£
-	.tTimerHandle.Init.AutoReloadPreload = TIM_AUTOMATICOUTPUT_ENABLE,//×Ô¶¯×°ÔØ
+	.tTimerHandle.Instance				=TIM3,						/* Í¨ï¿½Ã¶ï¿½Ê±ï¿½ï¿½3 */
+	.tTimerHandle.Init.Prescaler		=7200-1,						 //((1+Prescaler )/72M)*(1+Period )//ï¿½ï¿½Ê±ï¿½ï¿½Ð¡Ê±ï¿½ï¿½ï¿½ï¿½Ä£ï¿½
+	.tTimerHandle.Init.Period			=1000-1,				//100mSï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
+	.tTimerHandle.Init.ClockDivision	=TIM_CLOCKDIVISION_DIV1,	/* ï¿½ï¿½ï¿½ï¿½Æµ */
+	.tTimerHandle.Init.CounterMode		=TIM_COUNTERMODE_UP,		/* ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
+	.tTimerHandle.Init.RepetitionCounter = 0, //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù´Îºï¿½ï¿½Ð¶ï¿½Ò»ï¿½Î£ï¿½0ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ð¶ï¿½Ò»ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	.tTimerHandle.Init.AutoReloadPreload = TIM_AUTOMATICOUTPUT_ENABLE,//ï¿½Ô¶ï¿½×°ï¿½ï¿½
 	.ucPriority = 0,
 	.ucSubPriority = 2,
 
 };
 
-/* ¶¨Ê±Æ÷2ÅäÖÃ */
+/* ï¿½ï¿½Ê±ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ */
 tagTIM_T tTimer2 = 
 {
 
-	.tTimerHandle.Instance				=TIM2,						/* Í¨ÓÃ¶¨Ê±Æ÷2 */
-	.tTimerHandle.Init.Prescaler		=7200-1,						/* ·ÖÆµÏµÊý£¬×î´óÖµ65535 */
-	.tTimerHandle.Init.CounterMode		=TIM_COUNTERMODE_UP,		/* ÏòÉÏ¼ÆÊýÆ÷ */
-	.tTimerHandle.Init.Period			=5000-1,					//0.5S²úÉúÒ»´ÎÒç³ö
-	.tTimerHandle.Init.ClockDivision	=TIM_CLOCKDIVISION_DIV1,	/* Ê±ÖÓ·ÖÆµÒò×Ó */
-	.tTimerHandle.Init.RepetitionCounter = 0, //¼ÆÊýÆ÷Òç³ö¶àÉÙ´Îºó£¬ÖÐ¶ÏÒ»´Î£¬0£º±íÊ¾ÖÐ¶ÏÒ»´Î¼´Òç³ö¡£
-	.tTimerHandle.Init.AutoReloadPreload = TIM_AUTOMATICOUTPUT_ENABLE,//×Ô¶¯×°ÔØ
+	.tTimerHandle.Instance				=TIM2,						/* Í¨ï¿½Ã¶ï¿½Ê±ï¿½ï¿½2 */
+	.tTimerHandle.Init.Prescaler		=7200-1,						/* ï¿½ï¿½ÆµÏµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ65535 */
+	.tTimerHandle.Init.CounterMode		=TIM_COUNTERMODE_UP,		/* ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
+	.tTimerHandle.Init.Period			=5000-1,					//0.5Sï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
+	.tTimerHandle.Init.ClockDivision	=TIM_CLOCKDIVISION_DIV1,	/* Ê±ï¿½Ó·ï¿½Æµï¿½ï¿½ï¿½ï¿½ */
+	.tTimerHandle.Init.RepetitionCounter = 0, //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù´Îºï¿½ï¿½Ð¶ï¿½Ò»ï¿½Î£ï¿½0ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ð¶ï¿½Ò»ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	.tTimerHandle.Init.AutoReloadPreload = TIM_AUTOMATICOUTPUT_ENABLE,//ï¿½Ô¶ï¿½×°ï¿½ï¿½
 	.ucPriority = 0,
 	.ucSubPriority = 2,
 
@@ -642,55 +642,55 @@ tagGPIO_T tRS485_GPIO[] =
 
 	 [0]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_8,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_8,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOB,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOB,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
     [1]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_12,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_12,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOE,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOE,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[2]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_10,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_10,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOE,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOE,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[3]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_11,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_11,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOE,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOE,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[4]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_2,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_2,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOE,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOE,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
     
 };
 
-tagGPIO_T tRS485TEST_GPIO = //²âÊÔ°å485
+tagGPIO_T tRS485TEST_GPIO = //ï¿½ï¿½ï¿½Ô°ï¿½485
 {
 	 
-	.tGPIOInit.Pin 		= GPIO_PIN_8,				/* GPIOÒý½Å */
+	.tGPIOInit.Pin 		= GPIO_PIN_8,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_PP,		/* GPIOÄ£Ê½ */
-	.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-	.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-	.tGPIOPort 			= GPIOC,					/* GPIO·Ö×é */
+	.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+	.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+	.tGPIOPort 			= GPIOC,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
     
 };
 
@@ -700,99 +700,99 @@ tagGPIO_T tRelay_GPIO[] =
 	
 	[0]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_7,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_7,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_OD,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOB,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOB,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
     [1]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_6,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_6,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_OD,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOB,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOB,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[2]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_7,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_7,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_OD,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOD,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOD,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[3]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_6,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_6,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_OD,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOD,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOD,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
     [4]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_5,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_5,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_OD,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOD,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOD,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[5]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_4,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_4,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_OD,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOD,				/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOD,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[6]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_3,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_3,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_OD,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOD,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOD,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
     [7]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_1,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_1,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_OD,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOD,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOD,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[8]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_0,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_0,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_OD,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOD,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOD,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[9]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_7,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_7,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_OD,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOE,						/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOE,						/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
     [10]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_8,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_8,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_OD,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOE,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOE,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
 	[11]=
 	{ 
-		.tGPIOInit.Pin 		= GPIO_PIN_9,				/* GPIOÒý½Å */
+		.tGPIOInit.Pin 		= GPIO_PIN_9,				/* GPIOï¿½ï¿½ï¿½ï¿½ */
 		.tGPIOInit.Mode 	= GPIO_MODE_OUTPUT_OD,		/* GPIOÄ£Ê½ */
-		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOÉÏÏÂÀ­ÉèÖÃ£¬ÊÇ·ñÐèÒªÉÏÏÂÀ­¿´Ó²¼þ */
-		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOËÙ¶È */	
-		.tGPIOPort 			= GPIOE,					/* GPIO·Ö×é */
+		.tGPIOInit.Pull 	= GPIO_NOPULL,				/* GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ */
+		.tGPIOInit.Speed 	= GPIO_SPEED_FREQ_HIGH,		/* GPIOï¿½Ù¶ï¿½ */	
+		.tGPIOPort 			= GPIOE,					/* GPIOï¿½ï¿½ï¿½ï¿½ */
 	},
     
 };

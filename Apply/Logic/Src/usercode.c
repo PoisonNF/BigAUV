@@ -118,7 +118,7 @@ void Relay_Control() //继电器控制函数
 	DVL_OFF;
 	Altimeter_OFF;
 	UHF_ON;
-	Front_Magnetometer_ON;
+	Front_Magnetometer_OFF;
 	Beiyong12V_OFF;
 	
 //	ShengTong_ON;
