@@ -110,7 +110,7 @@ void Relay_Control() //继电器控制函数
 {
 	ShengTong_OFF;
 	Manipulator_OFF;
-	CeSao_ON;
+	CeSao_OFF;
 	BDGPS_ON;
 	Camera_OFF;
 	Inertial_navigation_ON;

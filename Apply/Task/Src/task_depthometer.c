@@ -2,6 +2,8 @@
 
 #include "config.h"
 
+#define Depthometer_Model 1 //深度计型号，0为500米量程，1为5米量程
+
 #define Depthometer_RS485_Recive 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET)//Drv_GPIO_Reset(&RS485_GPIO[0]); //深度计485接收模式
 #define Depthometer_RS485_Send 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET)//Drv_GPIO_Set(&RS485_GPIO[0]); //深度计485发送模式
 
@@ -16,7 +18,10 @@ int Depthometer_Analysis(float* _Depthometer_Data)//深度计数据获取函数
 	{
 		if(Depthometer_buf[0] == 0x01 && Depthometer_buf[1] == 0x03 && Depthometer_buf[2] == 0x02)
 		{
-			*_Depthometer_Data = (Depthometer_buf[3]*256 + Depthometer_buf[4] - 10)*0.1;
+			if(Depthometer_Model)
+				*_Depthometer_Data = (Depthometer_buf[3]*256 + Depthometer_buf[4])*0.01*0.1; //量程5米深度计,单位：米
+			else
+				*_Depthometer_Data = (Depthometer_buf[3]*256 + Depthometer_buf[4] - 10)*0.1; //量程500米深度计，单位：米
 		}
 		Depthometer_flag = RESET;
 	}

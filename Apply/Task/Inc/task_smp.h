@@ -5,10 +5,6 @@
 
 #define ShengTong_ON 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET) //声通机电源开启
 #define ShengTong_OFF 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET) //声通机电源关闭
-//#define Manipulator_ON	 HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET) //机械手电源开启
-//#define Manipulator_OFF 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET) //机械手电源关闭
-//#define Front_Magnetometer_ON	 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_7, GPIO_PIN_SET) //前置磁力仪电源开启
-//#define Front_Magnetometer_OFF 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_7, GPIO_PIN_RESET) //前置磁力仪电源关闭
 #define Front_Magnetometer_ON	 HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET) //前置磁力仪电源开启
 #define Front_Magnetometer_OFF 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET) //前置磁力仪电源关闭
 #define Manipulator_ON	 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_7, GPIO_PIN_SET) //机械手电源开启
