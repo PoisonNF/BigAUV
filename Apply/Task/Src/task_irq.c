@@ -2,10 +2,10 @@
 
 #include "config.h"
 
-#include "usercode.h"		/* usercodeÍ·ÎÄ¼ş */
+#include "usercode.h"		/* usercodeå¤´æ–‡ä»¶ */
 
 /**
- * @brief Íâ²¿ÖĞ¶Ï5-9ÈÎÎñº¯Êı
+ * @brief å¤–éƒ¨ä¸­æ–­5-9ä»»åŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
@@ -15,19 +15,19 @@ __weak void Task_EXTI9_5_IRQHandler(void)
 }
 
 /**
- * @brief Íâ²¿ÖĞ¶Ï5-9·şÎñº¯Êı
+ * @brief å¤–éƒ¨ä¸­æ–­5-9æœåŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
 void EXTI9_5_IRQHandler(void)
 {
-//	Drv_GPIO_EXTI_IRQHandler(&DS3231_ALARM_IRQ);	/* ±ØĞë¼Ó£¬²ÎÊıĞèĞŞ¸Ä */
+//	Drv_GPIO_EXTI_IRQHandler(&DS3231_ALARM_IRQ);	/* å¿…é¡»åŠ ï¼Œå‚æ•°éœ€ä¿®æ”¹ */
 	
 	Task_EXTI9_5_IRQHandler();
 }
 
 /**
- * @brief Íâ²¿ÖĞ¶Ï10-15ÈÎÎñº¯Êı
+ * @brief å¤–éƒ¨ä¸­æ–­10-15ä»»åŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
@@ -37,25 +37,25 @@ __weak void Task_EXTI15_10_IRQHandler(void)
 }
 
 /**
- * @brief Íâ²¿ÖĞ¶Ï10-15·şÎñº¯Êı
+ * @brief å¤–éƒ¨ä¸­æ–­10-15æœåŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
 void EXTI15_10_IRQHandler(void)
 {
-//	Drv_GPIO_EXTI_IRQHandler(&tPCUart.tGPIO[1]);	/* ±ØĞë¼Ó£¬²ÎÊıĞèĞŞ¸Ä */
+//	Drv_GPIO_EXTI_IRQHandler(&tPCUart.tGPIO[1]);	/* å¿…é¡»åŠ ï¼Œå‚æ•°éœ€ä¿®æ”¹ */
 	
 	Task_EXTI15_10_IRQHandler();
 }
 
-//CH438Q´¥·¢Íâ²¿ÖĞ¶Ïº¯Êı
+//CH438Qè§¦å‘å¤–éƒ¨ä¸­æ–­å‡½æ•°
 void EXTI0_IRQHandler(void)
 {
 	Drv_GPIO_EXTI_IRQHandler(&tCH438Q_EXIT_GPIO);
 }
 
 /**
- * @brief ´®¿Ú1ÖĞ¶ÏÈÎÎñº¯Êı
+ * @brief ä¸²å£1ä¸­æ–­ä»»åŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
@@ -65,20 +65,20 @@ __weak void Task_USART1_IRQHandler(void)
 }
 
 /**
- * @brief ´®¿Ú1ÖĞ¶Ï·şÎñº¯Êı
+ * @brief ä¸²å£1ä¸­æ–­æœåŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
 void USART1_IRQHandler(void)
 {
-	/* Ê¾Àı */
-//	Drv_Uart_IRQHandler(&tPCUart);		/* ±ØĞè²¿·Ö */
+	/* ç¤ºä¾‹ */
+//	Drv_Uart_IRQHandler(&tPCUart);		/* å¿…éœ€éƒ¨åˆ† */
 	Drv_Uart_DMA_RxHandler(&tSMP_Uart);
 	//Task_USART1_IRQHandler();
 }
 
 /**
- * @brief ´®¿Ú2ÖĞ¶ÏÈÎÎñº¯Êı
+ * @brief ä¸²å£2ä¸­æ–­ä»»åŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
@@ -88,25 +88,35 @@ __weak void Task_USART2_IRQHandler(void)
 }
 
 /**
- * @brief ´®¿Ú1ÖĞ¶Ï·şÎñº¯Êı
+ * @brief ä¸²å£1ä¸­æ–­æœåŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
 void USART2_IRQHandler(void)
 {
-		/* Ê¾Àı */
-//	Drv_Uart_IRQHandler(&tJY901B.tUART);		/* ±ØĞè²¿·Ö */
+		/* ç¤ºä¾‹ */
+//	Drv_Uart_IRQHandler(&tJY901B.tUART);		/* å¿…éœ€éƒ¨åˆ† */
 	Drv_Uart_DMA_RxHandler(&tTKC_Uart);
-//	
 //	Task_USART2_IRQHandler();
 }
 
 void DMA1_Channel5_IRQHandler(void)
 {
 //	Drv_Uart_DMA_TxHandler(&tTKC_Uart);
+	Drv_Uart_DMA_RxHandler(&tSMP_Uart);
 }
 
 void DMA1_Channel6_IRQHandler(void)
+{
+	
+}
+
+void DMA1_Channel3_IRQHandler(void)
+{
+	
+}
+
+void DMA2_Channel3_IRQHandler(void)
 {
 	
 }
@@ -116,52 +126,52 @@ void DMA1_Channel7_IRQHandler(void)
 	Drv_Uart_DMA_TxHandler(&tTKC_Uart);
 }
 /**
- * @brief ´®¿Ú3ÖĞ¶Ï·şÎñº¯Êı
+ * @brief ä¸²å£3ä¸­æ–­æœåŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
 void USART3_IRQHandler(void)
 {
-	// Drv_Uart_IRQHandler(&tManipulator_Uart);		/* ±ØĞè²¿·Ö */
+	// Drv_Uart_IRQHandler(&tManipulator_Uart);		/* å¿…éœ€éƒ¨åˆ† */
 	Drv_Uart_DMA_RxHandler(&tManipulator_Uart);
 }
 
 /**
- * @brief ´®¿Ú4ÖĞ¶Ï·şÎñº¯Êı
+ * @brief ä¸²å£4ä¸­æ–­æœåŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
 void UART4_IRQHandler(void)
 {
-	// Drv_Uart_IRQHandler(&tDepthometer_Uart);		/* ±ØĞè²¿·Ö */
-	Drv_Uart_DMA_RxHandler(&tDepthometer_Uart);	
+	// Drv_Uart_IRQHandler(&tDepthometer_Uart);		/* å¿…éœ€éƒ¨åˆ† */
+	Drv_Uart_DMA_RxHandler(&tDepthometer_Uart);  /* é‡æ–°å¯åŠ¨DMAæ¥æ”¶ */
 }
 
 /**
- * @brief ´®¿Ú5ÖĞ¶Ï·şÎñº¯Êı
+ * @brief ä¸²å£5ä¸­æ–­æœåŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
 void UART5_IRQHandler(void)
 {
-	// Drv_Uart_IRQHandler(&tStandby_Uart);		/* ±ØĞè²¿·Ö */
+	// Drv_Uart_IRQHandler(&tStandby_Uart);		/* å¿…éœ€éƒ¨åˆ† */
 }
 
-extern char Timeflag_200MS; //0.2ÃëÊ±¼ä±êÖ¾Î»
-extern char Timeflag_100MS; //0.1ÃëÊ±¼ä±êÖ¾Î»
-extern char Timeflag_Count1; //1S¶¨Ê±Æ÷ÖĞ¶Ï¼ÆÊı±êÖ¾Î»
-extern char Timeflag_Count2; //0.2S¶¨Ê±Æ÷ÖĞ¶Ï¼ÆÊı±êÖ¾Î»
-extern char Timeflag_500MS; //0.5ÃëÊ±¼ä±êÖ¾Î»
-extern char Timeflag_1S; //1ÃëÊ±¼ä±êÖ¾Î»
+extern char Timeflag_200MS; //0.2ç§’æ—¶é—´æ ‡å¿—ä½
+extern char Timeflag_100MS; //0.1ç§’æ—¶é—´æ ‡å¿—ä½
+extern char Timeflag_Count1; //1Så®šæ—¶å™¨ä¸­æ–­è®¡æ•°æ ‡å¿—ä½
+extern char Timeflag_Count2; //0.2Så®šæ—¶å™¨ä¸­æ–­è®¡æ•°æ ‡å¿—ä½
+extern char Timeflag_500MS; //0.5ç§’æ—¶é—´æ ‡å¿—ä½
+extern char Timeflag_1S; //1ç§’æ—¶é—´æ ‡å¿—ä½
 
 /**
- * @brief ¶¨Ê±Æ÷2ÖĞ¶Ï·şÎñº¯Êı
+ * @brief å®šæ—¶å™¨2ä¸­æ–­æœåŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
 void TIM2_IRQHandler(void)
 {
-	/* Ê¾Àı */
+	/* ç¤ºä¾‹ */
 //    Drv_Timer_IRQHandler(&demoTIM);
 	Drv_Timer_IRQHandler(&tTimer2);
 	Timeflag_500MS = SET;
@@ -173,13 +183,13 @@ void TIM2_IRQHandler(void)
 }
 
 /**
- * @brief ¶¨Ê±Æ÷3ÖĞ¶Ï·şÎñº¯Êı
+ * @brief å®šæ—¶å™¨3ä¸­æ–­æœåŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
 void TIM3_IRQHandler(void)
 {
-	/* Ê¾Àı */
+	/* ç¤ºä¾‹ */
 //    Drv_Timer_IRQHandler(&demoTIM);
 	Drv_Timer_IRQHandler(&tTimer3);
 	Timeflag_100MS = SET;
@@ -191,46 +201,46 @@ void TIM3_IRQHandler(void)
 }
 
 /**
- * @brief ¶¨Ê±Æ÷4ÖĞ¶Ï·şÎñº¯Êı
+ * @brief å®šæ—¶å™¨4ä¸­æ–­æœåŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
 void TIM4_IRQHandler(void)
 {
-    /* Ê¾Àı */
+    /* ç¤ºä¾‹ */
 //    Drv_Timer_IRQHandler(&demoTIM);
 }
 
 /**
- * @brief ¶¨Ê±Æ÷5ÖĞ¶Ï·şÎñº¯Êı
+ * @brief å®šæ—¶å™¨5ä¸­æ–­æœåŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
 void TIM5_IRQHandler(void)
 {
-    /* Ê¾Àı */
+    /* ç¤ºä¾‹ */
 //    Drv_Timer_IRQHandler(&demoTIM);
 }
 
 /**
- * @brief ¶¨Ê±Æ÷6ÖĞ¶Ï·şÎñº¯Êı
+ * @brief å®šæ—¶å™¨6ä¸­æ–­æœåŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
 void TIM6_IRQHandler(void)
 {
-    /* Ê¾Àı */
+    /* ç¤ºä¾‹ */
 //    Drv_Timer_IRQHandler(&demoTIM);
 }
 
 /**
- * @brief ¶¨Ê±Æ÷7ÖĞ¶Ï·şÎñº¯Êı
+ * @brief å®šæ—¶å™¨7ä¸­æ–­æœåŠ¡å‡½æ•°
  * @param null
  * @retval Null
 */
 void TIM7_IRQHandler(void)
 {
-	/* Ê¾Àı */
+	/* ç¤ºä¾‹ */
 //    Drv_Timer_IRQHandler(&demoTIM);
 }
 

@@ -2,38 +2,37 @@
 
 #include "config.h"
 
-tagUplinkData_T Uplink_Data;
+tagUplinkData_T Uplink_Data = {0x00};
 
-uint8_t Shumei_buf[100]; //Ê÷İ®ÅÉ´®¿Ú½ÓÊÕ»º³åÇø
-uint8_t Shumei_flag = RESET; //Ê÷İ®ÅÉ´®¿ÚÊı¾İ½ÓÊÕÍê³É±êÖ¾
+uint8_t Shumei_buf[100]; //æ ‘è“æ´¾ä¸²å£æ¥æ”¶ç¼“å†²åŒº
+uint8_t Shumei_flag = RESET; //æ ‘è“æ´¾ä¸²å£æ•°æ®æ¥æ”¶å®Œæˆæ ‡å¿—
 
-uint8_t Shumei_RecvData[40] ; //Ê÷İ®ÅÉÏÂĞĞÊı¾İ½ÓÊÕ Êı¾İ33×Ö½Ú
-uint8_t Shumei_SendData[100] ; //intÀàĞÍÊ÷İ®ÅÉÉÏĞĞÊı¾İ·¢ËÍ Êı¾İ50×Ö½Ú»ò68×Ö½Ú
-uint8_t Shumei_SendCmd[10]; //Ê÷İ®ÅÉÉÏĞĞÃüÁî·¢ËÍ Êı¾İ8×Ö½Ú
+uint8_t Shumei_RecvData[40] ; //æ ‘è“æ´¾ä¸‹è¡Œæ•°æ®æ¥æ”¶ æ•°æ®33å­—èŠ‚
+uint8_t Shumei_SendData[100] ; //intç±»å‹æ ‘è“æ´¾ä¸Šè¡Œæ•°æ®å‘é€ æ•°æ®50å­—èŠ‚æˆ–68å­—èŠ‚
+uint8_t Shumei_SendCmd[10]; //æ ‘è“æ´¾ä¸Šè¡Œå‘½ä»¤å‘é€ æ•°æ®8å­—èŠ‚
 
-uint8_t Shumei_PID_Flag = RESET; //²âÊÔÄ£Ê½PIDµ÷ÊÔ
+uint8_t Shumei_PID_Flag = RESET; //æµ‹è¯•æ¨¡å¼PIDè°ƒè¯•
 
-void ShumeiCmd_Send(void) //ÉÏĞĞÃüÁî·¢ËÍº¯Êı£¬¼´ÏòÊ÷İ®ÅÉÊı¾İÓ¦´ğ
+void ShumeiCmd_Send(void) //ä¸Šè¡Œå‘½ä»¤å‘é€å‡½æ•°ï¼Œå³å‘æ ‘è“æ´¾æ•°æ®åº”ç­”
 {
-//	memcpy(Shumei_SendCmd, (uint8_t *)"@ACK_", 5);
-	memcpy(Shumei_SendCmd, (uint8_t *)"@APP_", 5);
+	memcpy(Shumei_SendCmd, (uint8_t *)"@ACK_", 5);
 	memcpy(&Shumei_SendCmd[5], &Shumei_buf[1], 2);
 	Shumei_SendCmd[7] = '$';
 	Drv_Uart_Transmit(&tSMP_Uart, (uint8_t *)Shumei_SendCmd, 8); 
 }
 
-void ShumeiData_Send(void) //ÉÏĞĞÊı¾İ·¢ËÍº¯Êı£¬¼´ÏòÊ÷İ®ÅÉÊı¾İ¶¨Ê±·¢ËÍ 0.2Ãë·¢ËÍÒ»´Îµ½Ê÷İ®ÅÉ
+void ShumeiData_Send(void) //ä¸Šè¡Œæ•°æ®å‘é€å‡½æ•°ï¼Œå³å‘æ ‘è“æ´¾æ•°æ®å®šæ—¶å‘é€ 0.2ç§’å‘é€ä¸€æ¬¡åˆ°æ ‘è“æ´¾
 {
 	memcpy(&Shumei_SendData[0], (uint8_t *)"@DUP", 4);
 	
-	Shumei_SendData[4] = (uint8_t)(Uplink_Data.Depthometer_Data*100) % 256; //Éî¶È¼ÆÊı¾İ
-	Shumei_SendData[5] = Uplink_Data.Depthometer_Data*10 / 256;
-	Shumei_SendData[6] = (uint8_t)(Uplink_Data.Altimeter_Data*100) % 256; //¸ß¶È¼ÆÊı¾İ
+	Shumei_SendData[4] = (uint8_t)(Uplink_Data.Depthometer_Data*100) % 256; //æ·±åº¦è®¡æ•°æ®
+	Shumei_SendData[5] = Uplink_Data.Depthometer_Data*100 / 256;
+	Shumei_SendData[6] = (uint8_t)(Uplink_Data.Altimeter_Data*100) % 256; //é«˜åº¦è®¡æ•°æ®
 	Shumei_SendData[7] = Uplink_Data.Altimeter_Data*100 / 256;	
-	Shumei_SendData[8] = 0x31;
-	Shumei_SendData[9] = 0x31;
-	Shumei_SendData[10] = 0x31;
-	Shumei_SendData[11] = 0x31;
+	Shumei_SendData[8] = 0x00;
+	Shumei_SendData[9] = 0x00;
+	Shumei_SendData[10] = 0x00;
+	Shumei_SendData[11] = 0x00;
 
 	memcpy(&Shumei_SendData[12], &Uplink_Data.Magnetometer_L.X.byte, 4);
 	memcpy(&Shumei_SendData[16], &Uplink_Data.Magnetometer_L.Y.byte, 4);
@@ -42,142 +41,130 @@ void ShumeiData_Send(void) //ÉÏĞĞÊı¾İ·¢ËÍº¯Êı£¬¼´ÏòÊ÷İ®ÅÉÊı¾İ¶¨Ê±·¢ËÍ 0.2Ãë·¢ËÍÒ
 	memcpy(&Shumei_SendData[28], &Uplink_Data.Magnetometer_R.Y.byte, 4);
 	memcpy(&Shumei_SendData[32], &Uplink_Data.Magnetometer_R.Z.byte, 4);
 
-	Shumei_SendData[36] = 0x31;
-	Shumei_SendData[37] = 0x31;
-	Shumei_SendData[38] = 0x31;
-	Shumei_SendData[39] = 0x31;
-	Shumei_SendData[40] = Uplink_Data.Motor_Status[0]; //9ºÅÍÆ½øÆ÷×´Ì¬
-	Shumei_SendData[41] = Uplink_Data.Motor_Status[1]; //1-8ºÅÍÆ½øÆ÷×´Ì¬'
-	Shumei_SendData[42] = 0x31;
-	Shumei_SendData[43] = 0x31;
-	Shumei_SendData[44] = 0x31;
-	Shumei_SendData[45] = 0x31;
-	Shumei_SendData[46] = Uplink_Data.Manipulator_WorkState; //»úĞµÊÖ¹¤×÷×´Ì¬
-	Shumei_SendData[47] = Uplink_Data.Manipulator_TaskType; //»úĞµÊÖÈÎÎñÀàĞÍ
-	Shumei_SendData[48] = Uplink_Data.Manipulator_ErrorState; //»úĞµÊÖ´íÎó×´Ì¬
+	Shumei_SendData[36] = 0x00;
+	Shumei_SendData[37] = 0x00;
+	Shumei_SendData[38] = 0x00;
+	Shumei_SendData[39] = 0x00;
+	Shumei_SendData[40] = Uplink_Data.Motor_Status[0]; //9å·æ¨è¿›å™¨çŠ¶æ€
+	Shumei_SendData[41] = Uplink_Data.Motor_Status[1]; //1-8å·æ¨è¿›å™¨çŠ¶æ€'
+	Shumei_SendData[42] = 0x00;
+	Shumei_SendData[43] = 0x00;
+	Shumei_SendData[44] = 0x00;
+	Shumei_SendData[45] = 0x00;
+	Shumei_SendData[46] = Uplink_Data.Manipulator_WorkState; //æœºæ¢°æ‰‹å·¥ä½œçŠ¶æ€
+	Shumei_SendData[47] = Uplink_Data.Manipulator_TaskType; //æœºæ¢°æ‰‹ä»»åŠ¡ç±»å‹
+	Shumei_SendData[48] = Uplink_Data.Manipulator_ErrorState; //æœºæ¢°æ‰‹é”™è¯¯çŠ¶æ€
 //	Shumei_SendData[49] = '$';
 	memcpy(&Shumei_SendData[49], Uplink_Data.Motor_Turning_State, 18);
 	Shumei_SendData[67] = '$';
-//	Shumei_SendData[29] = '$';
-	
-//	uint8_t i = 0;
-//	
-//	memcpy(&Shumei_SendData[0], (uint8_t *)"@DUP", 4);
-//	
-//	for(i = 4; i < 63; i++)
-//	{
-//		Shumei_SendData[i] = 0x31; 
-//	}
-//	Shumei_SendData[63] = '$';
-
 //	if(RESET == Shumei_PID_Flag) 
 //		Drv_Uart_Transmit(&tSMP_Uart, Shumei_SendData, 50);
 //	else  if (SET == Shumei_PID_Flag)
 	Drv_Uart_Transmit(&tSMP_Uart, Shumei_SendData, 68);
 }
 	
-void ShumeiData_Analysis(void) //Ê÷İ®ÅÉÊı¾İ½âÎö
+void ShumeiData_Analysis(void) //æ ‘è“æ´¾æ•°æ®è§£æ
 {
 	if(Shumei_flag == SET)
 	{
 		switch(Shumei_buf[1])
 		{
-			//Ó¦´ğ
-			case 'R': //µçÔ´¿ØÖÆ
+			//åº”ç­”
+			case 'R': //ç”µæºæ§åˆ¶
 				ShumeiCmd_Send();
 				switch(Shumei_buf[2])
 				{
 					case 'S': 
-						switch(Shumei_buf[3]) //¼ÌµçÆ÷±àºÅ
+						switch(Shumei_buf[3]) //ç»§ç”µå™¨ç¼–å·
 						{
 							case 'A': 
-								if(Shumei_buf[4] == '0') //ÉùÍ¨»úµçÔ´¹Ø±Õ
+								if(Shumei_buf[4] == '0') //å£°é€šæœºç”µæºå…³é—­
 									ShengTong_OFF; 
-								else if(Shumei_buf[4] == '1') //ÉùÍ¨»úµçÔ´¿ªÆô
+								else if(Shumei_buf[4] == '1') //å£°é€šæœºç”µæºå¼€å¯
 									ShengTong_ON;
 								break;
 							
 							case 'B': 
-								if(Shumei_buf[4] == '0') //Ç°ÖÃ´ÅÁ¦ÒÇµçÔ´¹Ø±Õ
+								if(Shumei_buf[4] == '0') //å‰ç½®ç£åŠ›ä»ªç”µæºå…³é—­
 									Front_Magnetometer_OFF;
-								else if(Shumei_buf[4] == '1') //Ç°ÖÃ´ÅÁ¦ÒÇµçÔ´¿ªÆô
+								else if(Shumei_buf[4] == '1') //å‰ç½®ç£åŠ›ä»ªç”µæºå¼€å¯
 									Front_Magnetometer_ON;
 								break;
 							
 							case 'C': 
-								if(Shumei_buf[4] == '0') //»úĞµÊÖµçÔ´¹Ø±Õ
+								if(Shumei_buf[4] == '0') //æœºæ¢°æ‰‹ç”µæºå…³é—­
 									Manipulator_OFF;
-								else if(Shumei_buf[4] == '1') //»úĞµÊÖµçÔ´¿ªÆô
+								else if(Shumei_buf[4] == '1') //æœºæ¢°æ‰‹ç”µæºå¼€å¯
 									Manipulator_ON;
 								break;
 							
 							case 'D': 
-								if(Shumei_buf[4] == '0') //²àÉ¨ÉùÄÅµçÔ´¹Ø±Õ
+								if(Shumei_buf[4] == '0') //ä¾§æ‰«å£°å‘ç”µæºå…³é—­
 									CeSao_OFF;
-								else if(Shumei_buf[4] == '1') //²àÉ¨ÉùÄÅµçÔ´¿ªÆô
+								else if(Shumei_buf[4] == '1') //ä¾§æ‰«å£°å‘ç”µæºå¼€å¯
 									CeSao_ON;
 								break;
 							
 							case 'E': 
-								if(Shumei_buf[4] == '0') //Ë«Ä¿ÉãÏñµçÔ´¹Ø±Õ
+								if(Shumei_buf[4] == '0') //åŒç›®æ‘„åƒç”µæºå…³é—­
 									Camera_OFF;
-								else if(Shumei_buf[4] == '1') //Ë«Ä¿ÉãÏñµçÔ´¿ªÆô
+								else if(Shumei_buf[4] == '1') //åŒç›®æ‘„åƒç”µæºå¼€å¯
 									Camera_ON;
 								break;
 								
 							case 'F': 
-								if(Shumei_buf[4] == '0') //BD/GPSµçÔ´¹Ø±Õ
+								if(Shumei_buf[4] == '0') //BD/GPSç”µæºå…³é—­
 									BDGPS_OFF;
-								else if(Shumei_buf[4] == '1') //BD/GPSµçÔ´¿ªÆô
+								else if(Shumei_buf[4] == '1') //BD/GPSç”µæºå¼€å¯
 									BDGPS_ON;
 								break;
 							
 							case 'G': 
-								if(Shumei_buf[4] == '0') //¹âÏË¹ßµ¼µçÔ´¹Ø±Õ
+								if(Shumei_buf[4] == '0') //å…‰çº¤æƒ¯å¯¼ç”µæºå…³é—­
 									Inertial_navigation_OFF;
-								else if(Shumei_buf[4] == '1') //¹âÏË¹ßµ¼µçÔ´¿ªÆô
+								else if(Shumei_buf[4] == '1') //å…‰çº¤æƒ¯å¯¼ç”µæºå¼€å¯
 									Inertial_navigation_ON;
 								break;
 							
 							case 'H': 
-								if(Shumei_buf[4] == '0') //UHFµçÔ´¹Ø±Õ
+								if(Shumei_buf[4] == '0') //UHFç”µæºå…³é—­
 									UHF_OFF;
-								else if(Shumei_buf[4] == '1') //UHFµçÔ´¿ªÆô
+								else if(Shumei_buf[4] == '1') //UHFç”µæºå¼€å¯
 									UHF_ON;
 								break;
 							
 							case 'I': 
-								if(Shumei_buf[4] == '0') //P360µçÔ´¹Ø±Õ
+								if(Shumei_buf[4] == '0') //P360ç”µæºå…³é—­
 									P360_OFF;
-								else if(Shumei_buf[4] == '1') //P360µçÔ´¿ªÆô
+								else if(Shumei_buf[4] == '1') //P360ç”µæºå¼€å¯
 									P360_ON;
 								break;
 							
 							case 'J': 
-								if(Shumei_buf[4] == '0') //DVLµçÔ´¹Ø±Õ
+								if(Shumei_buf[4] == '0') //DVLç”µæºå…³é—­
 									DVL_OFF;
-								else if(Shumei_buf[4] == '1') //DVLµçÔ´¿ªÆô
+								else if(Shumei_buf[4] == '1') //DVLç”µæºå¼€å¯
 									DVL_ON;
 								break;
 								
 							case 'K': 
-								if(Shumei_buf[4] == '0') //¸ß¶È¼ÆµçÔ´¹Ø±Õ
+								if(Shumei_buf[4] == '0') //é«˜åº¦è®¡ç”µæºå…³é—­
 									Altimeter_OFF;
-								else if(Shumei_buf[4] == '1') //¸ß¶È¼ÆµçÔ´¿ªÆô
+								else if(Shumei_buf[4] == '1') //é«˜åº¦è®¡ç”µæºå¼€å¯
 									Altimeter_ON;
 								break;
 							
 							case 'L': 
-								if(Shumei_buf[4] == '0') //±¸ÓÃ12VµçÔ´¹Ø±Õ
+								if(Shumei_buf[4] == '0') //å¤‡ç”¨12Vç”µæºå…³é—­
 									Beiyong12V_OFF;
-								else if(Shumei_buf[4] == '1') //±¸ÓÃ12VµçÔ´¿ªÆô
+								else if(Shumei_buf[4] == '1') //å¤‡ç”¨12Vç”µæºå¼€å¯
 									Beiyong12V_ON;
 								break;
 						}
 						break;
 					
 					case 'A': 
-						if(Shumei_buf[3] == '0') //ËùÓĞÉè±¸Í£Ö¹¹¤×÷
+						if(Shumei_buf[3] == '0') //æ‰€æœ‰è®¾å¤‡åœæ­¢å·¥ä½œ
 						{
 							ShengTong_OFF;
 							Manipulator_OFF;
@@ -192,7 +179,7 @@ void ShumeiData_Analysis(void) //Ê÷İ®ÅÉÊı¾İ½âÎö
 							Front_Magnetometer_OFF;
 							Beiyong12V_OFF;
 						}
-						else if(Shumei_buf[3] == '1') //ËùÓĞÉè±¸¿ªÊ¼¹¤×÷
+						else if(Shumei_buf[3] == '1') //æ‰€æœ‰è®¾å¤‡å¼€å§‹å·¥ä½œ
 						{
 							ShengTong_ON;
 							Manipulator_ON;
@@ -211,81 +198,74 @@ void ShumeiData_Analysis(void) //Ê÷İ®ÅÉÊı¾İ½âÎö
 				}
 			break;
 			
-			case 'J': //»úĞµÊÖ¿ØÖÆ
+			case 'J': //æœºæ¢°æ‰‹æ§åˆ¶
 				ShumeiCmd_Send();
 				Manipulator_flag = SET;
 				Manipulator_Uptask = Shumei_buf[3];
 				break;
 			
 			case 'M': 
-				ShumeiCmd_Send();
 				Drv_Uart_Transmit(&tTKC_Uart, Shumei_buf, 6);
 				switch(Shumei_buf[2])
 				{
-					case 'T': //ÔË¶¯¿ØÖÆ
+					case 'T': //è¿åŠ¨æ§åˆ¶
 						
 						break;
 					
-					case 'P': //Æ½¶¯¿ØÖÆ
+					case 'P': //å¹³åŠ¨æ§åˆ¶
 						
 						break;
 					
-					case 'R': //×ª¶¯¿ØÖÆ
+					case 'R': //è½¬åŠ¨æ§åˆ¶
 						
 						break;
 					
-					case 'A': //±Õ»·¿ØÖÆ
+					case 'A': //é—­ç¯æ§åˆ¶
 						
 						break;
 				}
 			break;
 			
-			case 'G': //ÖØĞÄµ÷½Ú
-				ShumeiCmd_Send();
+			case 'G': //é‡å¿ƒè°ƒèŠ‚
 				Drv_Uart_Transmit(&tTKC_Uart, Shumei_buf, 6);
 				break;
 			
-			case 'B': //¸¡Á¦µ÷½Ú
-				ShumeiCmd_Send();
+			case 'B': //æµ®åŠ›è°ƒèŠ‚
 				Drv_Uart_Transmit(&tTKC_Uart, Shumei_buf, 6);
 				break;
 			
-			case 'E': //Ó¦¼±¿ØÖÆ
-				ShumeiCmd_Send();
+			case 'E': //åº”æ€¥æ§åˆ¶
 				Drv_Uart_Transmit(&tTKC_Uart, Shumei_buf, 6);
 				break;
 			
-			
-			case 'T': //Ê±¼äÍ¬²½
-				ShumeiCmd_Send();
+			case 'T': //æ—¶é—´åŒæ­¥
 				switch(Shumei_buf[2])
 				{
-					case 'S': //Ê±¼äÍ¬²½
+					case 'S': //æ—¶é—´åŒæ­¥
 						Drv_Uart_Transmit(&tTKC_Uart, Shumei_buf, 18);
 						break;
 					
-					case 'P': //PID¿ØÖÆ
+					case 'P': //PIDæ§åˆ¶
 						Drv_Uart_Transmit(&tTKC_Uart, Shumei_buf, 11);
 						Shumei_PID_Flag = SET;
 						break;
 				}
 				break;
 			
-			case 'D': //²ÕÃÅ¿ØÖÆ »ò Ê÷İ®ÅÉÏÂĞĞÊı¾İ
-				ShumeiCmd_Send();
+			case 'D': //èˆ±é—¨æ§åˆ¶ æˆ– æ ‘è“æ´¾ä¸‹è¡Œæ•°æ®
 				switch(Shumei_buf[2])
 				{
-					case 'T': //²ÕÃÅ¿ØÖÆ ²âÊÔÄ£Ê½
+					case 'T': //èˆ±é—¨æ§åˆ¶ æµ‹è¯•æ¨¡å¼
 						Drv_Uart_Transmit(&tTKC_Uart, Shumei_buf, 6);
 						break;
 					
-					case 'A': //²ÕÃÅ¿ØÖÆ ×Ô¶¯Ä£Ê½
+					case 'A': //èˆ±é—¨æ§åˆ¶ è‡ªåŠ¨æ¨¡å¼
 						Drv_Uart_Transmit(&tTKC_Uart, Shumei_buf, 6);
 						break;
 				}
 				break;
 				
-			case 'W': //Ê÷İ®ÅÉÏÂĞĞÊı¾İ
+			case 'W': //æ ‘è“æ´¾ä¸‹è¡Œæ•°æ®
 				memcpy(Shumei_RecvData, Shumei_buf, 40);
 				break;
 			

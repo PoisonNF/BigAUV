@@ -47,6 +47,17 @@ void UserLogic_Code(void)
 {
 	Uplink_Data.Altimeter_Data = 98.6;
 	Uplink_Data.Depthometer_Data = 252.3;
+	Uplink_Data.Manipulator_ErrorState = '0';
+	Uplink_Data.Manipulator_TaskType = '0';
+	Uplink_Data.Manipulator_WorkState = '0';
+	Uplink_Data.Highvoltage_Data[0] = '0';
+	Uplink_Data.Highvoltage_Data[0] = '0';
+	Uplink_Data.Lowvoltage_Data[0] = '0';
+	Uplink_Data.Lowvoltage_Data[0] = '0';
+	
+	for(int i = 0; i < 18; i++){
+		Uplink_Data.Motor_Turning_State[i] = 0x00 ;
+	}
 	
 	Relay_Control();
 	while(1)
@@ -87,13 +98,13 @@ void UserLogic_Code(void)
 		{
 			TuikongData_Send();
 			Timeflag_500MS = RESET;
+			Depthometer_Send();
 		}
 		if(Timeflag_1S)
 		{
 			Timeflag_1S = RESET;
 			Timeflag_Count1 = RESET;
 			Highvoltage_Send();
-			Depthometer_Send();
 			Lowvoltage_Send();
 			Manipulator_SendDate();
 		}
@@ -116,7 +127,7 @@ void Relay_Control() //继电器控制函数
 	Inertial_navigation_ON;
 	P360_OFF;
 	DVL_OFF;
-	Altimeter_OFF;
+	Altimeter_ON;
 	UHF_ON;
 	Front_Magnetometer_OFF;
 	Beiyong12V_OFF;

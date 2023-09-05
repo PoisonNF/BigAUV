@@ -9,6 +9,7 @@ uint8_t Manipulator_flag = RESET; //机械手工作标志位
 uint8_t Manipulator_Recvflag = RESET; //机械手串口数据接收完成标志
 uint8_t Manipulator_buf[20]; //机械手串口接收缓冲区
 uint8_t Manipulator_Uptask = 100; //上行命令机械手任务类型
+uint8_t Manipulator_HistoryUptask = 100; //上行命令历史机械手任务类型，用于任务重启
 
 enum{
 	Notask_State = 'A', //无任务
@@ -40,80 +41,118 @@ void Manipulator_SendDate()//机械手指令发送函数
 
 void Manipulator_Analysis(void)//机械手数据分析函数
 {
-	if(Manipulator_Recvflag == SET)
+	if((Manipulator_Recvflag == SET) && (Manipulator_flag == SET))
 	{
-		switch(Manipulator_buf[3])
+		switch(Manipulator_Uptask)
 		{
-			case Notask:
-				if(Manipulator_Uptask == 'A' || Manipulator_Uptask == 'B' )
+			case 'A':
+			case 'B':
+				switch(Manipulator_buf[3])
 				{
-					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"@DA", 3);
-					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"O0", 2); 
-					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"$", 1);	
-				}
-				if(Hatchdoor_flag)
-				{
-					Manipulator_SendCmd[2] = 'D'; //舱门已开（可以作业/收回手）
-					Manipulator_SendDate();
+					case Notask:
+						if(Manipulator_Uptask == 'A' || Manipulator_Uptask == 'B' )
+						{
+							Manipulator_HistoryUptask == Manipulator_Uptask;
+							Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"@DA", 3); 
+							Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"O0", 2); 
+							Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"$", 1);	
+						}
+						if(Hatchdoor_flag)
+						{
+							Manipulator_SendCmd[2] = 'D'; //舱门已开（可以作业/收回手）
+							Manipulator_SendDate();
+						}
+						break;
+					case Extend:
+						if(Manipulator_Uptask == 'A' && Manipulator_buf[2] == Accomplish_State)
+						{
+							Manipulator_SendCmd[2] = 'A';
+							Manipulator_SendDate();
+						}
+						else if(Manipulator_Uptask == 'B' && Manipulator_buf[2] == Accomplish_State)
+						{
+							Manipulator_SendCmd[2] = 'B';
+							Manipulator_SendDate();
+						}
+						break;
+					case Release:
+						if(Manipulator_buf[2] == Accomplish_State)
+						{
+							Manipulator_SendCmd[2] = 'C';
+							Manipulator_SendDate();
+						}
+						break;
+					case Grab:
+						if(Manipulator_buf[2] == Accomplish_State)
+						{
+							Manipulator_SendCmd[2] = 'C';
+							Manipulator_SendDate();
+						}
+						break;
+					case Reset:
+						if(Manipulator_buf[2] == Accomplish_State)
+						{
+							Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"@DA", 3);
+							Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"C0", 2); 
+							Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"$", 1);	
+						}
+						if(!Hatchdoor_flag)
+						{
+							Manipulator_SendCmd[2] = 'E';
+							Manipulator_SendDate();
+							Manipulator_Uptask =100;
+							Manipulator_HistoryUptask = 100;
+							Manipulator_flag == RESET;
+						}
+						break;
+					case Back:
+						if(Manipulator_buf[2] == Accomplish_State)
+						{
+							Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"@DA", 3);
+							Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"C0", 2); 
+							Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"$", 1);	
+						}
+						if(!Hatchdoor_flag)
+						{
+							Manipulator_SendCmd[2] = 'E';
+							Manipulator_SendDate();
+							Manipulator_Uptask =100;
+							Manipulator_HistoryUptask = 100;
+							Manipulator_flag == RESET;
+						}
+						break;
+					default:
+						break;
 				}
 				break;
-			case Extend:
-				if(Manipulator_Uptask == 'A' && Manipulator_buf[2] == Accomplish_State)
+			
+			case 'C': //复位回收细节需敲定
+				if((Manipulator_buf[3] == Reset) || (Manipulator_buf[3] == Back))
 				{
-					Manipulator_SendCmd[2] = 'A';
-					Manipulator_SendDate();
+					Manipulator_Uptask = Manipulator_HistoryUptask;
 				}
-				else if(Manipulator_Uptask == 'B' && Manipulator_buf[2] == Accomplish_State)
-				{
-					Manipulator_SendCmd[2] = 'B';
-					Manipulator_SendDate();
-				}
-				break;
-			case Release:
-				if(Manipulator_buf[2] == Accomplish_State)
+				else
 				{
 					Manipulator_SendCmd[2] = 'C';
 					Manipulator_SendDate();
-				}
+					Manipulator_SendCmd[2] = 100;
+				} 
 				break;
-			case Grab:
-				if(Manipulator_buf[2] == Accomplish_State)
-				{
-					Manipulator_SendCmd[2] = 'C';
-					Manipulator_SendDate();
-				}
+
+			case 'D': //重启细节需敲定
+				// if(Manipulator_buf[3] == Notask)
+				// {
+
+				// }
+				// Manipulator_SendCmd[2] = 'F';
+				// Manipulator_SendDate();
+				// Manipulator_Uptask = Manipulator_HistoryUptask;
 				break;
-			case Reset:
-				if(Manipulator_buf[2] == Accomplish_State)
-				{
-					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"@DA", 3);
-					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"O0", 2); 
-					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"$", 1);	
-				}
-				if(!Hatchdoor_flag)
-				{
-					Manipulator_SendCmd[2] = 'E';
-					Manipulator_SendDate();
-					Manipulator_Uptask =100;
-				}
-				break;
-			case Back:
-				if(Manipulator_buf[2] == Accomplish_State)
-				{
-					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"@DA", 3);
-					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"O0", 2); 
-					Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"$", 1);	
-				}
-				if(!Hatchdoor_flag)
-				{
-					Manipulator_SendCmd[2] = 'E';
-					Manipulator_SendDate();
-					Manipulator_Uptask =100;
-				}
-				break;
+
 			default:
 				break;
 		}
+
 		Manipulator_Recvflag = RESET;
 	}
 }

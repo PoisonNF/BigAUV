@@ -60,6 +60,7 @@
         "task_sysinit.h": "c",
         "task_adcollect.h": "c",
         "task_uart.h": "c",
-        "task_voltage.h": "c"
+        "task_voltage.h": "c",
+        "main.h": "c"
     }
 }

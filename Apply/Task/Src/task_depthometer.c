@@ -11,6 +11,7 @@ uint8_t Depthometer_buf[20]; //深度计串口接收缓冲区
 uint8_t Depthometer_flag = RESET; //深度计串口数据接收完成标志
 uint8_t Depthometer_Instruction1[8] = {0x01, 0x03, 0x00, 0x04, 0x00, 0x01, 0xC5, 0xCB}; //深度计指令1 读取压力数据
 uint8_t Depthometer_Instruction2[8] = {0x01, 0x03, 0x00, 0x03, 0x00, 0x01, 0x74, 0x0A}; //深度计指令2 读取小数位数
+uint8_t Depthometer_Instruction3[8] = {0x01, 0x03, 0x00, 0x02, 0x00, 0x01, 0x25, 0xCA}; //深度计指令3 读取压力单位
 
 int Depthometer_Analysis(float* _Depthometer_Data)//深度计数据获取函数
 {

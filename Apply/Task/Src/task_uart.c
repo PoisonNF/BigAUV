@@ -2,42 +2,42 @@
 
 #include "config.h"
 
-//USART1´®¿Ú½ÓÊÕ»º³åÇø
+//USART1ä¸²å£æ¥æ”¶ç¼“å†²åŒº
 #define Rx1_DATA_LENTH 		100
 static uint8_t s_ucRxUart1[Rx1_DATA_LENTH] = {0};
 
-//USART2´®¿Ú½ÓÊÕ»º³åÇø
+//USART2ä¸²å£æ¥æ”¶ç¼“å†²åŒº
 #define Rx2_DATA_LENTH 		100
 static uint8_t s_ucRxUart2[Rx2_DATA_LENTH] = {0};
 
-//USART3´®¿Ú½ÓÊÕ»º³åÇø
+//USART3ä¸²å£æ¥æ”¶ç¼“å†²åŒº
 #define Rx3_DATA_LENTH 		20
 static uint8_t s_ucRxUart3[Rx3_DATA_LENTH] = {0};
 
-//USART4´®¿Ú½ÓÊÕ»º³åÇø
+//USART4ä¸²å£æ¥æ”¶ç¼“å†²åŒº
 #define Rx4_DATA_LENTH 		20
 static uint8_t s_ucRxUart4[Rx4_DATA_LENTH] = {0};
 
-// //USART5´®¿Ú½ÓÊÕ»º³åÇø
+// //USART5ä¸²å£æ¥æ”¶ç¼“å†²åŒº
 // #define Rx5_DATA_LENTH 		20
 // static uint8_t s_ucRxUart5[Rx5_DATA_LENTH] = {0};
 
-//²»¶¨³¤´¦Àí£¬ÉèÖÃ×Ö½Ú³¤¶È
-int Data_length1 = 30; //½ÓÊÕÊı¾İ³¤¶È
-int Data_length2 = 30; //½ÓÊÕÊı¾İ³¤¶È
-int Data_length3 = 30; //½ÓÊÕÊı¾İ³¤¶È
-int Data_length4 = 30; //½ÓÊÕÊı¾İ³¤¶È
+//ä¸å®šé•¿å¤„ç†ï¼Œè®¾ç½®å­—èŠ‚é•¿åº¦
+int Data_length1 = 30; //æ¥æ”¶æ•°æ®é•¿åº¦
+int Data_length2 = 30; //æ¥æ”¶æ•°æ®é•¿åº¦
+int Data_length3 = 30; //æ¥æ”¶æ•°æ®é•¿åº¦
+int Data_length4 = 30; //æ¥æ”¶æ•°æ®é•¿åº¦
 
-extern uint8_t Tuikong_buf[50]; //ÍÆ¿Ø²Õ´®¿Ú½ÓÊÕ»º³åÇø
-extern uint8_t Tuikong_flag; //ÍÆ¿Ø²Õ´®¿ÚÊı¾İ½ÓÊÕÍê³É±êÖ¾
-extern uint8_t Shumei_buf[100]; //Ê÷İ®ÅÉ´®¿Ú½ÓÊÕ»º³åÇø
-extern uint8_t Shumei_flag; //Ê÷İ®ÅÉ´®¿ÚÊı¾İ½ÓÊÕÍê³É±êÖ¾
-extern uint8_t Manipulator_buf[20]; //»úĞµÊÖ´®¿Ú½ÓÊÕ»º³åÇø
-extern uint8_t Manipulator_Recvflag; //»úĞµÊÖ´®¿ÚÊı¾İ½ÓÊÕÍê³É±êÖ¾
-extern uint8_t Depthometer_buf[20]; //Éî¶È¼Æ´®¿Ú½ÓÊÕ»º³åÇø
-extern uint8_t Depthometer_flag; //Éî¶È¼Æ´®¿ÚÊı¾İ½ÓÊÕÍê³É±êÖ¾
+extern uint8_t Tuikong_buf[50]; //æ¨æ§èˆ±ä¸²å£æ¥æ”¶ç¼“å†²åŒº
+extern uint8_t Tuikong_flag; //æ¨æ§èˆ±ä¸²å£æ•°æ®æ¥æ”¶å®Œæˆæ ‡å¿—
+extern uint8_t Shumei_buf[100]; //æ ‘è“æ´¾ä¸²å£æ¥æ”¶ç¼“å†²åŒº
+extern uint8_t Shumei_flag; //æ ‘è“æ´¾ä¸²å£æ•°æ®æ¥æ”¶å®Œæˆæ ‡å¿—
+extern uint8_t Manipulator_buf[20]; //æœºæ¢°æ‰‹ä¸²å£æ¥æ”¶ç¼“å†²åŒº
+extern uint8_t Manipulator_Recvflag; //æœºæ¢°æ‰‹ä¸²å£æ•°æ®æ¥æ”¶å®Œæˆæ ‡å¿—
+extern uint8_t Depthometer_buf[20]; //æ·±åº¦è®¡ä¸²å£æ¥æ”¶ç¼“å†²åŒº
+extern uint8_t Depthometer_flag; //æ·±åº¦è®¡ä¸²å£æ•°æ®æ¥æ”¶å®Œæˆæ ‡å¿—
 
-//void Task_PCUart_Enable(void) //½ÓÊÕÖĞ¶ÏÊ¹ÄÜ
+//void Task_PCUart_Enable(void) //æ¥æ”¶ä¸­æ–­ä½¿èƒ½
 //{
 //	Drv_Uart_ReceIT_Enable(&tStandby_Uart, s_ucRxBufferUart5, Rx5_BUFFER_SIZE);
 //}
@@ -52,17 +52,17 @@ void Receive_DMA(void)
 		size = tSMP_Uart.tRxInfo.usDMARxLength;
 		tSMP_Uart.tRxInfo.ucDMARxCplt = 0;
 		
-		if(s_ucRxUart1[0] == '@')  //µÚÒ»¸öÖ¡Í·ÅĞ¶Ï
+		if(s_ucRxUart1[0] == '@')  //ç¬¬ä¸€ä¸ªå¸§å¤´åˆ¤æ–­
 		{	
-			if(s_ucRxUart1[1] == 'W' && s_ucRxUart1[2] == 'D' ) //Ê÷İ®ÅÉÏÂĞĞÊı¾İ£¬½ÓÊÕ29¸ö×Ö½Ú
+			if(s_ucRxUart1[1] == 'W' && s_ucRxUart1[2] == 'D' ) //æ ‘è“æ´¾ä¸‹è¡Œæ•°æ®ï¼Œæ¥æ”¶29ä¸ªå­—èŠ‚
 			{
 				Data_length1 = 33;
 			}
-			else if((s_ucRxUart1[1] == 'T') && (s_ucRxUart1[2] == 'S')) //Ê±¼äĞÅÏ¢£¬½ÓÊÕ18¸ö×Ö½Ú
+			else if((s_ucRxUart1[1] == 'T') && (s_ucRxUart1[2] == 'S')) //æ—¶é—´ä¿¡æ¯ï¼Œæ¥æ”¶18ä¸ªå­—èŠ‚
 			{
 				Data_length1 = 18;
 			}
-			else if((s_ucRxUart1[1] == 'T') && (s_ucRxUart1[2] == 'P')) //Ê±¼äĞÅÏ¢£¬½ÓÊÕ18¸ö×Ö½Ú
+			else if((s_ucRxUart1[1] == 'T') && (s_ucRxUart1[2] == 'P')) //æ—¶é—´ä¿¡æ¯ï¼Œæ¥æ”¶18ä¸ªå­—èŠ‚
 			{
 				Data_length1 = 11;
 			}
@@ -95,13 +95,13 @@ void Receive_DMA(void)
 		size = tTKC_Uart.tRxInfo.usDMARxLength;
 		tTKC_Uart.tRxInfo.ucDMARxCplt = 0;	
 		
-		if(s_ucRxUart2[0] == '@')  //µÚÒ»¸öÖ¡Í·ÅĞ¶Ï
+		if(s_ucRxUart2[0] == '@')  //ç¬¬ä¸€ä¸ªå¸§å¤´åˆ¤æ–­
 		{	
-			if(s_ucRxUart2[1] == 'S') //ÍÆ¿Ø²ÕÉÏĞĞÊı¾İ£¬½ÓÊÕ25¸ö×Ö½Ú
+			if(s_ucRxUart2[1] == 'S') //æ¨æ§èˆ±ä¸Šè¡Œæ•°æ®ï¼Œæ¥æ”¶25ä¸ªå­—èŠ‚
 			{
 				Data_length2 = 25;
 			}
-			else if(s_ucRxUart2[1] == 'A') //ÍÆ¿Ø²ÕÉÏĞĞÓ¦´ğ£¬½ÓÊÕ8¸ö×Ö½Ú
+			else if(s_ucRxUart2[1] == 'A') //æ¨æ§èˆ±ä¸Šè¡Œåº”ç­”ï¼Œæ¥æ”¶8ä¸ªå­—èŠ‚
 			{
 				Data_length2 = 8;
 			}
@@ -124,13 +124,13 @@ void Receive_DMA(void)
 		size = tManipulator_Uart.tRxInfo.usDMARxLength;
 		tManipulator_Uart.tRxInfo.ucDMARxCplt = 0;	
 		
-		if(s_ucRxUart3[0] == '@')  //µÚÒ»¸öÖ¡Í·ÅĞ¶Ï
+		if(s_ucRxUart3[0] == '@')  //ç¬¬ä¸€ä¸ªå¸§å¤´åˆ¤æ–­
 		{	
 			if(s_ucRxUart3[6] == '$' && size == 7)
 			{
 				memcpy(Manipulator_buf, s_ucRxUart3, Rx3_DATA_LENTH);
 				memset(s_ucRxUart3, 0, Rx3_DATA_LENTH);
-				Manipulator_flag = SET;
+				Manipulator_Recvflag = SET;
 			}
 			else if(s_ucRxUart3[6] != '$' || size != 7)
 			{
@@ -142,8 +142,9 @@ void Receive_DMA(void)
 	{
 		memcpy(s_ucRxUart4, tDepthometer_Uart.tRxInfo.ucpDMARxCache, tDepthometer_Uart.tRxInfo.usDMARxLength);
 		size = tDepthometer_Uart.tRxInfo.usDMARxLength;
+		tDepthometer_Uart.tRxInfo.ucDMARxCplt = 0;	
 
-		if(s_ucRxUart4[0] == 0x01)  //µÚÒ»¸öÖ¡Í·ÅĞ¶Ï
+		if(s_ucRxUart4[0] == 0x01)  //ç¬¬ä¸€ä¸ªå¸§å¤´åˆ¤æ–­
 		{	
 			
 			if(size == 7)
@@ -157,12 +158,11 @@ void Receive_DMA(void)
 				memset(s_ucRxUart4, 0, Rx4_DATA_LENTH);
 			}
 		}
-		tDepthometer_Uart.tRxInfo.ucDMARxCplt = 0;	
 	}
 	
 }
 
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle) //ÖĞ¶Ï»Øµ÷º¯Êı
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle) //ä¸­æ–­å›è°ƒå‡½æ•°
 {
 
 }

@@ -23,14 +23,19 @@ int CH438Q_Analysis(float* _Altimeter_Data, uint8_t* _Lowvoltage_Data, uint8_t* 
 		{
 			case 0: //高度计
 				*_Altimeter_Data = (CH438Q_buf[0] - 48)*100 + (CH438Q_buf[1] - 48)*10 + (CH438Q_buf[2] - 48) + (CH438Q_buf[4] - 48)*0.1 + (CH438Q_buf[5] - 48)*0.01;
+				if(*_Altimeter_Data < 0)
+				{
+					*_Altimeter_Data = 0;
+				}
 				break; 
 			case 1: //低压监测
-				_Lowvoltage_Data[0] = (CH438Q_buf[4]*256 + CH438Q_buf[5])*10; //总电压
-				_Lowvoltage_Data[1] = CH438Q_buf[23]; //RSOC
+				_Lowvoltage_Data[0] = CH438Q_buf[4]; //总电压
+				_Lowvoltage_Data[1] = CH438Q_buf[5]; //总电压
+				// _Lowvoltage_Data[1] = CH438Q_buf[23]; //RSOC
 				break;
 			case 2: //高压监测
-				Uplink_Data.Highvoltage_Data[0] = (CH438Q_buf[5]*256 + CH438Q_buf[6]); //单位V
-				Uplink_Data.Highvoltage_Data[1] = (CH438Q_buf[13]*256 + CH438Q_buf[14])*10; //单位V
+				Uplink_Data.Highvoltage_Data[0] = CH438Q_buf[5]; //单位V
+				Uplink_Data.Highvoltage_Data[1] = CH438Q_buf[6]; //单位V
 				break;
 			default:
 				
