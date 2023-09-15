@@ -102,7 +102,7 @@ void Manipulator_Analysis(void)//机械手数据分析函数
 							Manipulator_SendDate();
 							Manipulator_Uptask =100;
 							Manipulator_HistoryUptask = 100;
-							Manipulator_flag == RESET;
+							Manipulator_flag = RESET;
 						}
 						break;
 					case Back:
@@ -118,7 +118,7 @@ void Manipulator_Analysis(void)//机械手数据分析函数
 							Manipulator_SendDate();
 							Manipulator_Uptask =100;
 							Manipulator_HistoryUptask = 100;
-							Manipulator_flag == RESET;
+							Manipulator_flag = RESET;
 						}
 						break;
 					default:

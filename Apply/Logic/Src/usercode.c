@@ -123,7 +123,7 @@ void Relay_Control() //继电器控制函数
 	Manipulator_OFF;
 	CeSao_OFF;
 	BDGPS_ON;
-	Camera_OFF;
+	Camera_ON;
 	Inertial_navigation_ON;
 	P360_OFF;
 	DVL_OFF;
