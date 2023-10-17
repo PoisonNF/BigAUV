@@ -134,21 +134,21 @@ static void S_GPIO_NVICParamConfig(tagGPIO_T *_tGPIO)
 		HAL_NVIC_SetPriority(EXTI4_IRQn,_tGPIO->ucPriority,_tGPIO->ucSubPriority);
 		HAL_NVIC_EnableIRQ(EXTI4_IRQn);	
 	}
-	else if(_tGPIO->tGPIOInit.Pin ==  GPIO_PIN_5|
-									  GPIO_PIN_6|
-									  GPIO_PIN_7|
-									  GPIO_PIN_8|
-									  GPIO_PIN_9)
+	else if((_tGPIO->tGPIOInit.Pin == GPIO_PIN_5)
+          ||(_tGPIO->tGPIOInit.Pin == GPIO_PIN_6)
+          ||(_tGPIO->tGPIOInit.Pin == GPIO_PIN_7)
+          ||(_tGPIO->tGPIOInit.Pin == GPIO_PIN_8)
+          ||(_tGPIO->tGPIOInit.Pin == GPIO_PIN_9))
 	{
 		HAL_NVIC_SetPriority(EXTI9_5_IRQn,_tGPIO->ucPriority,_tGPIO->ucSubPriority);
 		HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);	
 	}
-	else if(_tGPIO->tGPIOInit.Pin ==  GPIO_PIN_10|
-									  GPIO_PIN_11|
-									  GPIO_PIN_12|
-									  GPIO_PIN_13|
-									  GPIO_PIN_14|
-									  GPIO_PIN_15)
+	else if((_tGPIO->tGPIOInit.Pin == GPIO_PIN_10)
+          ||(_tGPIO->tGPIOInit.Pin == GPIO_PIN_11)
+          ||(_tGPIO->tGPIOInit.Pin == GPIO_PIN_12)
+          ||(_tGPIO->tGPIOInit.Pin == GPIO_PIN_13)
+          ||(_tGPIO->tGPIOInit.Pin == GPIO_PIN_14)
+          ||(_tGPIO->tGPIOInit.Pin == GPIO_PIN_15))
 	{
 		HAL_NVIC_SetPriority(EXTI15_10_IRQn,_tGPIO->ucPriority,_tGPIO->ucSubPriority);
 		HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);	
@@ -234,9 +234,9 @@ void Drv_GPIO_Init(tagGPIO_T *_tGPIO, uint8_t _ucNum)
 		S_GPIO_ParamConfig(&_tGPIO[index]);
 		
 		/* 如果IO配置为中断模式 */
-		if(_tGPIO[index].tGPIOInit.Mode ==  GPIO_MODE_IT_FALLING | 
-											GPIO_MODE_IT_RISING | 
-											GPIO_MODE_IT_RISING_FALLING)
+		if((_tGPIO[index].tGPIOInit.Mode == GPIO_MODE_IT_FALLING)
+         ||(_tGPIO[index].tGPIOInit.Mode == GPIO_MODE_IT_RISING)
+         ||(_tGPIO[index].tGPIOInit.Mode == GPIO_MODE_IT_RISING_FALLING))
 			S_GPIO_NVICParamConfig(&_tGPIO[index]);
 	}
 }

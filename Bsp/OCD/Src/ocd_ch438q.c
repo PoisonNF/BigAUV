@@ -102,7 +102,6 @@ void CH438WriteReg(uint8_t ChipNum, uint8_t add, uint8_t data) /* //写一个字节到
 uint8_t CH438ReadReg(uint8_t ChipNum, uint8_t add) /* //读取一个字节 */
 {
     uint8_t value;
-    uint8_t value1;
 
     CS_SET_HIGH(ChipNum);
     //CS1_SET_HIGH;//CS = 1;
@@ -155,7 +154,6 @@ void CH438_ResetSeril(uint8_t ChipNum, unsigned char num) /*  //复位串口 */
 
 void CH438_SetBandrate(uint8_t ChipNum, unsigned char num, unsigned long value) /* //设置波特率 未使用此函数 */
 {
-    uint8_t dlab = 0;
     uint16_t bandspeed;
 
     bandspeed = Fpclk / 16 / value;
@@ -253,7 +251,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     uint8_t gInterruptStatus;
     uint8_t InterruptStatus;
     uint8_t i;
-    static uint8_t j;
     //HAL_NVIC_DisableIRQ(EXTI2_IRQn);
 
     gInterruptStatus = CH438ReadReg(CHIP1, REG_SSR_ADDR);

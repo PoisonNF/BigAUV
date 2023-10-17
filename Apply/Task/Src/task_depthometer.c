@@ -22,21 +22,11 @@ int Depthometer_Analysis(float* _Depthometer_Data)//深度计数据获取函数
 			if(Depthometer_Model)
 			{
 				*_Depthometer_Data = (Depthometer_buf[3]*256 + Depthometer_buf[4])*0.01*0.1; //量程5米深度计,单位：米
-				if(*_Depthometer_Data > 63)
-				{	
-					*_Depthometer_Data = *_Depthometer_Data - 64.52;
-				}
-				else if(*_Depthometer_Data >= 0)
-				{
-					*_Depthometer_Data += 1.016;
-				}
-				else if(*_Depthometer_Data < 0)
-				{	
-					*_Depthometer_Data = 0;
-				}
 			}
 			else
+			{
 				*_Depthometer_Data = (Depthometer_buf[3]*256 + Depthometer_buf[4] - 10)*0.1; //量程500米深度计，单位：米
+			}
 		}
 		Depthometer_flag = RESET;
 	}

@@ -52,7 +52,7 @@ void Manipulator_Analysis(void)//机械手数据分析函数
 					case Notask:
 						if(Manipulator_Uptask == 'A' || Manipulator_Uptask == 'B' )
 						{
-							Manipulator_HistoryUptask == Manipulator_Uptask;
+							Manipulator_HistoryUptask = Manipulator_Uptask;
 							Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"@DA", 3); 
 							Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"O0", 2); 
 							Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"$", 1);	

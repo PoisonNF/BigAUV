@@ -1,0 +1,501 @@
+{
+  "name": "STM32",
+  "type": "ARM",
+  "dependenceList": [],
+  "srcDirs": [
+    ".eide/deps"
+  ],
+  "virtualFolder": {
+    "name": "<virtual_root>",
+    "files": [],
+    "folders": [
+      {
+        "name": "Apply",
+        "files": [],
+        "folders": [
+          {
+            "name": "Logic",
+            "files": [
+              {
+                "path": "../Apply/Logic/Src/config.c"
+              },
+              {
+                "path": "../Apply/Logic/Src/main.c"
+              },
+              {
+                "path": "../Apply/Logic/Src/usercode.c"
+              }
+            ],
+            "folders": []
+          },
+          {
+            "name": "Task",
+            "files": [
+              {
+                "path": "../Apply/Task/Src/task_adcollect.c"
+              },
+              {
+                "path": "../Apply/Task/Src/task_altimeter.c"
+              },
+              {
+                "path": "../Apply/Task/Src/task_depthometer.c"
+              },
+              {
+                "path": "../Apply/Task/Src/task_irq.c"
+              },
+              {
+                "path": "../Apply/Task/Src/task_manipulator.c"
+              },
+              {
+                "path": "../Apply/Task/Src/task_smp.c"
+              },
+              {
+                "path": "../Apply/Task/Src/task_sysinit.c"
+              },
+              {
+                "path": "../Apply/Task/Src/task_tkc.c"
+              },
+              {
+                "path": "../Apply/Task/Src/task_uart.c"
+              },
+              {
+                "path": "../Apply/Task/Src/task_userinit.c"
+              },
+              {
+                "path": "../Apply/Task/Src/task_voltage.c"
+              }
+            ],
+            "folders": []
+          }
+        ]
+      },
+      {
+        "name": "Bsp",
+        "files": [],
+        "folders": [
+          {
+            "name": "Algo",
+            "files": [
+              {
+                "path": "../Bsp/Algo/Src/algo_func.c"
+              }
+            ],
+            "folders": []
+          },
+          {
+            "name": "Dev",
+            "files": [
+              {
+                "path": "../Bsp/Dev/Src/dev_ps2.c"
+              }
+            ],
+            "folders": []
+          },
+          {
+            "name": "FatFs",
+            "files": [
+              {
+                "path": "../Bsp/FatFs/Src/ff.c"
+              },
+              {
+                "path": "../Bsp/FatFs/Src/diskio.c"
+              }
+            ],
+            "folders": []
+          },
+          {
+            "name": "OCD",
+            "files": [
+              {
+                "path": "../Bsp/OCD/Src/ocd_ad24bit.lib"
+              },
+              {
+                "path": "../Bsp/OCD/Src/ocd_ads1256.c"
+              },
+              {
+                "path": "../Bsp/OCD/Src/ocd_at24cxx.c"
+              },
+              {
+                "path": "../Bsp/OCD/Src/ocd_ch438q.c"
+              },
+              {
+                "path": "../Bsp/OCD/Src/ocd_ds3231.c"
+              },
+              {
+                "path": "../Bsp/OCD/Src/ocd_fatfs.c"
+              },
+              {
+                "path": "../Bsp/OCD/Src/ocd_jy901.c"
+              },
+              {
+                "path": "../Bsp/OCD/Src/ocd_oled.c"
+              },
+              {
+                "path": "../Bsp/OCD/Src/ocd_rm3100.c"
+              },
+              {
+                "path": "../Bsp/OCD/Src/ocd_sdcard.c"
+              }
+            ],
+            "folders": []
+          }
+        ]
+      },
+      {
+        "name": "Doc",
+        "files": [
+          {
+            "path": "../Doc/工程目录介绍.txt"
+          },
+          {
+            "path": "../Doc/工程维护记录.txt"
+          },
+          {
+            "path": "../Doc/句柄资源示例.txt"
+          },
+          {
+            "path": "../Doc/AUV项目维护记录.txt"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "Driver",
+        "files": [
+          {
+            "path": "../Driver/Src/drv_hal_adc.c"
+          },
+          {
+            "path": "../Driver/Src/drv_hal_delay.c"
+          },
+          {
+            "path": "../Driver/Src/drv_hal_gpio.c"
+          },
+          {
+            "path": "../Driver/Src/drv_hal_iic_soft.c"
+          },
+          {
+            "path": "../Driver/Src/drv_hal_pwm.c"
+          },
+          {
+            "path": "../Driver/Src/drv_hal_spi_soft.c"
+          },
+          {
+            "path": "../Driver/Src/drv_hal_spi.c"
+          },
+          {
+            "path": "../Driver/Src/drv_hal_timer.c"
+          },
+          {
+            "path": "../Driver/Src/drv_hal_uart.c"
+          },
+          {
+            "path": "../Driver/Src/drv_hal.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "Hardware",
+        "files": [
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cec.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_crc.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac_ex.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_eth.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_hcd.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2s.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_irda.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_iwdg.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_mmc.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_nand.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_nor.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pccard.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc_ex.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_sd.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_smartcard.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_sram.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_usart.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_wwdg.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/CMSIS/Device/ST/STM32F1xx/Source/Templates/system_stm32f1xx.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/CMSIS/Device/ST/STM32F1xx/Source/Templates/arm/startup_stm32f103xe.s"
+          }
+        ],
+        "folders": []
+      }
+    ]
+  },
+  "outDir": "build",
+  "deviceName": null,
+  "packDir": null,
+  "miscInfo": {
+    "uid": "6f73d4d0a57b6a8a9305287352d92fce"
+  },
+  "targets": {
+    "Demo": {
+      "excludeList": [],
+      "toolchain": "AC5",
+      "compileConfig": {
+        "cpuType": "Cortex-M3",
+        "floatingPointHardware": "none",
+        "scatterFilePath": "",
+        "useCustomScatterFile": false,
+        "storageLayout": {
+          "RAM": [
+            {
+              "tag": "RAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "RAM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "RAM",
+              "id": 3,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "IRAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x20000000",
+                "size": "0xc000"
+              },
+              "isChecked": true,
+              "noInit": false
+            },
+            {
+              "tag": "IRAM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            }
+          ],
+          "ROM": [
+            {
+              "tag": "ROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "ROM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "ROM",
+              "id": 3,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "IROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x8000000",
+                "size": "0x40000"
+              },
+              "isChecked": true,
+              "isStartup": true
+            },
+            {
+              "tag": "IROM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            }
+          ]
+        },
+        "options": "null"
+      },
+      "uploader": "JLink",
+      "uploadConfig": {
+        "bin": "",
+        "baseAddr": "",
+        "cpuInfo": {
+          "vendor": "null",
+          "cpuName": "null"
+        },
+        "proType": 1,
+        "speed": 8000,
+        "otherCmds": ""
+      },
+      "uploadConfigMap": {},
+      "custom_dep": {
+        "name": "default",
+        "incList": [
+          "../Apply/Logic/Inc",
+          "../Apply/Task/Inc",
+          "../Bsp/OCD/Inc",
+          "../Bsp/FatFs/Inc",
+          "../Bsp/Algo/Inc",
+          "../Bsp/Dev/Inc",
+          "../Bsp/RTOS/RT-Thread/include",
+          "../Driver/Inc",
+          "../Hardware/STM32F1XX/CMSIS/Include",
+          "../Hardware/STM32F1XX/CMSIS/Device/ST/STM32F1xx/Include",
+          "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Inc",
+          "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Inc/Legacy",
+          ".cmsis/include",
+          "RTE/_Demo",
+          ".eide/deps"
+        ],
+        "libList": [],
+        "sourceDirList": [],
+        "defineList": [
+          "USE_HAL_DRIVER",
+          "STM32F103xE",
+          "STM32F1_SGA_ENABLE"
+        ]
+      }
+    }
+  },
+  "version": "3.3"
+}

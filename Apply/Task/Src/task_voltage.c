@@ -15,7 +15,7 @@ uint8_t CH438Q_NUM = 10; //CH438Q串口号
 uint8_t Lowvoltage_Instruction[7] = {0xDD, 0xA5, 0x03, 0x00, 0xFF, 0xFD, 0x77}; //低压数据获取指令
 uint8_t Highvoltage_Instruction[8] = {0x01, 0x03, 0x00, 0x01, 0x00, 0x07, 0x55, 0xC8}; //高压数据获取指令
 
-int CH438Q_Analysis(float* _Altimeter_Data, uint8_t* _Lowvoltage_Data, uint8_t* Highvoltage_Data) //CH438Q串口数据获取函数
+int CH438Q_Analysis(float* _Altimeter_Data, uint8_t* _Lowvoltage_Data, uint8_t* _Highvoltage_Data) //CH438Q串口数据获取函数
 {
 	if(CH438Q_flag == SET)
 	{
@@ -34,8 +34,8 @@ int CH438Q_Analysis(float* _Altimeter_Data, uint8_t* _Lowvoltage_Data, uint8_t* 
 				// _Lowvoltage_Data[1] = CH438Q_buf[23]; //RSOC
 				break;
 			case 2: //高压监测
-				Uplink_Data.Highvoltage_Data[0] = CH438Q_buf[5]; //单位V
-				Uplink_Data.Highvoltage_Data[1] = CH438Q_buf[6]; //单位V
+				_Highvoltage_Data[0] = CH438Q_buf[5]; //单位V
+				_Highvoltage_Data[1] = CH438Q_buf[6]; //单位V
 				break;
 			default:
 				
