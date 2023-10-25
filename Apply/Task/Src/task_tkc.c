@@ -57,7 +57,8 @@ void TuikongData_Analysis(void) //推控舱数据解析
 					Hatchdoor_flag = RESET;
 				}
 				MotorStatus_Analysis(Uplink_Data.Motor_Status);
-				memcpy(Uplink_Data.Motor_Turning_State, &Tuikong_buf[3], 18);
+				memcpy(Uplink_Data.Motor_Turning_State, &Tuikong_buf[3], 18);	//将推进器状态拷贝到上行数据中
+				memcpy(Uplink_Data.TKC_Test_Data,&Tuikong_buf[24],12);			//将推进舱测试数据拷贝到上行数据中
 				break;
 			
 			default:

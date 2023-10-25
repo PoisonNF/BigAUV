@@ -45,11 +45,12 @@ typedef struct {
 	uint8_t Manipulator_TaskType; //机械手任务类型
 	uint8_t Manipulator_ErrorState; //机械手错误状态
 	uint8_t Motor_Turning_State[18]; //1-9号推进器转动状态，1-4号为电压值，5-9号为PWM值
+	uint8_t TKC_Test_Data[12]; //推控舱测试数据
 }tagUplinkData_T; //上行数据内容，发送至树莓派
 
 extern tagUplinkData_T Uplink_Data;
 
-extern uint8_t Shumei_RecvData[40] ; //树莓派下行数据接收 数据24字节
+extern uint8_t Shumei_RecvData[40] ; //树莓派下行数据接收
 
 extern uint8_t Shumei_buf[100]; //树莓派串口接收缓冲区
 extern uint8_t Shumei_flag; //树莓派串口数据接收完成标志

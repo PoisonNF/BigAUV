@@ -29,13 +29,13 @@ int CH438Q_Analysis(float* _Altimeter_Data, uint8_t* _Lowvoltage_Data, uint8_t* 
 				}
 				break; 
 			case 1: //低压监测
-				_Lowvoltage_Data[0] = CH438Q_buf[4]; //总电压
-				_Lowvoltage_Data[1] = CH438Q_buf[5]; //总电压
+				_Lowvoltage_Data[0] = CH438Q_buf[4]; //总电压 高8位 单位10mV
+				_Lowvoltage_Data[1] = CH438Q_buf[5]; //总电压 低8位 单位10mV
 				// _Lowvoltage_Data[1] = CH438Q_buf[23]; //RSOC
 				break;
 			case 2: //高压监测
-				_Highvoltage_Data[0] = CH438Q_buf[5]; //单位V
-				_Highvoltage_Data[1] = CH438Q_buf[6]; //单位V
+				_Highvoltage_Data[0] = CH438Q_buf[5]; //总电压 高8位 0.1V/bit 
+				_Highvoltage_Data[1] = CH438Q_buf[6]; //总电压 高8位 0.1V/bit
 				break;
 			default:
 				

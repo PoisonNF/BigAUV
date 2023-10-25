@@ -456,10 +456,9 @@ void Drv_Uart_DMA_RxHandler(tagUART_T *_tUART)
 
 		/* 接收标志位置1 */
         _tUART->tRxInfo.ucDMARxCplt = 1;
-
-		/* 重新启动DMA接收 */
-        HAL_UART_Receive_DMA(&_tUART->tUARTHandle,_tUART->tRxInfo.ucpDMARxCache,_tUART->tRxInfo.usDMARxMAXSize);
 	}
+    /* 重新启动DMA接收 */
+    HAL_UART_Receive_DMA(&_tUART->tUARTHandle,_tUART->tRxInfo.ucpDMARxCache,_tUART->tRxInfo.usDMARxMAXSize);
 }
 
 /**

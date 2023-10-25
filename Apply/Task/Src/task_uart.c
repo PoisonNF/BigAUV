@@ -44,17 +44,19 @@ extern uint8_t Depthometer_flag; //深度计串口数据接收完成标志
 
 void Receive_DMA(void)
 {
-	uint8_t size =0;
+	uint8_t size = 0;
 
+	/* 树莓派数据 */
 	if(tSMP_Uart.tRxInfo.ucDMARxCplt)
 	{
+		//缓存拷贝
 		memcpy(s_ucRxUart1, tSMP_Uart.tRxInfo.ucpDMARxCache, tSMP_Uart.tRxInfo.usDMARxLength);
 		size = tSMP_Uart.tRxInfo.usDMARxLength;
 		tSMP_Uart.tRxInfo.ucDMARxCplt = 0;
 		
 		if(s_ucRxUart1[0] == '@')  //第一个帧头判断
 		{	
-			if(s_ucRxUart1[1] == 'W' && s_ucRxUart1[2] == 'D' ) //树莓派下行数据，接收29个字节
+			if(s_ucRxUart1[1] == 'W' && s_ucRxUart1[2] == 'D' ) //树莓派下行数据，接收33个字节
 			{
 				Data_length1 = 33;
 			}
@@ -62,7 +64,7 @@ void Receive_DMA(void)
 			{
 				Data_length1 = 18;
 			}
-			else if((s_ucRxUart1[1] == 'T') && (s_ucRxUart1[2] == 'P')) //时间信息，接收18个字节
+			else if((s_ucRxUart1[1] == 'T') && (s_ucRxUart1[2] == 'P')) //PID控制命令，接收11个字节
 			{
 				Data_length1 = 11;
 			}
@@ -71,12 +73,6 @@ void Receive_DMA(void)
 				Data_length1 = 6;
 			}
 
-//			if(Shumei_buf[size-1] == '$' && Shumei_buf[0] == '@')
-//			{
-//				memcpy(Shumei_buf, s_ucRxUart1, Rx1_DATA_LENTH);
-//				memset(s_ucRxUart1, 0, Rx1_DATA_LENTH);
-//				Shumei_flag = SET;
-//			}
 			if(s_ucRxUart1[Data_length1-1] == '$' && size == Data_length1)
 			{
 				memcpy(Shumei_buf, s_ucRxUart1, Rx1_DATA_LENTH);
@@ -89,17 +85,20 @@ void Receive_DMA(void)
 			}
 		}	
 	}
+
+	/* 推控舱数据 */
 	else if (tTKC_Uart.tRxInfo.ucDMARxCplt)
 	{
+		//缓存拷贝
 		memcpy(s_ucRxUart2, tTKC_Uart.tRxInfo.ucpDMARxCache, tTKC_Uart.tRxInfo.usDMARxLength);
 		size = tTKC_Uart.tRxInfo.usDMARxLength;
 		tTKC_Uart.tRxInfo.ucDMARxCplt = 0;	
 		
 		if(s_ucRxUart2[0] == '@')  //第一个帧头判断
 		{	
-			if(s_ucRxUart2[1] == 'S') //推控舱上行数据，接收25个字节
+			if(s_ucRxUart2[1] == 'S') //推控舱上行数据，接收37个字节
 			{
-				Data_length2 = 25;
+				Data_length2 = 37;
 			}
 			else if(s_ucRxUart2[1] == 'A') //推控舱上行应答，接收8个字节
 			{
@@ -118,8 +117,11 @@ void Receive_DMA(void)
 			}
 		}
 	}
+
+	/* 操作手数据 */
 	else if (tManipulator_Uart.tRxInfo.ucDMARxCplt)
 	{
+		//缓存拷贝
 		memcpy(s_ucRxUart3, tManipulator_Uart.tRxInfo.ucpDMARxCache, tManipulator_Uart.tRxInfo.usDMARxLength);
 		size = tManipulator_Uart.tRxInfo.usDMARxLength;
 		tManipulator_Uart.tRxInfo.ucDMARxCplt = 0;	
@@ -138,8 +140,11 @@ void Receive_DMA(void)
 			}
 		}
 	}
+
+	/* 深度计数据 */
 	else if (tDepthometer_Uart.tRxInfo.ucDMARxCplt)
 	{
+		//缓存拷贝
 		memcpy(s_ucRxUart4, tDepthometer_Uart.tRxInfo.ucpDMARxCache, tDepthometer_Uart.tRxInfo.usDMARxLength);
 		size = tDepthometer_Uart.tRxInfo.usDMARxLength;
 		tDepthometer_Uart.tRxInfo.ucDMARxCplt = 0;	
