@@ -29,19 +29,24 @@ int CH438Q_Analysis(float* _Altimeter_Data, uint8_t* _Lowvoltage_Data, uint8_t* 
 				}
 				break; 
 			case 1: //低压监测
-				_Lowvoltage_Data[0] = CH438Q_buf[4]; //总电压 高8位 单位10mV
-				_Lowvoltage_Data[1] = CH438Q_buf[5]; //总电压 低8位 单位10mV
-				// _Lowvoltage_Data[1] = CH438Q_buf[23]; //RSOC
+                if(CH438Q_buf[0] == 0xDD && CH438Q_buf[1] == 0x03)
+				{
+					memcpy(_Lowvoltage_Data,&CH438Q_buf[4],2);	//高位在前，单位10mv
+					// _Lowvoltage_Data[1] = CH438Q_buf[23]; //RSOC
+				}
 				break;
 			case 2: //高压监测
-				_Highvoltage_Data[0] = CH438Q_buf[5]; //总电压 高8位 0.1V/bit 
-				_Highvoltage_Data[1] = CH438Q_buf[6]; //总电压 高8位 0.1V/bit
+				if(CH438Q_buf[0] == 0x01 && CH438Q_buf[1] == 0x03)
+				{
+					memcpy(_Highvoltage_Data,&CH438Q_buf[5],2);	//高位在前，0.1V/bit
+				}
 				break;
 			default:
 				
 				break;
 		}
 		CH438Q_flag = RESET;
+		memset(CH438Q_buf,0,sizeof(CH438Q_buf));
 	}
     return 0;
 }

@@ -162,6 +162,7 @@ extern char Timeflag_100MS; //0.1秒时间标志位
 extern char Timeflag_Count1; //1S定时器中断计数标志位
 extern char Timeflag_Count2; //0.2S定时器中断计数标志位
 extern char Timeflag_500MS; //0.5秒时间标志位
+extern char Timeflag_800MS; //0.8秒时间标志位
 extern char Timeflag_1S; //1秒时间标志位
 
 /**
@@ -209,6 +210,8 @@ void TIM4_IRQHandler(void)
 {
     /* 示例 */
 //    Drv_Timer_IRQHandler(&demoTIM);
+	Drv_Timer_IRQHandler(&tTimer4);
+	Timeflag_800MS = SET;
 }
 
 /**

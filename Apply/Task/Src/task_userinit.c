@@ -38,8 +38,10 @@ void Task_UserInit(void)
 	
 	Drv_Timer_Init(&tTimer2);
 	Drv_Timer_Init(&tTimer3);
+	Drv_Timer_Init(&tTimer4);
 	Drv_Timer_Enable(&tTimer2);//启动溢出中断并使能定时器
 	Drv_Timer_Enable(&tTimer3);//启动溢出中断并使能定时器
+	Drv_Timer_Enable(&tTimer4);//启动溢出中断并使能定时器
 		
 	ret = OCD_AD24BIT_Init(&tAD24BIT);/*24位AD初始化 */
 	if (ret != 0)

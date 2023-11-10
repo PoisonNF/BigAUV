@@ -15,6 +15,7 @@ char Timeflag_100MS = RESET; //0.1秒时间标志位
 char Timeflag_Count1; //1S定时器中断计数标志位
 char Timeflag_Count2; //0.2S定时器中断计数标志位
 char Timeflag_500MS = RESET; //0.5秒时间标志位
+char Timeflag_800MS = RESET; //0.8秒时间标志位
 char Timeflag_1S = RESET; //1秒时间标志位
 
 double LX;
@@ -72,8 +73,6 @@ void UserLogic_Code(void)
 
 		Downlink_Data.Altimeter_Data = Uplink_Data.Altimeter_Data;
 		Downlink_Data.Depthometer_Data = Uplink_Data.Depthometer_Data;
-		memcpy(Downlink_Data.Pose_Velocity_Data, &Shumei_buf[4], 24);
-		memcpy(Downlink_Data.Cursor_Coordinate, &Shumei_buf[28], 4);
 
 		if(Timeflag_100MS)
 		{
@@ -100,13 +99,17 @@ void UserLogic_Code(void)
 			Timeflag_500MS = RESET;
 			Depthometer_Send();
 		}
+		if(Timeflag_800MS) 
+		{
+			Timeflag_800MS = RESET;
+			Highvoltage_Send();
+		}
 		if(Timeflag_1S)
 		{
 			Timeflag_1S = RESET;
 			Timeflag_Count1 = RESET;
-			Highvoltage_Send();
 			Lowvoltage_Send();
-			Manipulator_SendDate();
+			//Manipulator_SendDate();
 		}
 	}
 	

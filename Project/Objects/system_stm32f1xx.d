@@ -2,7 +2,7 @@
 .\objects\system_stm32f1xx.o: ..\Hardware\STM32F1XX\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
 .\objects\system_stm32f1xx.o: ..\Hardware\STM32F1XX\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h
 .\objects\system_stm32f1xx.o: ..\Hardware\STM32F1XX\CMSIS\Include\core_cm3.h
-.\objects\system_stm32f1xx.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\system_stm32f1xx.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\system_stm32f1xx.o: ..\Hardware\STM32F1XX\CMSIS\Include\cmsis_version.h
 .\objects\system_stm32f1xx.o: ..\Hardware\STM32F1XX\CMSIS\Include\cmsis_compiler.h
 .\objects\system_stm32f1xx.o: ..\Hardware\STM32F1XX\CMSIS\Include\cmsis_armcc.h
@@ -13,7 +13,7 @@
 .\objects\system_stm32f1xx.o: ..\Hardware\STM32F1XX\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h
 .\objects\system_stm32f1xx.o: ..\Hardware\STM32F1XX\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
 .\objects\system_stm32f1xx.o: ..\Hardware\STM32F1XX\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-.\objects\system_stm32f1xx.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\system_stm32f1xx.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\system_stm32f1xx.o: ..\Hardware\STM32F1XX\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h
 .\objects\system_stm32f1xx.o: ..\Hardware\STM32F1XX\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h
 .\objects\system_stm32f1xx.o: ..\Hardware\STM32F1XX\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h

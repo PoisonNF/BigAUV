@@ -41,10 +41,10 @@ void ShumeiData_Send(void) //上行数据发送函数，即向树莓派数据定
 	memcpy(&Shumei_SendData[28], &Uplink_Data.Magnetometer_R.Y.byte, 4);
 	memcpy(&Shumei_SendData[32], &Uplink_Data.Magnetometer_R.Z.byte, 4);
 
-	Shumei_SendData[36] = 0x00;
-	Shumei_SendData[37] = 0x00;	//低压电池检测
-	Shumei_SendData[38] = 0x00;
-	Shumei_SendData[39] = 0x00;	//高压电池检测
+	Shumei_SendData[36] = Uplink_Data.Lowvoltage_Data[0];
+	Shumei_SendData[37] = Uplink_Data.Lowvoltage_Data[1];	//低压电池检测
+	Shumei_SendData[38] = Uplink_Data.Highvoltage_Data[0];
+	Shumei_SendData[39] = Uplink_Data.Highvoltage_Data[1];	//高压电池检测
 	Shumei_SendData[40] = Uplink_Data.Motor_Status[0]; //9号推进器状态
 	Shumei_SendData[41] = Uplink_Data.Motor_Status[1]; //1-8号推进器状态
 	Shumei_SendData[42] = 0x00;
@@ -275,6 +275,8 @@ void ShumeiData_Analysis(void) //树莓派数据解析
 				
 			case 'W': //树莓派下行数据
 				memcpy(Shumei_RecvData, Shumei_buf, 40);
+            	memcpy(Downlink_Data.Pose_Velocity_Data, &Shumei_RecvData[4], 24);
+                memcpy(Downlink_Data.Cursor_Coordinate, &Shumei_RecvData[28], 4);
 				break;
 			
 			default:

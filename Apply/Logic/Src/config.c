@@ -543,67 +543,70 @@ tagGPIO_T tCH438Q_EXIT_GPIO =
 };
 
 /* AD芯片配置 */
- tagAD24BIT_T tAD24BIT =
- {
+tagAD24BIT_T tAD24BIT =
+{
+	.tSPI.tSPIHandle.Instance 				= SPI2,		.tSPI.tGPIO[0].tGPIOInit.Pin 		= GPIO_PIN_13,				/* GPIO引脚 ,SPI2_SCK*/
+	.tSPI.tGPIO[0].tGPIOInit.Mode 		= GPIO_MODE_AF_PP,			/* GPIO模式 */
+	.tSPI.tGPIO[0].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tSPI.tGPIO[0].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
+	.tSPI.tGPIO[0].tGPIOPort 			= GPIOB,					/* GPIO分组 */	
+	.tSPI.tGPIO[1].tGPIOInit.Pin 		= GPIO_PIN_15,				/* GPIO引脚 ,SPI2_MOSI*/
+	.tSPI.tGPIO[1].tGPIOInit.Mode 		= GPIO_MODE_AF_PP,			/* GPIO模式 */
+	.tSPI.tGPIO[1].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tSPI.tGPIO[1].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
+	.tSPI.tGPIO[1].tGPIOPort 			= GPIOB,					/* GPIO分组 */	
+	.tSPI.tGPIO[2].tGPIOInit.Pin 		= GPIO_PIN_14,				/* GPIO引脚 ,SPI2_MISO*/
+	.tSPI.tGPIO[2].tGPIOInit.Mode 		= GPIO_MODE_AF_PP,			/* GPIO模式 */
+	.tSPI.tGPIO[2].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tSPI.tGPIO[2].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
+	.tSPI.tGPIO[2].tGPIOPort 			= GPIOB,					/* GPIO分组 */		.tSPI.tGPIO[3].tGPIOInit.Pin 		= GPIO_PIN_12,				/* GPIO引脚 ,CS*/
+	.tSPI.tGPIO[3].tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
+	.tSPI.tGPIO[3].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
+	.tSPI.tGPIO[3].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
+	.tSPI.tGPIO[3].tGPIOPort 			= GPIOB,					/* GPIO分组 */	
+	.port_num = 6,  //测量的端口数，跟下面配置的端口对应起来
+	.port[0].enable = PORT_ENABLE,//端口使能
+	.port[0].num = VIN0,  //采集信号的,单端模式，信号的地接Vincom端口;差分模式，信号接对应端口
+	.port[0].gain = 1.001068,  //校正参数增益Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
+	.port[0].offset= 0.0,//校正参数偏移量Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
+	.port[1].enable = PORT_ENABLE,
+	.port[1].num = VIN1,	//采集信号的,单端模式，信号的地接Vincom端口;差分模式，信号接对应端口
+	.port[1].gain = 1.00105,  //校正参数增益Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
+	.port[1].offset= 0.0006,//校正参数偏移量Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;	
+	.port[2].enable = PORT_ENABLE,
+	.port[2].num = VIN2,	//采集信号的,单端模式，信号的地接Vincom端口;差分模式，信号接对应端口
+	.port[2].gain = 1.001176,  //校正参数增益Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
+	.port[2].offset= 0.0004,//校正参数偏移量Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
+	.port[3].enable = PORT_ENABLE,//端口使能
+	.port[3].num = VIN3,  //采集信号的,单端模式，信号的地接Vincom端口;差分模式，信号接对应端口
+	.port[3].gain = 1.001068,  //校正参数增益Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
+	.port[3].offset= 0.0,//校正参数偏移量Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
+	.port[4].enable = PORT_ENABLE,
+	.port[4].num = VIN4,	//采集信号的,单端模式，信号的地接Vincom端口;差分模式，信号接对应端口
+	.port[4].gain = 1.00105,  //校正参数增益Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
+	.port[4].offset= 0.0006,//校正参数偏移量Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;	
+	.port[5].enable = PORT_ENABLE,
+	.port[5].num = VIN5,	//采集信号的,单端模式，信号的地接Vincom端口;差分模式，信号接对应端口
+	.port[5].gain = 1.001176,  //校正参数增益Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
+	.port[5].offset= 0.0004,//校正参数偏移量Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
 
- 	.tSPI.tSPIHandle.Instance 				= SPI2,
-	
-	.tSPI.tGPIO[0].tGPIOInit.Pin 		= GPIO_PIN_13,				/* GPIO引脚 ,SPI2_SCK*/
- 	.tSPI.tGPIO[0].tGPIOInit.Mode 		= GPIO_MODE_AF_PP,			/* GPIO模式 */
- 	.tSPI.tGPIO[0].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
- 	.tSPI.tGPIO[0].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
- 	.tSPI.tGPIO[0].tGPIOPort 			= GPIOB,					/* GPIO分组 */
-	
- 	.tSPI.tGPIO[1].tGPIOInit.Pin 		= GPIO_PIN_15,				/* GPIO引脚 ,SPI2_MOSI*/
- 	.tSPI.tGPIO[1].tGPIOInit.Mode 		= GPIO_MODE_AF_PP,			/* GPIO模式 */
- 	.tSPI.tGPIO[1].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
- 	.tSPI.tGPIO[1].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
- 	.tSPI.tGPIO[1].tGPIOPort 			= GPIOB,					/* GPIO分组 */
-	
- 	.tSPI.tGPIO[2].tGPIOInit.Pin 		= GPIO_PIN_14,				/* GPIO引脚 ,SPI2_MISO*/
- 	.tSPI.tGPIO[2].tGPIOInit.Mode 		= GPIO_MODE_AF_PP,			/* GPIO模式 */
- 	.tSPI.tGPIO[2].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
- 	.tSPI.tGPIO[2].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
- 	.tSPI.tGPIO[2].tGPIOPort 			= GPIOB,					/* GPIO分组 */
-	
-	.tSPI.tGPIO[3].tGPIOInit.Pin 		= GPIO_PIN_12,				/* GPIO引脚 ,CS*/
- 	.tSPI.tGPIO[3].tGPIOInit.Mode 		= GPIO_MODE_OUTPUT_PP,		/* GPIO模式 */
- 	.tSPI.tGPIO[3].tGPIOInit.Pull 		= GPIO_NOPULL,				/* GPIO上下拉设置，是否需要上下拉看硬件 */
- 	.tSPI.tGPIO[3].tGPIOInit.Speed 		= GPIO_SPEED_FREQ_HIGH,		/* GPIO速度 */	
- 	.tSPI.tGPIO[3].tGPIOPort 			= GPIOB,					/* GPIO分组 */
-	
- 	.port_num = 6,  //测量的端口数，跟下面配置的端口对应起来
- 	.port[0].enable = PORT_ENABLE,//端口使能
- 	.port[0].num = VIN0,  //采集信号的,单端模式，信号的地接Vincom端口;差分模式，信号接对应端口
- 	.port[0].gain = 1.001068,  //校正参数增益Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
- 	.port[0].offset= 0.0,//校正参数偏移量Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
+};
 
- 	.port[1].enable = PORT_ENABLE,
- 	.port[1].num = VIN1,	//采集信号的,单端模式，信号的地接Vincom端口;差分模式，信号接对应端口
- 	.port[1].gain = 1.00105,  //校正参数增益Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
- 	.port[1].offset= 0.0006,//校正参数偏移量Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
-	
- 	.port[2].enable = PORT_ENABLE,
- 	.port[2].num = VIN2,	//采集信号的,单端模式，信号的地接Vincom端口;差分模式，信号接对应端口
- 	.port[2].gain = 1.001176,  //校正参数增益Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
- 	.port[2].offset= 0.0004,//校正参数偏移量Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
+/* 定时器4配置 */
+tagTIM_T tTimer4 = 
+{
 
- 	.port[3].enable = PORT_ENABLE,//端口使能
- 	.port[3].num = VIN3,  //采集信号的,单端模式，信号的地接Vincom端口;差分模式，信号接对应端口
- 	.port[3].gain = 1.001068,  //校正参数增益Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
- 	.port[3].offset= 0.0,//校正参数偏移量Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
+	.tTimerHandle.Instance				=TIM4,						/* 通用定时器4 */
+	.tTimerHandle.Init.Prescaler		=7200-1,						 //((1+Prescaler )/72M)*(1+Period )//定时最小时间节拍，
+	.tTimerHandle.Init.Period			=8000-1,				//100mS产生一次溢出
+	.tTimerHandle.Init.ClockDivision	=TIM_CLOCKDIVISION_DIV1,	/* 不分频 */
+	.tTimerHandle.Init.CounterMode		=TIM_COUNTERMODE_UP,		/* 向上计数器 */
+	.tTimerHandle.Init.RepetitionCounter = 0, //计数器溢出多少次后，中断一次，0：表示中断一次即溢出。
+	.tTimerHandle.Init.AutoReloadPreload = TIM_AUTOMATICOUTPUT_ENABLE,//自动装载
+	.ucPriority = 0,
+	.ucSubPriority = 2,
 
- 	.port[4].enable = PORT_ENABLE,
- 	.port[4].num = VIN4,	//采集信号的,单端模式，信号的地接Vincom端口;差分模式，信号接对应端口
- 	.port[4].gain = 1.00105,  //校正参数增益Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
- 	.port[4].offset= 0.0006,//校正参数偏移量Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
-	
- 	.port[5].enable = PORT_ENABLE,
- 	.port[5].num = VIN5,	//采集信号的,单端模式，信号的地接Vincom端口;差分模式，信号接对应端口
- 	.port[5].gain = 1.001176,  //校正参数增益Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
- 	.port[5].offset= 0.0004,//校正参数偏移量Y =  gain*X+offset,若不需要校正则默认gain = 1.0,offset = 0.0;
- 
- };
+};
 
 /* 定时器3配置 */
 tagTIM_T tTimer3 = 

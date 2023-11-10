@@ -16,6 +16,7 @@ extern tagUART_T tStandby_Uart;
 extern tagGPIO_T tCH438Q_GPIO[];
 extern tagGPIO_T tCH438Q_EXIT_GPIO;
 extern tagAD24BIT_T tAD24BIT;
+extern tagTIM_T tTimer4;
 extern tagTIM_T tTimer3;
 extern tagTIM_T tTimer2;
 extern tagGPIO_T tRS485_GPIO[];
