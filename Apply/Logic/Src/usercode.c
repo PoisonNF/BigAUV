@@ -89,13 +89,14 @@ void UserLogic_Code(void)
 		}
 		if(Timeflag_200MS)
 		{
-			ShumeiData_Send();
+//			ShumeiData_Send();
 			Timeflag_200MS = RESET;
 			Timeflag_Count2 = RESET;
 		}
 		if(Timeflag_500MS) 
 		{
 			TuikongData_Send();
+            ShumeiData_Send();
 			Timeflag_500MS = RESET;
 			Depthometer_Send();
 		}
@@ -109,7 +110,6 @@ void UserLogic_Code(void)
 			Timeflag_1S = RESET;
 			Timeflag_Count1 = RESET;
 			Lowvoltage_Send();
-			//Manipulator_SendDate();
 		}
 	}
 	

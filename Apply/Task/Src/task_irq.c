@@ -73,8 +73,23 @@ void USART1_IRQHandler(void)
 {
 	/* 示例 */
 //	Drv_Uart_IRQHandler(&tPCUart);		/* 必需部分 */
+	Drv_Uart_IRQHandler(&tSMP_Uart);
 	Drv_Uart_DMA_RxHandler(&tSMP_Uart);
-	//Task_USART1_IRQHandler();
+}
+
+/* DMA1_Channel4中断处理函数 */
+void DMA1_Channel4_IRQHandler(void)
+{
+    HAL_DMA_IRQHandler(&tSMP_Uart.tUartDMA.tDMATx);      //HAL库公用DMA中断处理函数
+}
+
+/* 串口发送完成回调函数 */
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if(huart == &tSMP_Uart.tUARTHandle)
+		Drv_Uart_DMA_TxHandler(&tSMP_Uart);
+	else if(huart == &tTKC_Uart.tUARTHandle)
+		Drv_Uart_DMA_TxHandler(&tTKC_Uart);
 }
 
 /**
@@ -96,14 +111,20 @@ void USART2_IRQHandler(void)
 {
 		/* 示例 */
 //	Drv_Uart_IRQHandler(&tJY901B.tUART);		/* 必需部分 */
+	Drv_Uart_IRQHandler(&tTKC_Uart);
 	Drv_Uart_DMA_RxHandler(&tTKC_Uart);
 //	Task_USART2_IRQHandler();
 }
 
+/* DMA1_Channel7中断处理函数 */
+void DMA1_Channel7_IRQHandler(void)
+{
+	HAL_DMA_IRQHandler(&tTKC_Uart.tUartDMA.tDMATx);      //HAL库公用DMA中断处理函数
+}
+
 void DMA1_Channel5_IRQHandler(void)
 {
-//	Drv_Uart_DMA_TxHandler(&tTKC_Uart);
-	Drv_Uart_DMA_RxHandler(&tSMP_Uart);
+	//Drv_Uart_DMA_RxHandler(&tSMP_Uart);
 }
 
 void DMA1_Channel6_IRQHandler(void)
@@ -121,10 +142,7 @@ void DMA2_Channel3_IRQHandler(void)
 	
 }
 
-void DMA1_Channel7_IRQHandler(void)
-{
-	Drv_Uart_DMA_TxHandler(&tTKC_Uart);
-}
+
 /**
  * @brief 串口3中断服务函数
  * @param null
@@ -133,6 +151,7 @@ void DMA1_Channel7_IRQHandler(void)
 void USART3_IRQHandler(void)
 {
 	// Drv_Uart_IRQHandler(&tManipulator_Uart);		/* 必需部分 */
+	Drv_Uart_IRQHandler(&tManipulator_Uart);
 	Drv_Uart_DMA_RxHandler(&tManipulator_Uart);
 }
 
@@ -144,6 +163,7 @@ void USART3_IRQHandler(void)
 void UART4_IRQHandler(void)
 {
 	// Drv_Uart_IRQHandler(&tDepthometer_Uart);		/* 必需部分 */
+	Drv_Uart_IRQHandler(&tDepthometer_Uart);
 	Drv_Uart_DMA_RxHandler(&tDepthometer_Uart);  /* 重新启动DMA接收 */
 }
 

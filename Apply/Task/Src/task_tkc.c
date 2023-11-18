@@ -80,6 +80,6 @@ void TuikongData_Send(void) //下行数据发送函数，即向推控舱数据�
 	memcpy(&Tuikong_SendData[31], Downlink_Data.Cursor_Coordinate, 4);
 	Tuikong_SendData[35] = '$';
 
-	Drv_Uart_Transmit(&tTKC_Uart, Tuikong_SendData, 36);
+	Drv_Uart_Transmit_DMA(&tTKC_Uart, Tuikong_SendData, 36);
 }
 

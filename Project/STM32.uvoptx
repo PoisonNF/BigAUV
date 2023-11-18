@@ -150,7 +150,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>JL2CM3</Key>
-          <Name>-U20090928 -O78 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(1BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_512.FLM -FS08000000 -FL080000 -FP0($$Device:STM32F103VC$Flash\STM32F10x_512.FLM)</Name>
+          <Name>-U20090929 -O78 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(1BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_512.FLM -FS08000000 -FL080000 -FP0($$Device:STM32F103VC$Flash\STM32F10x_512.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -273,62 +273,62 @@
         <Ww>
           <count>22</count>
           <WinNumber>1</WinNumber>
-          <ItemText>(null),0x0A</ItemText>
+          <ItemText>Shumei_SendData</ItemText>
         </Ww>
         <Ww>
           <count>23</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Shumei_SendData</ItemText>
+          <ItemText>tSMP_Uart.tRxInfo.ucpDMARxCache</ItemText>
         </Ww>
         <Ww>
           <count>24</count>
           <WinNumber>1</WinNumber>
-          <ItemText>tSMP_Uart.tRxInfo.ucpDMARxCache</ItemText>
+          <ItemText>tSMP_Uart.tRxInfo.usDMARxLength,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>25</count>
           <WinNumber>1</WinNumber>
-          <ItemText>tSMP_Uart.tRxInfo.usDMARxLength,0x0A</ItemText>
+          <ItemText>Manipulator_buf,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>26</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Manipulator_buf,0x0A</ItemText>
+          <ItemText>tTKC_Uart.tRxInfo.ucpDMARxCache</ItemText>
         </Ww>
         <Ww>
           <count>27</count>
           <WinNumber>1</WinNumber>
-          <ItemText>tTKC_Uart.tRxInfo.ucpDMARxCache</ItemText>
+          <ItemText>Data_length1,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>28</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Data_length1,0x0A</ItemText>
+          <ItemText>s_ucRxUart1</ItemText>
         </Ww>
         <Ww>
           <count>29</count>
           <WinNumber>1</WinNumber>
-          <ItemText>s_ucRxUart1</ItemText>
+          <ItemText>Uplink_Data.Highvoltage_Data</ItemText>
         </Ww>
         <Ww>
           <count>30</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Uplink_Data.Highvoltage_Data</ItemText>
+          <ItemText>Uplink_Data.Lowvoltage_Data</ItemText>
         </Ww>
         <Ww>
           <count>31</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Uplink_Data.Lowvoltage_Data</ItemText>
+          <ItemText>CH438Q_buf</ItemText>
         </Ww>
         <Ww>
           <count>32</count>
           <WinNumber>1</WinNumber>
-          <ItemText>CH438Q_buf</ItemText>
+          <ItemText>Uplink_Data.Depthometer_Data</ItemText>
         </Ww>
         <Ww>
           <count>33</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Uplink_Data.Depthometer_Data</ItemText>
+          <ItemText>Tuikong_SendData</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>

@@ -78,7 +78,8 @@ tagUART_T tSMP_Uart =
 	.tUartDMA.tDMARx.Init.Mode			= DMA_CIRCULAR,
 	.tUartDMA.tDMARx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tRxInfo.usDMARxMAXSize             	= 200,              	/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
+	/* 在使用DMA发送后，测试发现150字节才能使深度计正常工作 */
+	.tRxInfo.usDMARxMAXSize             	= 150,              	/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
 
 	.tUartDMA.ucDMARxPriority				= 1,					/* DMA接收中断优先级 */
 	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMA接收中断子优先级 */
@@ -94,7 +95,7 @@ tagUART_T tSMP_Uart =
 	.tUartDMA.tDMATx.Init.Mode			= DMA_NORMAL,
 	.tUartDMA.tDMATx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tTxInfo.usDMATxMAXSize				= 50,						/* 最大发送数据长度 */
+	.tTxInfo.usDMATxMAXSize				= 100,						/* 最大发送数据长度 */
 	
 	.tUartDMA.ucDMATxPriority				= 1,					/* DMA发送中断优先级 */
 	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMA发送中断子优先级 */
@@ -151,7 +152,7 @@ tagUART_T tTKC_Uart =
 
 	.tRxInfo.usDMARxMAXSize             	= 100,              	/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
 
-	.tUartDMA.ucDMARxPriority				= 1,					/* DMA接收中断优先级 */
+	.tUartDMA.ucDMARxPriority				= 2,					/* DMA接收中断优先级 */
 	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMA接收中断子优先级 */
 	
 	//串口DMA发送参数配置
@@ -206,7 +207,7 @@ tagUART_T tManipulator_Uart =
 	.tUARTHandle.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT,
 #endif
 	
-	.ucPriority							= 1,						/* 中断优先级 */
+	.ucPriority							= 3,						/* 中断优先级 */
 	.ucSubPriority						= 3,						/* 中断子优先级 */
 	
 	//串口DMA接收参数配置
@@ -220,9 +221,10 @@ tagUART_T tManipulator_Uart =
 	.tUartDMA.tDMARx.Init.Mode			= DMA_CIRCULAR,
 	.tUartDMA.tDMARx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tRxInfo.usDMARxMAXSize             	= 100,              	/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
+	/* 原先给的100字节太大了，导致无法正确接收数据 */
+	.tRxInfo.usDMARxMAXSize             	= 20,              	/* 接收数据长度 长度保持在协议最长字节*2以上，确保缓存池一定能够稳定接收一个完整的数据帧*/
 
-	.tUartDMA.ucDMARxPriority				= 1,					/* DMA接收中断优先级 */
+	.tUartDMA.ucDMARxPriority				= 2,					/* DMA接收中断优先级 */
 	.tUartDMA.ucDMARxSubPriority			= 1,					/* DMA接收中断子优先级 */
 	
 	//串口DMA发送参数配置
@@ -236,7 +238,7 @@ tagUART_T tManipulator_Uart =
 	.tUartDMA.tDMATx.Init.Mode			= DMA_NORMAL,
 	.tUartDMA.tDMATx.Init.Priority		= DMA_PRIORITY_LOW,
 
-	.tTxInfo.usDMATxMAXSize				= 50,						/* 最大发送数据长度 */
+	.tTxInfo.usDMATxMAXSize				= 20,						/* 最大发送数据长度 */
 	
 	.tUartDMA.ucDMATxPriority				= 1,					/* DMA发送中断优先级 */
 	.tUartDMA.ucDMATxSubPriority			= 1,					/* DMA发送中断子优先级 */
@@ -277,7 +279,7 @@ tagUART_T tDepthometer_Uart =
 	.tUARTHandle.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT,
 #endif
 	
-	.ucPriority							= 1,						/* 中断优先级 */
+	.ucPriority							= 3,						/* 中断优先级 */
 	.ucSubPriority						= 3,						/* 中断子优先级 */
 	
 	//串口DMA接收参数配置

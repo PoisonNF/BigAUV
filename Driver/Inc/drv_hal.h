@@ -10,7 +10,13 @@
 #endif
 #define DBG_ERROR(...) Drv_HAL_PrintLog("ERROR", __FUNCTION__, __LINE__, __VA_ARGS__)
 
-/* Hal¿â°üº¬ */
+#define DEFAULT(config,value)   do{					    \
+                                    if(config == 0)		\
+                                        config = value;	\
+                                }					    \
+                                while(0)
+
+/* Hal??? */
 #ifdef STM32F1_SGA_ENABLE
 	#include "stm32f1xx_hal.h"
 	

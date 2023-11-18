@@ -7,8 +7,8 @@ tagUplinkData_T Uplink_Data = {0x00};
 uint8_t Shumei_buf[100]; //树莓派串口接收缓冲区
 uint8_t Shumei_flag = RESET; //树莓派串口数据接收完成标志
 
-uint8_t Shumei_RecvData[40] ; //树莓派下行数据接收
-uint8_t Shumei_SendData[100] ; //树莓派上行数据发送
+uint8_t Shumei_RecvData[40]; //树莓派下行数据接收
+uint8_t Shumei_SendData[100]; //树莓派上行数据发送
 uint8_t Shumei_SendCmd[10]; //树莓派上行命令发送
 
 uint8_t Shumei_PID_Flag = RESET; //测试模式PID调试
@@ -68,7 +68,9 @@ void ShumeiData_Send(void) //上行数据发送函数，即向树莓派数据定
 
 //	Drv_Uart_Transmit(&tSMP_Uart, Shumei_SendData, 50);
 //	Drv_Uart_Transmit(&tSMP_Uart, Shumei_SendData, 68);
-	Drv_Uart_Transmit(&tSMP_Uart, Shumei_SendData, 80);
+//  Drv_Uart_Transmit(&tSMP_Uart, Shumei_SendData, 80);
+	
+	Drv_Uart_Transmit_DMA(&tSMP_Uart, Shumei_SendData, 80);
 }
 	
 void ShumeiData_Analysis(void) //树莓派数据解析

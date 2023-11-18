@@ -22,11 +22,11 @@ int CH438Q_Analysis(float* _Altimeter_Data, uint8_t* _Lowvoltage_Data, uint8_t* 
 		switch(CH438Q_NUM)
 		{
 			case 0: //高度计
-				*_Altimeter_Data = (CH438Q_buf[0] - 48)*100 + (CH438Q_buf[1] - 48)*10 + (CH438Q_buf[2] - 48) + (CH438Q_buf[4] - 48)*0.1 + (CH438Q_buf[5] - 48)*0.01;
-				if(*_Altimeter_Data < 0)
-				{
-					*_Altimeter_Data = 0;
-				}
+                *_Altimeter_Data = (CH438Q_buf[0] - 48)*100 + (CH438Q_buf[1] - 48)*10 + (CH438Q_buf[2] - 48) + (CH438Q_buf[4] - 48)*0.1 + (CH438Q_buf[5] - 48)*0.01;
+                if(*_Altimeter_Data < 0)
+                {
+                    *_Altimeter_Data = 0;
+                }                    
 				break; 
 			case 1: //低压监测
                 if(CH438Q_buf[0] == 0xDD && CH438Q_buf[1] == 0x03)
