@@ -1,11 +1,14 @@
 #include "task_conf.h"
 #include "ocd_conf.h"
 #include "config.h"
+#include <cm_backtrace.h>
 
 void Task_UserInit(void)
 {
 	int ret = 0;
 	
+    cm_backtrace_init("CmBacktrace", "1.0", DRIVER_VERSION);
+    
 	Drv_GPIO_Init(tLED_GPIO, 3);
 	Drv_GPIO_Init(tCH438Q_GPIO, 15);
 	Drv_GPIO_Init(&tCH438Q_EXIT_GPIO, 1);

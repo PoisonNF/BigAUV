@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE,STM32F1_SGA_ENABLE</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Apply\Logic\Inc;..\Apply\Task\Inc;..\Bsp\OCD\Inc;..\Bsp\FatFs\Inc;..\Bsp\Algo\Inc;..\Bsp\Dev\Inc;..\Bsp\RTOS\RT-Thread\include;..\Driver\Inc;..\Hardware\STM32F1XX\CMSIS\Include;..\Hardware\STM32F1XX\CMSIS\Device\ST\STM32F1xx\Include;..\Hardware\STM32F1XX\STM32F1xx_HAL_Driver\Inc;..\Hardware\STM32F1XX\STM32F1xx_HAL_Driver\Inc\Legacy</IncludePath>
+              <IncludePath>..\Apply\Logic\Inc;..\Apply\Task\Inc;..\Bsp\OCD\Inc;..\Bsp\FatFs\Inc;..\Bsp\Algo\Inc;..\Bsp\Dev\Inc;..\Bsp\RTOS\RT-Thread\include;..\Driver\Inc;..\Hardware\STM32F1XX\CMSIS\Include;..\Hardware\STM32F1XX\CMSIS\Device\ST\STM32F1xx\Include;..\Hardware\STM32F1XX\STM32F1xx_HAL_Driver\Inc;..\Hardware\STM32F1XX\STM32F1xx_HAL_Driver\Inc\Legacy;..\Bsp\Tools\cm_backtrace</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -546,6 +546,21 @@
               <FileName>diskio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Bsp\FatFs\Src\diskio.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Bsp/Tools/CmBacktrace</GroupName>
+          <Files>
+            <File>
+              <FileName>cm_backtrace.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Bsp\Tools\cm_backtrace\cm_backtrace.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmb_fault.S</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\Bsp\Tools\cm_backtrace\fault_handler\keil\cmb_fault.S</FilePath>
             </File>
           </Files>
         </Group>

@@ -332,14 +332,14 @@ void SysTick_Handler(void)
  * @param Null
  * @retval Null
 */
-void HardFault_Handler(void)
-{
-	while(1)
-	{
-		/* USER CODE BEGIN W1_HardFault_IRQn 0 */
-		/* USER CODE END W1_HardFault_IRQn 0 */
-	}
-}
+//void HardFault_Handler(void)
+//{
+//	while(1)
+//	{
+//		/* USER CODE BEGIN W1_HardFault_IRQn 0 */
+//		/* USER CODE END W1_HardFault_IRQn 0 */
+//	}
+//}
 #endif
 
 #ifdef FREERTOS_ENABLE

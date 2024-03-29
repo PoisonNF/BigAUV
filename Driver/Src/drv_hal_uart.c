@@ -499,7 +499,7 @@ uint16_t Drv_Uart_Receive_DMA(tagUART_T *_tUART, uint8_t *_ucpRxData)
 		usRxNum = _tUART->tRxInfo.usDMARxLength;
 
 		/* 清空接收数据地址指针 */
-        memset(_ucpRxData,0,usRxNum+1);
+        memset(_ucpRxData,0,usRxNum);
 
 		/* 数据拷贝 */
 		memcpy(_ucpRxData,_tUART->tRxInfo.ucpDMARxCache,usRxNum);

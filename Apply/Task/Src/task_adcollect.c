@@ -7,11 +7,11 @@ int Mag_data_getL(double* LX, double* LY, double* LZ, double* allL, double* RX, 
 		
 		int ret;
 		ret  = OCD_AD24bit_GetResult(&tAD24BIT, 50);
-		if(ret!=0)
-		{
-				DBG_ERROR("OCD_AD24bit_GetResult error£º%d\r\n",ret);
-				return -1;
-		}
+//		if(ret!=0)
+//		{
+//				DBG_ERROR("OCD_AD24bit_GetResult error£º%d\r\n",ret);
+//				return -1;
+//		}
 		
 		*LX = tAD24BIT.port[0].result;
 		*LY = tAD24BIT.port[1].result;

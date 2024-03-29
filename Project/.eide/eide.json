@@ -95,10 +95,10 @@
             "name": "FatFs",
             "files": [
               {
-                "path": "../Bsp/FatFs/Src/ff.c"
+                "path": "../Bsp/FatFs/Src/diskio.c"
               },
               {
-                "path": "../Bsp/FatFs/Src/diskio.c"
+                "path": "../Bsp/FatFs/Src/ff.c"
               }
             ],
             "folders": []
@@ -138,25 +138,30 @@
               }
             ],
             "folders": []
+          },
+          {
+            "name": "Tools",
+            "files": [],
+            "folders": [
+              {
+                "name": "CmBacktrace",
+                "files": [
+                  {
+                    "path": "../Bsp/Tools/cm_backtrace/cm_backtrace.c"
+                  },
+                  {
+                    "path": "../Bsp/Tools/cm_backtrace/fault_handler/keil/cmb_fault.S"
+                  }
+                ],
+                "folders": []
+              }
+            ]
           }
         ]
       },
       {
         "name": "Doc",
-        "files": [
-          {
-            "path": "../Doc/工程目录介绍.txt"
-          },
-          {
-            "path": "../Doc/工程维护记录.txt"
-          },
-          {
-            "path": "../Doc/句柄资源示例.txt"
-          },
-          {
-            "path": "../Doc/AUV项目维护记录.txt"
-          }
-        ],
+        "files": [],
         "folders": []
       },
       {
@@ -199,13 +204,16 @@
         "name": "Hardware",
         "files": [
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c"
+            "path": "../Hardware/STM32F1XX/CMSIS/Device/ST/STM32F1xx/Source/Templates/arm/startup_stm32f103xe.s"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c"
+            "path": "../Hardware/STM32F1XX/CMSIS/Device/ST/STM32F1xx/Source/Templates/system_stm32f1xx.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c"
@@ -220,10 +228,10 @@
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_crc.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac_ex.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac_ex.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c"
@@ -235,16 +243,16 @@
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c"
-          },
-          {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_hcd.c"
@@ -274,25 +282,25 @@
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pccard.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c"
-          },
-          {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc_ex.c"
+          },
+          {
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rtc.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_sd.c"
@@ -307,10 +315,10 @@
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_sram.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c"
           },
           {
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c"
@@ -322,10 +330,7 @@
             "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_wwdg.c"
           },
           {
-            "path": "../Hardware/STM32F1XX/CMSIS/Device/ST/STM32F1xx/Source/Templates/system_stm32f1xx.c"
-          },
-          {
-            "path": "../Hardware/STM32F1XX/CMSIS/Device/ST/STM32F1xx/Source/Templates/arm/startup_stm32f103xe.s"
+            "path": "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c"
           }
         ],
         "folders": []
@@ -483,9 +488,8 @@
           "../Hardware/STM32F1XX/CMSIS/Device/ST/STM32F1xx/Include",
           "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Inc",
           "../Hardware/STM32F1XX/STM32F1xx_HAL_Driver/Inc/Legacy",
-          ".cmsis/include",
-          "RTE/_Demo",
-          ".eide/deps"
+          "../Bsp/Tools/cm_backtrace",
+          "RTE/_Demo"
         ],
         "libList": [],
         "sourceDirList": [],

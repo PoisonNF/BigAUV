@@ -27,6 +27,8 @@
 ".\objects\algo_func.o"
 ".\objects\ff.o"
 ".\objects\diskio.o"
+".\objects\cm_backtrace.o"
+".\objects\cmb_fault.o"
 ".\objects\drv_hal.o"
 ".\objects\drv_hal_adc.o"
 ".\objects\drv_hal_delay.o"
