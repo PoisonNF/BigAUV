@@ -19,9 +19,11 @@ extern tagAD24BIT_T tAD24BIT;
 extern tagTIM_T tTimer4;
 extern tagTIM_T tTimer3;
 extern tagTIM_T tTimer2;
+extern tagTIM_T tTimer6;
 extern tagGPIO_T tRS485_GPIO[];
 extern tagGPIO_T tRS485TEST_GPIO;
 extern tagGPIO_T tRelay_GPIO[];
+
 
 #endif
 

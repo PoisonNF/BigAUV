@@ -129,6 +129,7 @@ void Drv_Timer_Reset(tagTIM_T *_tTimer)
 */
 void Drv_Timer_Enable(tagTIM_T *_tTimer)
 {
+	__HAL_TIM_CLEAR_FLAG(&_tTimer->tTimerHandle,TIM_FLAG_UPDATE);
 	HAL_TIM_Base_Start_IT(&(_tTimer->tTimerHandle));
 }
 

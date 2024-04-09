@@ -55,6 +55,8 @@ extern uint8_t Shumei_RecvData[40] ; //树莓派下行数据接收
 extern uint8_t Shumei_buf[100]; //树莓派串口接收缓冲区
 extern uint8_t Shumei_flag; //树莓派串口数据接收完成标志
 
+extern uint8_t ShumeiIsLive;	//判断树莓派存活的计数器
+
 void ShumeiCmd_Send(void); //上行命令发送函数，即向树莓派数据应答
 void ShumeiData_Send(void); //上行数据发送函数，即向树莓派数据定时发送 0.2秒发送一次到树莓派
 void ShumeiData_Analysis(void); //树莓派数据解析

@@ -10,6 +10,8 @@ uint8_t Tuikong_SendData[50]; //推控舱下行数据发送 数据28字节
 uint8_t Tuikong_flag = RESET; //推控舱串口数据接收完成标志
 uint8_t Hatchdoor_flag = RESET; //舱门开关标志位
 
+uint8_t TuikongStopFlag = RESET;//推控舱停转完成标志
+
 // int Motor_Speed[10]; //推进器速度
 int MotorStatus_Analysis(uint8_t* _Motor_Status) //推进器状态获取函数
 {
@@ -45,6 +47,14 @@ void TuikongData_Analysis(void) //推控舱数据解析
 			//应答
 			case 'A': //推控舱应答
 				Drv_Uart_Transmit(&tSMP_Uart, Tuikong_buf, 8);
+
+				//判断推控舱应答是否为停转命令
+				// if(Tuikong_buf[5] == 'M' && Tuikong_buf[6] == 'A')
+                // {
+                //     printf("shoudao!\r\n");
+      			// 	TuikongStopFlag = SET;              
+                // }
+
 				break;
 			//状态
 			case 'S': //推控舱上行数据

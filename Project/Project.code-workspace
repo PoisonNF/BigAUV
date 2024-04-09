@@ -4,6 +4,12 @@
             "path": "."
         }
     ],
-    "settings": {},
+    "settings": {
+        "files.associations": {
+            "usercode.h": "c",
+            "config.h": "c",
+            "drv_hal_conf.h": "c"
+        }
+    },
     "extensions": {}
 }

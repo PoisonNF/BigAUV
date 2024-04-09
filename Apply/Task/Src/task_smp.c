@@ -77,6 +77,11 @@ void ShumeiData_Analysis(void) //树莓派数据解析
 {
 	if(Shumei_flag == SET)
 	{
+		//判断树莓派存活的计数器加一
+		ShumeiIsLive++;
+		if(ShumeiIsLive == 0xff)	//超出上限清零
+			ShumeiIsLive = 0;
+
 		switch(Shumei_buf[1])
 		{
 			//应答
@@ -281,10 +286,21 @@ void ShumeiData_Analysis(void) //树莓派数据解析
                 memcpy(Downlink_Data.Cursor_Coordinate, &Shumei_RecvData[28], 4);
 				break;
 			
+			case 'S'://树莓派与STM32连接命令
+				if(Shumei_buf[3] == '1')	//树莓派存活检测开启
+				{
+					Drv_Timer_Enable(&tTimer6);
+				}
+				else if(Shumei_buf[3] == '0')	//树莓派存活检测关闭
+				{
+					Drv_Timer_Disable(&tTimer6);
+				}
+			
 			default:
 			
 				break;
 		}
+		memset(Shumei_buf,0,40);		//清除Shumei_buf，防止给推控舱旧数据
 		Shumei_flag = RESET;
 	}
 }

@@ -5,7 +5,7 @@
 
 void Task_PCUart_Enable(void);
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle);
-
+void Receive_DMA(void);
 //unsigned char Task_PCListen(void);
 //uint8_t *Task_GetPCUart(void);
 

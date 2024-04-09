@@ -84,13 +84,13 @@ void DMA1_Channel4_IRQHandler(void)
 }
 
 /* 串口发送完成回调函数 */
-void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
-{
-	if(huart == &tSMP_Uart.tUARTHandle)
-		Drv_Uart_DMA_TxHandler(&tSMP_Uart);
-	else if(huart == &tTKC_Uart.tUARTHandle)
-		Drv_Uart_DMA_TxHandler(&tTKC_Uart);
-}
+//void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+//{
+//	if(huart == &tSMP_Uart.tUARTHandle)
+//		Drv_Uart_DMA_TxHandler(&tSMP_Uart);
+//	else if(huart == &tTKC_Uart.tUARTHandle)
+//		Drv_Uart_DMA_TxHandler(&tTKC_Uart);
+//}
 
 /**
  * @brief 串口2中断任务函数
@@ -184,6 +184,7 @@ extern char Timeflag_Count2; //0.2S定时器中断计数标志位
 extern char Timeflag_500MS; //0.5秒时间标志位
 extern char Timeflag_800MS; //0.8秒时间标志位
 extern char Timeflag_1S; //1秒时间标志位
+extern char Timeflag_2S; //2秒时间标志位
 
 /**
  * @brief 定时器2中断服务函数
@@ -254,7 +255,54 @@ void TIM6_IRQHandler(void)
 {
     /* 示例 */
 //    Drv_Timer_IRQHandler(&demoTIM);
+	Drv_Timer_IRQHandler(&tTimer6);
+	Timeflag_2S = SET;
 }
+
+// extern uint8_t ShumeiIsLive;	//判断树莓派存活的计数器
+// extern uint8_t ShumeiIsLiveLast;	//判断树莓派存活的计数器的上一帧
+// void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+// {
+// 	if(htim->Instance == TIM6)
+// 	{
+// 		//上一帧计数器等于本次，说明树莓派断连，给推控舱发停止命令
+// 		if(ShumeiIsLiveLast == ShumeiIsLive)	
+// 		{
+// 			Drv_Timer_Disable(&tTimer6);	//关闭定时器
+// 			while(1)
+// 			{
+                
+//                 if(Timeflag_200MS) 
+//                 {
+//                     printf("shikong\r\n");
+//                     Drv_Uart_Transmit(&tTKC_Uart, (uint8_t *)"@MAS0$", sizeof("@MAS0$"));	//向推控舱发送@MAS0$
+//                     Timeflag_200MS = RESET;
+//                 }
+                
+//                 //等待推控舱的回应
+//                 Receive_DMA();
+//                 TuikongData_Analysis();
+
+//                 //说明推控舱停止运转恢复正常
+// 				if(TuikongStopFlag)
+// 				{
+// 					TuikongStopFlag = RESET;
+// 					Drv_Timer_Enable(&tTimer6);
+					
+// 					//两个计数器设置为相同的值
+// 					ShumeiIsLiveLast = 0;	
+// 					ShumeiIsLive = 0;
+// 					break;
+// 				}
+// 			}
+// 		}
+// 		else	//连接没有问题，跳过
+// 		{
+// 			ShumeiIsLiveLast = ShumeiIsLive;	//将本次计数值转存
+// 			return;
+// 		}
+// 	}
+// }
 
 /**
  * @brief 定时器7中断服务函数

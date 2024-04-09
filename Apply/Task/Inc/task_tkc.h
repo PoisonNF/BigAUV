@@ -17,6 +17,8 @@ extern uint8_t Hatchdoor_flag; //舱门开关标志位
 extern uint8_t Tuikong_buf[50]; //推控舱串口接收缓冲区
 extern uint8_t Tuikong_flag; //推控舱串口数据接收完成标志
 
+extern uint8_t TuikongStopFlag;//推控舱停转完成标志
+
 void TuikongData_Analysis(void); //推控舱数据解析
 void TuikongData_Send(void); //下行数据发送函数，即向推控舱数据定时发送 0.5秒发送一次到推控舱
 
