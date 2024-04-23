@@ -92,17 +92,17 @@ void UserLogic_Code(void)
 			Timeflag_100MS = RESET;
 		}
         
-        ShumeiLiveCheck();  //树莓派存活检测函数
+        //ShumeiLiveCheck();  //树莓派存活检测函数
         
 		if(Timeflag_200MS)
 		{
 //			ShumeiData_Send();
 			Timeflag_200MS = RESET;
 			Timeflag_Count2 = RESET;
+            TuikongData_Send();
 		}
 		if(Timeflag_500MS) 
 		{
-			TuikongData_Send();
             ShumeiData_Send();
 			Timeflag_500MS = RESET;
 			Depthometer_Send();
@@ -131,15 +131,15 @@ void Relay_Control() //继电器控制函数
 {
 	ShengTong_OFF;
 	Manipulator_OFF;
-	CeSao_OFF;
-	BDGPS_ON;
+	CeSao_OFF;       
+	BDGPS_OFF;
 	Camera_ON;
-	Inertial_navigation_ON;
+	Inertial_navigation_OFF;
 	P360_OFF;
 	DVL_OFF;
-	Altimeter_ON;
+	Altimeter_OFF;
 	UHF_ON;
-	Front_Magnetometer_OFF;
+	Front_Magnetometer_OFF;      
 	Beiyong12V_OFF;
 	
 //	ShengTong_ON;
