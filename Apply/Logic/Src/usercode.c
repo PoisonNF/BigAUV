@@ -133,7 +133,7 @@ void Relay_Control() //继电器控制函数
 	Manipulator_OFF;
 	CeSao_OFF;       
 	BDGPS_OFF;
-	Camera_ON;
+	Camera_OFF;
 	Inertial_navigation_OFF;
 	P360_OFF;
 	DVL_OFF;
@@ -141,32 +141,6 @@ void Relay_Control() //继电器控制函数
 	UHF_ON;
 	Front_Magnetometer_OFF;      
 	Beiyong12V_OFF;
-	
-//	ShengTong_ON;
-//	Manipulator_ON;
-//	CeSao_ON;
-//	BDGPS_ON;
-//	Camera_ON;
-//	Inertial_navigation_ON;
-//	P360_ON;
-//	DVL_ON;
-//	Altimeter_ON;
-//	UHF_ON;
-//	Front_Magnetometer_ON;
-//	Beiyong12V_ON;
-	
-//	ShengTong_OFF;
-//	Manipulator_OFF;
-//	CeSao_OFF;
-//	BDGPS_OFF;
-//	Camera_OFF;
-//	Inertial_navigation_OFF;
-//	P360_OFF;
-//	DVL_OFF;
-//	Altimeter_OFF;
-//	UHF_OFF;
-//	Front_Magnetometer_OFF;
-//	Beiyong12V_OFF;
 }
 
 uint8_t TKCResponed[50];	//推控舱回复存储数组

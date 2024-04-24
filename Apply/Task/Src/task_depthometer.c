@@ -2,7 +2,7 @@
 
 #include "config.h"
 
-#define Depthometer_Model 1 //深度计型号，0为500米量程，1为5米量程
+#define Depthometer_Model 0 //深度计型号，0为500米量程，1为5米量程
 
 #define Depthometer_RS485_Recive 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET)//Drv_GPIO_Reset(&RS485_GPIO[0]); //深度计485接收模式
 #define Depthometer_RS485_Send 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET)//Drv_GPIO_Set(&RS485_GPIO[0]); //深度计485发送模式
