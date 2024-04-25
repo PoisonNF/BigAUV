@@ -340,6 +340,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>TKCResponed</ItemText>
         </Ww>
+        <Ww>
+          <count>36</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Uplink_Data.Altimeter_Data</ItemText>
+        </Ww>
       </WatchWindow1>
       <MemoryWindow1>
         <Mm>
