@@ -8,7 +8,10 @@
         "files.associations": {
             "usercode.h": "c",
             "config.h": "c",
-            "drv_hal_conf.h": "c"
+            "drv_hal_conf.h": "c",
+            "ocd_conf.h": "c",
+            "task_conf.h": "c",
+            "task_tkc.h": "c"
         }
     },
     "extensions": {}

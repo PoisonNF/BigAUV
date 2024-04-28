@@ -643,16 +643,22 @@ tagTIM_T tTimer2 =
 };
 
 /* 定时器6配置 */
-tagTIM_T tTimer6 = 
+tagTIM_T tTimer6ForCheck = 
 {
 
 	.tTimerHandle.Instance				=TIM6,						/* 通用定时器2 */
-	.tTimerHandle.Init.Prescaler		=7200-1,						/* 分频系数，最大值65535 */
-	.tTimerHandle.Init.CounterMode		=TIM_COUNTERMODE_UP,		/* 向上计数器 */
-	.tTimerHandle.Init.Period			=20000-1,					//2S产生一次溢出
-	.tTimerHandle.Init.ClockDivision	=TIM_CLOCKDIVISION_DIV1,	/* 时钟分频因子 */
-	.tTimerHandle.Init.RepetitionCounter = 0, //计数器溢出多少次后，中断一次，0：表示中断一次即溢出。
-	.tTimerHandle.Init.AutoReloadPreload = TIM_AUTOMATICOUTPUT_ENABLE,//自动装载
+    .fTimingLength                      =2000,
+	.ucPriority = 0,
+	.ucSubPriority = 2,
+
+};
+
+/* 定时器7配置 */
+tagTIM_T tTimer7ForRecover = 
+{
+
+	.tTimerHandle.Instance				=TIM7,						/* 通用定时器2 */
+    .fTimingLength                      =6000,
 	.ucPriority = 0,
 	.ucSubPriority = 2,
 

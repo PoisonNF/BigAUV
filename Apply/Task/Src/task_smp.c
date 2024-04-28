@@ -289,12 +289,13 @@ void ShumeiData_Analysis(void) //树莓派数据解析
 			case 'S'://树莓派与STM32连接命令
 				if(Shumei_buf[3] == '1')	//树莓派存活检测开启
 				{
-					Drv_Timer_Enable(&tTimer6);
+					Drv_Timer_Enable(&tTimer6ForCheck);
 				}
-				else if(Shumei_buf[3] == '0')	//树莓派存活检测关闭
-				{
-					Drv_Timer_Disable(&tTimer6);
-				}
+				/* 以下部分在实际使用中不启用 */
+//				else if(Shumei_buf[3] == '0')	//树莓派存活检测关闭
+//				{
+//					Drv_Timer_Disable(&tTimer6ForCheck);
+//				}
 			
 			default:
 			

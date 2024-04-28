@@ -6,11 +6,11 @@ int Mag_data_getL(double* LX, double* LY, double* LZ, double* allL, double* RX, 
 {
 		
 		int ret;
-		ret  = OCD_AD24bit_GetResult(&tAD24BIT, 50);
+		ret = OCD_AD24bit_GetResult(&tAD24BIT, 50);
 		if(ret!=0)
 		{
-				DBG_ERROR("OCD_AD24bit_GetResult error:%d\r\n",ret);
-				return -1;
+			// DBG_ERROR("OCD_AD24bit_GetResult error:%d\r\n",ret);
+			return -1;
 		}
 		
 		*LX = tAD24BIT.port[0].result;
@@ -20,21 +20,21 @@ int Mag_data_getL(double* LX, double* LY, double* LZ, double* allL, double* RX, 
 		*RY = tAD24BIT.port[4].result;
 		*RZ = tAD24BIT.port[5].result;
 		
-		*LX = (*LX)*10000;//ç”µå‹å¯¹åº”ç£åœºå…³ç³»
+		*LX = (*LX)*10000;//µçÑ¹¶ÔÓ¦´Å³¡¹ØÏµ
 		*LY = (*LY)*10000;
 		*LZ = (*LZ)*10000;
 		*allL = (double)((*LX)*(*LX));
 		*allL += (double)((*LY)*(*LY));
 		*allL += (double)((*LZ)*(*LZ));
-		*allL = sqrt(*allL);//æ€»ç£åœº
+		*allL = sqrt(*allL);//×Ü´Å³¡
 		
-		*RX = (*RX)*10000;//ç”µå‹å¯¹åº”ç£åœºå…³ç³»
+		*RX = (*RX)*10000;//µçÑ¹¶ÔÓ¦´Å³¡¹ØÏµ
 		*RY = (*RY)*10000;
 		*RZ = (*RZ)*10000;
 		*allR = (double)((*RX)*(*RX));
 		*allR += (double)((*RY)*(*RY));
 		*allR += (double)((*RZ)*(*RZ));
-		*allR = sqrt(*allR);//æ€»ç£åœº
+		*allR = sqrt(*allR);//×Ü´Å³¡
 		
 		return 0;
 		

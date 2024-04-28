@@ -18,6 +18,7 @@ char Timeflag_500MS = RESET; //0.5秒时间标志位
 char Timeflag_800MS = RESET; //0.8秒时间标志位
 char Timeflag_1S = RESET; //1秒时间标志位
 char Timeflag_2S = RESET; //2秒时间标志位
+char Timeflag_6S = RESET;//6秒时间标志位
 
 double LX;
 double LY;
@@ -28,13 +29,14 @@ double RY;
 double RZ;
 double RALL;
 
-uint8_t ShumeiIsLive = 0;	//判断树莓派存活的计数器
+uint8_t ShumeiIsLive = 1;	//判断树莓派存活的计数器
 uint8_t ShumeiIsLiveLast = 0;	//判断树莓派存活的计数器的上一帧
 
 /* 用户函数声明 */
 
 void Relay_Control(void); //继电器控制函数
 void ShumeiLiveCheck(void);	//树莓派存活检测函数
+void TKCSendRecover(void);//推控舱数据恢复发送函数
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -91,8 +93,7 @@ void UserLogic_Code(void)
 			Uplink_Data.Magnetometer_R.all.f_data = RALL;
 			Timeflag_100MS = RESET;
 		}
-        
-        //ShumeiLiveCheck();  //树莓派存活检测函数
+       
         
 		if(Timeflag_200MS)
 		{
@@ -118,6 +119,9 @@ void UserLogic_Code(void)
 			Timeflag_Count1 = RESET;
 			Lowvoltage_Send();
 		}
+        
+        ShumeiLiveCheck();  //树莓派存活检测函数
+		TKCSendRecover();	//推控舱数据恢复发送函数
 	}
 	
 }
@@ -143,10 +147,9 @@ void Relay_Control() //继电器控制函数
 	Beiyong12V_OFF;
 }
 
-uint8_t TKCResponed[50];	//推控舱回复存储数组
-uint8_t TKCResponedNum;		//推控舱回复长度
 uint8_t StopCMD[6] = "@MAS0$";
 
+/* 树莓派存活检测函数 */
 void ShumeiLiveCheck(void)
 {
 	if(Timeflag_2S)
@@ -156,56 +159,37 @@ void ShumeiLiveCheck(void)
 		//上一帧计数器等于本次，说明树莓派断连，给推控舱发停止命令
 		if(ShumeiIsLiveLast == ShumeiIsLive)	
 		{
-			Drv_Timer_Disable(&tTimer6);	//关闭定时器
-			while(!TuikongStopFlag)
-			{
-                
-                if(Timeflag_200MS) 
-                {
-                    printf("sikong\r\n");
-                    Drv_Uart_Transmit(&tTKC_Uart,StopCMD, 6);	//向推控舱发送@MAS0$
-                    Timeflag_200MS = RESET;
-                }
-                
-                //等待推控舱的回应
-                // Receive_DMA();
-                // TuikongData_Analysis();
+			Drv_Timer_Disable(&tTimer6ForCheck);	//关闭定时器
+            printf("Out of control. Stop sending data to TKC\r\n");
+            StopSendToTKC = SET;
+            
+            ShumeiIsLive = 1;
+			ShumeiIsLiveLast = 0;
+            
+            Drv_Uart_Transmit(&tTKC_Uart,StopCMD, 6);
 
-//				TKCResponedNum = Drv_Uart_Receive_DMA(&tTKC_Uart,TKCResponed);
-//				if(TKCResponedNum && TKCResponed[0] == '@' && TKCResponed[1] == 'A')
-//                //if(TKCResponedNum == 8)
-//				{
-//                    printf("TKCResponedNum %d\r\n",TKCResponedNum);
-//					Drv_Uart_Transmit(&tSMP_Uart, TKCResponed, 8);
-
-//					printf("shoudao!\r\n");
-//					TuikongStopFlag = SET;      
-
-//					Drv_Timer_Enable(&tTimer6);
-//				
-//					//两个计数器设置为相同的值
-//					ShumeiIsLiveLast = 0;	
-//					ShumeiIsLive = 1;
-//					break;        					
-//				}
-
-                //说明推控舱停止运转恢复正常
-				// if(TuikongStopFlag)
-				// {
-				// 	TuikongStopFlag = RESET;
-				// 	Drv_Timer_Enable(&tTimer6);
-					
-				// 	//两个计数器设置为相同的值
-				// 	ShumeiIsLiveLast = 0;	
-				// 	ShumeiIsLive = 0;
-				// 	break;
-				// }
-			}
+			/* 开始恢复时间计时6s */
+			Drv_Timer_Enable(&tTimer7ForRecover);
 		}
 		else	//连接没有问题，跳过
 		{
 			ShumeiIsLiveLast = ShumeiIsLive;	//将本次计数值转存
+			StopSendToTKC = RESET;
 		}
+	}
+}
+
+/* 推控舱数据恢复发送函数 */
+void TKCSendRecover(void)
+{
+	//如果达到6s
+	if(Timeflag_6S)
+	{
+		Timeflag_6S = RESET;
+		StopSendToTKC = RESET;	//恢复推控舱数据发送
+		printf("TKC recovery data transmission\r\n");
+		Drv_Timer_Enable(&tTimer6ForCheck);	//恢复定时器6计时
+        Drv_Timer_Disable(&tTimer7ForRecover);	//关闭定时器7计时
 	}
 }
 
