@@ -88,9 +88,9 @@ void TuikongData_Send(void) //下行数据发送函数，即向推控舱数据�
 		memcpy(&Tuikong_SendData[0], (uint8_t *)"@TT", 3);
 		memcpy(&Tuikong_SendData[3], Downlink_Data.Pose_Velocity_Data, 24);
 		Tuikong_SendData[27] = Downlink_Data.Depthometer_Data*100 / 256; //深度计数据
-		Tuikong_SendData[28] = (int)(Downlink_Data.Depthometer_Data*100) % 256;
+		Tuikong_SendData[28] = (uint8_t)(Downlink_Data.Depthometer_Data*100) % 256;
 		Tuikong_SendData[29] = Downlink_Data.Altimeter_Data*100 / 256; //高度计数据
-		Tuikong_SendData[30]= (int)(Downlink_Data.Altimeter_Data*100) % 256;
+		Tuikong_SendData[30] = (uint8_t)(Downlink_Data.Altimeter_Data*100) % 256;
 		memcpy(&Tuikong_SendData[31], Downlink_Data.Cursor_Coordinate, 4);
 		Tuikong_SendData[35] = '$';
 

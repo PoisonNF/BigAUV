@@ -76,8 +76,8 @@ void UserLogic_Code(void)
 
 		CH438Q_Analysis(&Uplink_Data.Altimeter_Data, Uplink_Data.Lowvoltage_Data, Uplink_Data.Highvoltage_Data); //CH438Q串口数据获取函数
 		Depthometer_Analysis(&Uplink_Data.Depthometer_Data);
-
-		Downlink_Data.Altimeter_Data = Uplink_Data.Altimeter_Data;
+        
+        Downlink_Data.Altimeter_Data = Uplink_Data.Altimeter_Data;
 		Downlink_Data.Depthometer_Data = Uplink_Data.Depthometer_Data;
 
 		if(Timeflag_100MS)

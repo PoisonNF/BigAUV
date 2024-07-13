@@ -24,6 +24,7 @@ int CH438Q_Analysis(float* _Altimeter_Data, uint8_t* _Lowvoltage_Data, uint8_t* 
 			case 0: //高度计
 				if(CH438Q_buf[7] == 'm')	//判断是否为高度计数据
 				{
+                    Drv_Uart_Transmit(&tSMP_Uart, (uint8_t *)CH438Q_buf, 10);   //给树莓派发送用于调试
 					*_Altimeter_Data = (CH438Q_buf[0] - 48)*100 + (CH438Q_buf[1] - 48)*10 + (CH438Q_buf[2] - 48) + (CH438Q_buf[4] - 48)*0.1 + (CH438Q_buf[5] - 48)*0.01;
 					if(*_Altimeter_Data < 0)
 					{
